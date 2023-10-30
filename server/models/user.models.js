@@ -22,6 +22,20 @@ const userSchema = new Schema({
         required:[true,"Password is required"],
         minLength:[8,'Password mus be atleast 8 characters'],
         select:false
+    },
+    avator : {
+        public_id:{
+            type:String
+        },
+        secure_url:{
+            type:String
+        }
+    },
+    forgotPasswordToken:String,
+    forgotPasswordExpiry:Date,
+    time_stamps:
+    {
+        timestamps : true
     }
 })
 
