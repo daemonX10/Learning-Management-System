@@ -23,6 +23,11 @@ const userSchema = new Schema({
         minLength:[8,'Password mus be atleast 8 characters'],
         select:false
     },
+    role:{
+        type:String,
+        enum:['USER','ADMIN'],
+        default:'USER'
+    },
     avator : {
         public_id:{
             type:String
@@ -37,5 +42,8 @@ const userSchema = new Schema({
     {
         timestamps : true
     }
-})
+});
 
+const User = model('User',userSchema);
+
+module.exports = User;
