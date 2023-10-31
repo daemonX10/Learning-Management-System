@@ -28,7 +28,7 @@ const userSchema = new Schema({
         enum:['USER','ADMIN'],
         default:'USER'
     },
-    avator : {
+    avatar : {
         public_id:{
             type:String
         },
