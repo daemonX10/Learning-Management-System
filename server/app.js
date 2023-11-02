@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import userRoutes from './routes/user.routes.js';
 import errorMiddleware from './middlewares/error.middleware.js'
+import morgon from 'morgan';
 
 
 const app = express();
@@ -13,6 +14,8 @@ app.use(cors({
     origin:[process.env.FRONTEND_URL, 'http://localhost:3000'],
     credentials: true
 }));
+
+app.use(morgon('dev'));
 
 app.use(cookieParser());
 
