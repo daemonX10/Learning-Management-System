@@ -1,6 +1,12 @@
 const User = require("../models/user.models");
 const AppError = require("../utils/appError");
 
+const cookieOptions  = {
+    secure: true,
+    maxAge: 7*24*60*60*1000,
+    httpOnly : true
+}
+
 const register = async (req,res)=>{
     // register logic
     const { fullName , email , password} = req.body;
@@ -58,15 +64,40 @@ const login = async (req,res)=>{
     }
     
     const token = await user.generateJWTToken();
+    user.password = undefined;
+
+    res.cookie('token',token, cookieOptions);
+
+    res.status(201).json({
+        success:true,
+        message:"User registered Successfully",
+        user
+    })
+
 }
 
 const logout = (req,res)=>{
-    // logout logic
-
+    res.cookie('token', null ,{
+        secure: true,
+        maxAge : 0,
+        httpOnly: true
+    });
+    
+    res.status(200).json({
+        success:true,
+        message:'User logged out Successfully'
+    })
 }
 
 const getProfile = (req,res)=>{
-    // getProfile logic
+    const user = User.findById(req.user.id);
+
+    res.status(200).json({
+        success : true,
+        message : "user details",
+        user
+    })
+
 
 }
 
