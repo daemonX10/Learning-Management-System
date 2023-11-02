@@ -10,4 +10,4 @@ const errorMiddleware = (error, req, res)=>{
     })
 }
 
-module.exports = errorMiddleware;
+export default errorMiddleware;

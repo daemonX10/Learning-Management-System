@@ -18,6 +18,4 @@ const isLoggedIn = function (req,res,next){
     next();
 }
 
-module.exports = {
-    isLoggedIn
-}
+export default isLoggedIn;

@@ -1,5 +1,5 @@
-const express = require('express');
-const isLoggedIn = require('../middlewares/auth.middleware.js')
+import express from 'express';
+import { isLoggedIn } from '../middlewares/auth';
 
 const router = express.Router();
 const { 
@@ -13,4 +13,4 @@ router.post('/login',login);
 router.get('/logout',logout);
 router.get('/me',isLoggedIn ,getProfile);
 
-module.exports = router;
+export default router;
