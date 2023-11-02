@@ -40,9 +40,9 @@ const userSchema = new Schema({
     },
     forgotPasswordToken:String,
     forgotPasswordExpiry:Date,
-    time_stamps:
-    {
-        timestamps : true
+    timespamps:{
+        type:Date,
+        default:Date.now
     }
 });
 

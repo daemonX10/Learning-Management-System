@@ -1,5 +1,5 @@
-import User from "../models/user.model";
-import AppError from "../utils/appError";
+import User from "../models/user.models.js";
+import AppError from "../utils/appError.js";
 
 const cookieOptions  = {
     secure: true,
@@ -101,7 +101,7 @@ const getProfile = (req,res)=>{
 
 }
 
-export default {
+export {
     register,
     login,
     logout,

@@ -1,4 +1,4 @@
-import AppError from "../utils/appError";
+import AppError from "../utils/appError.js";
 
 const isLoggedIn = function (req,res,next){
     const {token} = req.cookies;

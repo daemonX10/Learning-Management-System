@@ -1,12 +1,12 @@
 import express from 'express';
-import { isLoggedIn } from '../middlewares/auth';
+import  isLoggedIn  from '../middlewares/auth.middleware.js';
 
 const router = express.Router();
-const { 
+import { 
     register, 
     login, 
     logout, 
-    getProfile } = require('../controllers/user.controller');
+    getProfile } from '../controllers/user.controllers.js';
 
 router.post('/register',register);
 router.post('/login',login);

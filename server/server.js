@@ -1,6 +1,6 @@
-import app from './app';
+import app from './app.js';
 
-import ConnectToDB from './config/dbConnect';
+import ConnectToDB from './config/dbConnect.js';
 
 
 const PORT = process.env.PORT || 4000;
