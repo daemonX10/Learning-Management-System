@@ -42,9 +42,22 @@ const register = async (req,res)=>{
     })
 }
 
-const login = (req,res)=>{
-    // login logic
+const login = async (req,res)=>{
+    const {email,password} = req.body;
 
+    if(!email || !password ){
+        return next( new AppError ("All field are required ", 400));
+    }
+
+    const user = await User.findOne({
+        email
+    }).select('+password');
+    // TODO bcrypt the password comparison
+    if(!user || user.comparePaaword (password)){
+        return next( new AppError ("email or password do not match",400));
+    }
+    
+    const token = await user.generateJWTToken();
 }
 
 const logout = (req,res)=>{
