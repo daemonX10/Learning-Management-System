@@ -34,6 +34,9 @@ const register = async (req,res)=>{
         return next(new AppError("User registration failed",400));
     }
     // TODO :upload user picture
+    if(){
+        
+    }
 
     await user.save();
 
