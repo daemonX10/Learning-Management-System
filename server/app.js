@@ -1,6 +1,5 @@
 import express from 'express'; 
 import cors from 'cors';
-/* The `cors` middleware is used to enable Cross-Origin Resource Sharing (CORS) in the Express application. CORS is a mechanism that allows resources (e.g., APIs) ona web page to be requested from another domain outside the domain from which theresource originated. */
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 dotenv.config();
@@ -12,6 +11,21 @@ app.use(cors({
     credentials:true
 }));
 app.use(cookieParser());
+
+app.use('/damodar', (req, res) => {
+    try {
+        res.send('Hello from damodar');
+    } catch (error) {
+        res.status(500).json({
+            success:false,
+            message:error.message
+        })
+    }
+});
+
+app.use('*',(req,res)=>{
+    res.status(404).send('404, Page Not Found');
+})
 
 
 export default app;
