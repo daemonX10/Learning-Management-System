@@ -17,7 +17,7 @@ const register = async (req,res)=>{
                 email,
                 passwword,
                 avatar:{
-                    public_id:'this is a sample public id',
+                    public_id:email,
                     secure_url:'this is a sample url'
                 }
             })
@@ -29,6 +29,17 @@ const register = async (req,res)=>{
         return next(new AppError('User already exists',400))
     
     }
+
+    // TODO: Upload the profile picture to cloudinary
+    // TODO: Hash the password
+
+    await user.save(); // save the user to the database
+    
+    res.status(200).json({
+        success:true,
+        message:'User created successfully',
+        user
+    })
 
 }
 
