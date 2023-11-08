@@ -1,6 +1,7 @@
 import { Schema , model } from "mongoose";
 import validator from 'validator';
 import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
 const userSchema = new Schema({
     fullName:{
@@ -55,7 +56,7 @@ const userSchema = new Schema({
         timestamps:true
 });
 
-userSchema.pre('save', async ()=>{
+userSchema.pre('save', async function (next){
     if(!this.isModified('password')){
         return next();
     }
@@ -65,8 +66,18 @@ userSchema.pre('save', async ()=>{
 userSchema.methods = {
     comparePassword: function(plainTextPassword){
         return bcrypt.compare(plainTextPassword,this.password);
-    }
-}
+    },
+    generateJWTToken: async function(){
+        return await jwt.sign({
+            id:this,
+            role:this.role,
+            subscription:this.subscription
+        },
+        process.env.JWT_SECRET,
+        {
+            expiresIn:1000*60*60*24*30
+        }
+)}}
 
 const User = model('User',userSchema);
 export  default User;
