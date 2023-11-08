@@ -25,7 +25,8 @@ const userSchema = new Schema({
     password:{
         type:String,
         minlength:6,
-        required:true,
+        required:[true,'Please enter your password'],
+        select:false, 
         trim:true,
         validate(value){
             if(value.toLowerCase().includes('password')){
@@ -33,5 +34,26 @@ const userSchema = new Schema({
             }
         },
         private:true,
-    }
+    },
+    role:{
+        type:String,
+        enum:["USER","ADMIN"],
+        default:'USER'
+    },
+    avatar:{
+        public_id:{
+            type:String
+        },
+        secure_url:{
+            type:String
+        }
+    },
+    forgotPasswordToken:String,
+    forgotPasswordExpire:Date,
+    },
+    {
+        timestamps:true
 })
+
+const User = model('User',userSchema);
+export  default User;
