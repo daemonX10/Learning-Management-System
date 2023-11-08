@@ -40,12 +40,22 @@ const register = async (req,res,next)=>{
     else{
         return next(new AppError('User already exists',400))
     }
-
-
 }
 
-const login = (req,res)=>{
+const login = async (req,res)=>{
+        const {email,password} = req.body;
         
+        if(!email || !password){
+            return next(new AppError('Please provide all the required fields',400))
+        };
+
+        const user = await User.findOne({email})
+        .select('+password');
+        
+        if(!user || !(await user.comparePassword(password))){
+            return next(new AppError('Invalid credentials',401))
+        }
+        const token = await user.generateToken();
     }
 
 const logout = (req,res)=>{
