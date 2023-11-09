@@ -1,6 +1,7 @@
 import User from '../models/user.model.js'
 import AppError from '../utils/appError.js';
 import dotenv from 'dotenv';
+import fs from 'fs/promises';
 import cloudinary from 'cloudinary';
 dotenv.config();
 
@@ -45,7 +46,7 @@ const register = async (req,res,next)=>{
                 user.avatar.secure_url = result.secure_url;
 
                 // remove the file from the server
-                fs.rm('./uploads/' + req.file.filename);
+                // fs.rm('./uploads/' + req.file.filename);
             }
         } catch (error) {
             return next(new AppError(error || 'File not uploaded , please try again',500));
