@@ -1,5 +1,6 @@
 import AppError from "../utils/appError";
 import jwt from 'jsonwebtoken';
+import logger from '../utils/logger.js';
 
 
 const isLoggedIn = (req,res,next)=>{
@@ -13,7 +14,7 @@ const isLoggedIn = (req,res,next)=>{
         req.user = decode;
         next();
     } catch (error) {
-        console.log("Error in isLoggedIn middleware : invalid token");
+        logger.error("Error in isLoggedIn middleware : invalid token");
         return next(new AppError(error,500));
     }
 
