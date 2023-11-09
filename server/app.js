@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import userRoutes from './routes/user.routes.js';
 import errorMiddleware from './middlewares/error.middleware.js';
+import morgan from 'morgan';
 dotenv.config();
 const app = express();  
 
@@ -14,6 +15,8 @@ app.use(cors({
     credentials:true
 }));
 app.use(cookieParser());
+
+app.use(morgan('dev'));
 
 app.use('/damodar', (req, res) => {
     try {
