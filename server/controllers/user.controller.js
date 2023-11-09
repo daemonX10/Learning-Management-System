@@ -49,7 +49,7 @@ const register = async (req,res,next)=>{
                 // fs.rm('./uploads/' + req.file.filename);
             }
         } catch (error) {
-            return next(new AppError(error || 'File not uploaded , please try again',500));
+            return next(new AppError(error.message || 'File not uploaded , please try again',500));
         }
     }
     
