@@ -1,4 +1,4 @@
-import AppError from "../utils/appError";
+import AppError from "../utils/appError.js";
 import jwt from 'jsonwebtoken';
 import logger from '../utils/logger.js';
 

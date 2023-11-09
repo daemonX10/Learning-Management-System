@@ -94,14 +94,13 @@ const logout = (req,res,next)=>{
         }
     }
 
-const getProfile = (req,res)=>{   
+const getProfile = async (req,res,next)=>{   
     try {
-        const user = User.findById(req.user._id);
-        
+        const user = await User.findById(req.user._id);
+
         res.status(200).json({
             success: true,
-            message: 'User profile fetched successfully',
-            data: user
+            message: 'User profile fetched successfully'
         })
     } catch (error) {
         return next(new AppError(error,500));
