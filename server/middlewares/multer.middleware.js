@@ -8,7 +8,7 @@ const upload = multer({
     },
     storage: multer.diskStorage({
         destination:"uploads/",
-        filename:(req,file,cb)=>{
+        filename:(_req,file,cb)=>{
             cb(null,`${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`)
         },
     }),
@@ -22,7 +22,8 @@ const upload = multer({
             cb(new Error('File type is not supported'),false)
             return;
         }
-    }
-})
+        cb(null,true);
+    },
+}).single('avatar');
 
 export default upload;
