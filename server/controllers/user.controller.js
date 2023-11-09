@@ -95,7 +95,17 @@ const logout = (req,res,next)=>{
     }
 
 const getProfile = (req,res)=>{   
-    
+    try {
+        const user = User.findById(req.user._id);
+        
+        res.status(200).json({
+            success: true,
+            message: 'User profile fetched successfully',
+            data: user
+        })
+    } catch (error) {
+        return next(new AppError(error,500));
+    }
     }
 
 export {register,login,logout,getProfile}
