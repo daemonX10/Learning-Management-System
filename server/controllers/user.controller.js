@@ -1,6 +1,7 @@
 import User from '../models/user.model.js'
 import AppError from '../utils/appError.js';
 import dotenv from 'dotenv';
+import cloudinary from 'cloudinary';
 dotenv.config();
 
 const cookieOptions = {
@@ -27,8 +28,31 @@ const register = async (req,res,next)=>{
             },
         })
 
-        // TODO: Upload the profile picture to cloudinary
-        // TODO: Hash the password
+    // TODO: Upload the profile picture to 
+    
+    if(req.file){
+        try {
+            const result = await cloudinary.v2.uploader.upload(req.file.path,{
+                folder:'lms',
+                widht:250,
+                height:250,
+                gravity:'face',
+                crop:'fill'
+            });
+
+            if(result){
+                user.avatar.public_id = result.public_id;
+                user.avatar.secure_url = result.secure_url;
+
+                // remove the file from the server
+                fs.rm('./uploads/' + req.file.filename);
+            }
+        } catch (error) {
+            return next(new AppError(error || 'File not uploaded , please try again',500));
+        }
+    }
+    
+    // TODO: jwt token
         
         try {
             await user.save();
