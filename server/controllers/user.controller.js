@@ -131,4 +131,18 @@ const getProfile = async (req,res,next)=>{
     }
     }
 
-export {register,login,logout,getProfile}
+const forgetPassword = async (req,res,next)=>{
+
+}
+
+const resetPassword = async (req,res,next)=>{
+
+}
+
+export{register,
+        login,
+        logout,
+        getProfile,
+        forgetPassword,
+        resetPassword 
+    }

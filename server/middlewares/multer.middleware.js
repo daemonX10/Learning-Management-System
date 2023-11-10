@@ -24,6 +24,6 @@ const upload = multer({
         }
         cb(null,true);
     },
-}).single('avatar');
+});
 
 export default upload;
