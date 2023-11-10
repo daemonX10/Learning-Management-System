@@ -46,23 +46,22 @@ const register = async (req,res,next)=>{
                 user.avatar.secure_url = result.secure_url;
 
                 // remove the file from the server
-                // fs.rm('./uploads/' + req.file.filename);
+                fs.rm('./uploads/' + req.file.filename);
             }
         } catch (error) {
             return next(new AppError(error.message || 'File not uploaded , please try again',500));
         }
     }
-    
-    // TODO: jwt token
-        
         try {
             await user.save();
             user.password = undefined;
+            const token = await user.generateJWTToken();
+            res.cookie('token', token, cookieOptions);
             res.status(200).json({
                 success: true,
                 message: 'User created successfully',
                 data: user
-
+                
             })
         } catch (error) {
             return next(new AppError(error,500))
