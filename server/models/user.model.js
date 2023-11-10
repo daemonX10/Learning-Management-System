@@ -2,6 +2,7 @@ import { Schema , model } from "mongoose";
 import validator from 'validator';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import crypto from 'crypto';
 
 const userSchema = new Schema({
     fullName:{
@@ -62,7 +63,6 @@ userSchema.pre('save', async function (next){
     }
     this.password = await bcrypt.hash(this.password,10);
 });
-
 userSchema.methods = {
     comparePassword: function(plainTextPassword){
         return bcrypt.compare(plainTextPassword,this.password);
@@ -77,7 +77,23 @@ userSchema.methods = {
         {
             expiresIn:1000*60*60*24*30
         }
-)}}
+        )},
+    generatePasswordResetToken: async function(){
+            // creating a random token using node's built-in crypto module
+            const resetToken = crypto.randomBytes(20).toString('hex');
+
+            // Again using crypto module to hash the generated resetToken with sha256 algorithm and storing it in database
+            this.forgotPasswordToken = crypto
+                .createHash('sha256')
+                .update(resetToken)
+                .digest('hex');
+            this.forgotPasswordExpire = Date.now() + 30 * 60 * 1000; // 30 minutes
+            return resetToken;
+
+    }
+};
+
+
 
 const User = model('User',userSchema);
 export  default User;

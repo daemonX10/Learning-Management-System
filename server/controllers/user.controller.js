@@ -3,6 +3,7 @@ import AppError from '../utils/appError.js';
 import dotenv from 'dotenv';
 import fs from 'fs/promises';
 import cloudinary from 'cloudinary';
+import sendEmail from '../utils/sendEmail.js';
 dotenv.config();
 
 const cookieOptions = {
@@ -132,6 +133,38 @@ const getProfile = async (req,res,next)=>{
     }
 
 const forgetPassword = async (req,res,next)=>{
+    const { email } = req.body;
+
+    if (!email) {
+        return next(new AppError('Please provide email ', 400))
+    };
+
+    const user = await User.findOne({email});
+    if(!user){
+        return next(new AppError('Email is not Registerd', 404));
+    }
+
+    try {
+        const resetToken = await user.generatePasswordResetToken();
+        await user.save();
+
+        const resetPasswordUrl = `${process.env.FRONTEND_URL}/reset-password/${resetToken}`;
+
+        // Sending the resetPasswordUrl to user's email along with message
+        const subject = 'Password reset token';
+        const message = `You can reset your password by clicking <a href=${resetPasswordUrl} target="_blank">Reset your password</a>\nIf the above link does not work for some reason then copy paste this link in new tab ${resetPasswordUrl}.\n If you have not requested this, kindly ignore.`;
+
+        await sendEmail(email, subject, message);
+        res.status(200).json({
+            success:true,
+            message:'Email sent successfully'
+        });
+    } catch (error) {
+        user.forgetPasswordToken = undefined;
+        user.forgetPasswordExpire = undefined;
+        await user.save();
+        return next(new AppError(error.message || 'Email could not be sent', 500));
+    }
 
 }
 
