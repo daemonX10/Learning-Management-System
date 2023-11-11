@@ -3,6 +3,7 @@ import AppError from '../utils/appError.js';
 import dotenv from 'dotenv';
 import fs from 'fs/promises';
 import cloudinary from 'cloudinary';
+import crypto from 'crypto';
 import sendEmail from '../utils/sendEmail.js';
 dotenv.config();
 
@@ -169,8 +170,40 @@ const forgetPassword = async (req,res,next)=>{
 }
 
 const resetPassword = async (req,res,next)=>{
+    const { resetToken } = req.params;
+    const { password , email } = req.body;
 
+    if(!password){
+        return next(new AppError('Password is required fields', 400))
+    }
+
+    // ! Above code is ok
+
+    const forgetPasswordToken = crypto.createHash('sha256').update(resetToken).digest('hex');
+
+    try {
+        const user = await User.findOne({
+            forgetPasswordToken
+        });
+
+        if(!user){
+            return next(new AppError("User is null , unable to fetch forgetPasswordToken",500));
+        }
+        
+        user.password = password;
+        user.forgetPasswordToken = undefined;
+        user.forgetPasswordExpire = undefined;
+
+        await user.save();
+        res.status(200).json({
+            success:true,
+            message:'Password reset successfully'
+        });
+    } catch (error) {
+        return next(new AppError(error.message || 'Unable to Update the password', 400));
+    }
 }
+
 
 export{register,
         login,
