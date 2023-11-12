@@ -1,5 +1,5 @@
 import Router from 'express';
-import { getAllCourses , createCourse } from '../controllers/course.controller';
+import { getAllCourses } from '../controllers/course.controller';
 
 
 
