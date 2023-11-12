@@ -173,6 +173,19 @@ const resetPassword = async (req,res,next)=>{
     const { resetToken } = req.params;
     const { password } = req.body;
 
+    // use this method if not working properly
+
+/*
+    // const { forgetPasswordToken } = req.body;
+    // const token = forgetPasswordToken.forgetPasswordToken; // assuming forgetPasswordToken is an object with a forgetPasswordToken property
+
+    // const user = await User.findOne({
+    //     forgetPasswordToken: token,
+    //     forgetPasswordExpire: { $gt: Date.now() }
+    // });
+
+*/
+
     if(!password){
         return next(new AppError('Password is required fields', 400))
     }
@@ -182,7 +195,18 @@ const resetPassword = async (req,res,next)=>{
     const forgetPasswordToken = crypto.createHash('sha256').update(resetToken).digest('hex');
 
     try {
+        // for debugging
+        // /*
+        // const userWithToken = await User.findOne({ forgetPasswordToken });
+        // console.log(`forgetPasswordExpire: ${userWithToken.forgetPasswordExpire}`);
+        // console.log(`Current time: ${Date.now()}`);
+
+        // const user = await User.findOne({
+        //     forgetPasswordToken,
+        //     forgetPasswordExpire:{$gt:Date.now()}
+        // });
         
+        // */
         const user = await User.findOne({
             forgetPasswordToken,
             forgetPasswordExpire:{$gt:Date.now()}
@@ -206,11 +230,44 @@ const resetPassword = async (req,res,next)=>{
     }
 }
 
+const ChangePassword = async (req,res,next)=>{
+    const { oldPassword, newPassword } = req.body;
+    const {id} = req.user;
+    // req.user._id is coming from the middleware isLoggedIn which is checking the token and setting the user in req.user object 
+
+    if(!oldPassword || !newPassword){
+        return next(new AppError('Enter Both password , oldPassword and NewPassword', 400));
+    }
+
+    const user = await User.findById(id).select('+password'); 
+    if(!user){
+        return next( new AppError("user not found", 400));
+    }
+    
+    const isMatch = await user.comparePassword(oldPassword);
+
+    if(!isMatch){
+        return next(new AppError('Old password is incorrect', 400));
+    }
+
+    user.password = newPassword;
+    await user.save();
+
+    user.password = undefined;
+
+    res.status(200).json({
+        success:true,
+        message:'Password changed successfully',
+        data:user
+    })
+
+}
 
 export{register,
         login,
         logout,
         getProfile,
         forgetPassword,
-        resetPassword 
+        resetPassword,
+        ChangePassword
     }
