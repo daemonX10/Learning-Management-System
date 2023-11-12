@@ -171,7 +171,7 @@ const forgetPassword = async (req,res,next)=>{
 
 const resetPassword = async (req,res,next)=>{
     const { resetToken } = req.params;
-    const { password , email } = req.body;
+    const { password } = req.body;
 
     if(!password){
         return next(new AppError('Password is required fields', 400))
@@ -182,8 +182,10 @@ const resetPassword = async (req,res,next)=>{
     const forgetPasswordToken = crypto.createHash('sha256').update(resetToken).digest('hex');
 
     try {
+        
         const user = await User.findOne({
-            forgetPasswordToken
+            forgetPasswordToken,
+            forgetPasswordExpire:{$gt:Date.now()}
         });
 
         if(!user){
