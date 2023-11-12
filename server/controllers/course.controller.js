@@ -2,7 +2,7 @@
 
 
 
-const getAllCourses = async (req, res) => {
+const getAllCourses = async (req, res,next) => {
 
 };
 
