@@ -263,11 +263,57 @@ const ChangePassword = async (req,res,next)=>{
 
 }
 
+const updateUser = async (req,res,next)=>{
+    const {fullName} = req.body;
+    const {id} = req.user;
+
+    const user = await User.findOne(id);
+
+    if(!user){
+        return next(new AppError("User not found", 400));
+    }
+    
+    if(fullName){
+        user.fullName = fullName;
+    }
+
+    if(req.file){
+        try {
+            await cloudinary.v2.uploader.destroy(user.avatar.public_id); // delete the previous image from cloudinary
+            const result = await cloudinary.v2.uploader.upload(req.file.path,{
+                folder:'lms',
+                widht:250,
+                height:250,
+                gravity:'face',
+                crop:'fill'
+            })
+
+            if(result){
+                user.avatar.public_id = result.public_id;
+                user.avatar.secure_url = result.secure_url;
+
+                // remove the file from the server
+                fs.rm('./uploads/' + req.file.filename);
+            }
+            await user.save();
+            res.status(200).json({
+                success:true,
+                message:'User updated successfully',
+                data:user
+            })
+
+        } catch (error) {
+            return next(new AppError(  error.message || 'File not uploaded , please try again',500));
+        }
+    }
+}
+
 export{register,
         login,
         logout,
         getProfile,
         forgetPassword,
         resetPassword,
-        ChangePassword
+        ChangePassword,
+        updateUser
     }
