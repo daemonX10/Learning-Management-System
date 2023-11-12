@@ -1,11 +1,14 @@
 import express from 'express'; 
 import cors from 'cors';
-import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
+
+import dotenv from 'dotenv';
+dotenv.config();
+import morgan from 'morgan';
+
 import userRoutes from './routes/user.routes.js';
 import errorMiddleware from './middlewares/error.middleware.js';
-import morgan from 'morgan';
-dotenv.config();
+import courseRoutes from './routes/course.routes.js';
 const app = express();  
 
 app.use(express.json());
@@ -29,6 +32,7 @@ app.use('/damodar', (req, res) => {
     }
 });
 app.use('/api/v1/user',userRoutes);
+app.use('/api/v1/course',courseRoutes);
 
 
 app.use('*',(req,res)=>{

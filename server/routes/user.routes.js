@@ -4,14 +4,14 @@ import isLoggedIn from "../middlewares/auth.middleware.js";
 import upload from "../middlewares/multer.middleware.js";
 const router = express.Router();
 
-
-router.post('/register',upload.single('avatar'),register)
-router.post('/login',login);
-router.get('/logout',logout);
-router.get('/me',isLoggedIn,getProfile);
-router.post('/reset',forgetPassword);
-router.post('/reset/:resetToken',resetPassword);
-router.post('/changePassword',isLoggedIn,ChangePassword);
-router.put('/update',isLoggedIn,upload.single('avatar'),updateUser);
+router    // /api/v1/user
+    .post('/register',upload.single('avatar'),register)
+    .post('/login',login)
+    .get('/logout',logout)
+    .get('/me',isLoggedIn,getProfile)
+    .post('/reset',forgetPassword)
+    .post('/reset/:resetToken',resetPassword)
+    .post('/changePassword',isLoggedIn,ChangePassword)
+    .put('/update',isLoggedIn,upload.single('avatar'),updateUser)
 
 export default router;
