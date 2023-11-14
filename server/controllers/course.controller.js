@@ -79,9 +79,11 @@ export const createCourse = async (req, res,next) =>{
             if(result){
                 course.thumbnail.public_id = result.public_id;
                 course.thumbnail.secure_url = result.secure_url;
-                fs.rm(`uploads/${req.file.path}`);
+                fs.rm('./' + req.file.path);
             }
         }
+
+        await course.save();
 
         res.status(200).json({
             success: true,
