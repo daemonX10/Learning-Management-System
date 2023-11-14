@@ -51,7 +51,7 @@ export const createCourse = async (req, res,next) =>{
         const {
             title, description, category, createdBy } = req.body;
 
-        if (!title || !description || !category || createdBy) {
+        if (!title || !description || !category || !createdBy) {
             return next(new AppError(" title, description , category and created by are required to create course", 400));
         }
         // TODO: CREATE COURSE UNIQUE ID FOR SEARCH
@@ -79,8 +79,8 @@ export const createCourse = async (req, res,next) =>{
             if(result){
                 course.thumbnail.public_id = result.public_id;
                 course.thumbnail.secure_url = result.secure_url;
+                fs.rm(`uploads/${req.file.path}`);
             }
-            fs.rm(`uploads/${req.file.path}`);
         }
 
         res.status(200).json({
