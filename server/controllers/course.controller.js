@@ -1,5 +1,7 @@
 import AppError from "../utils/appError.js";
 import Course from "../models/courser.model.js"
+import cloudinary from 'cloudinary';
+import fs from 'fs/promises'
 
 
 
@@ -44,3 +46,58 @@ export const getLecturesByCourseId = async (req, res,next) => {
     }
 }
 
+export const createCourse = async (req, res,next) =>{
+    try {
+        const {
+            title, description, category, createdBy } = req.body;
+
+        if (!title || !description || !category || createdBy) {
+            return next(new AppError(" title, description , category and created by are required to create course", 400));
+        }
+        // TODO: CREATE COURSE UNIQUE ID FOR SEARCH
+
+        const course = await Course.create({
+            title,
+            description,
+            category,
+            createdBy,
+            thumbnail:{
+                public_id : 'dummy',
+                secure_url : 'dummy'
+            },
+        });
+
+        if(req.file){
+            const result = cloudinary.v2.uploader.upload(req.file.path,{
+                folder: 'lms',
+                widht: 250,
+                height: 250,
+                gravity:'center',
+                crop: 'fill'
+            });
+
+            if(result){
+                course.thumbnail.public_id = result.public_id;
+                course.thumbnail.secure_url = result.secure_url;
+            }
+            fs.rm(`uploads/${req.file.path}`);
+        }
+
+        res.status(200).json({
+            success: true,
+            message: "Course created successfully",
+            data: course
+        })
+    } catch (error) {
+        return next (new AppError(error.message || "Unable to create your course", 400));
+    }
+
+}
+
+export const updateCourse = async (req, res,next) =>{
+
+}
+
+export const deleteCourse = async (req, res,next) =>{
+
+}
