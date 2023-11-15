@@ -161,13 +161,17 @@ export const addLectureToCourseById = async (req, res, next) => {
         }
 
         if(req.file){
-            const result = await cloudinary.v2.uploader.upload(req.file.path,{
-                folder:'lms'
-            });
-            if(result){
-                lectureData.video.public_id = result.public_id,
-                lectureData.video.secure_url = result.secure_url,
-                fs.rm('./' + req.file.path);
+            try {
+                const result = await cloudinary.v2.uploader.upload(req.file.path, {
+                    folder: 'lms'
+                });
+                if (result) {
+                    lectureData.video.public_id = result.public_id,
+                        lectureData.video.secure_url = result.secure_url,
+                        fs.rm('./' + req.file.path);
+                }
+            } catch (error) {
+                return next(new AppError(error.message,500));
             }
         };
 
@@ -178,7 +182,7 @@ export const addLectureToCourseById = async (req, res, next) => {
         res.status(200).json({
             success:true,
             message: "Lecture added successfully",
-            data: lectures
+            data: course
         });
 
     } catch (error) {
