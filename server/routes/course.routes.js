@@ -10,14 +10,14 @@ const router = Router();
 router
     .route('/')
     .get(getAllCourses)
-    .post(isLoggedIn,authorizedRoles('ADMIN'),upload.single('thumbnail') ,createCourse);
+    .post(isLoggedIn,upload.single('thumbnail') ,createCourse);
 
 router
     .route("/:courseId")
     .get(isLoggedIn,getLecturesByCourseId)
     .put(isLoggedIn , authorizedRoles('ADMIN'), updateCourse)
     .delete(isLoggedIn, authorizedRoles('ADMIN'), deleteCourse)
-    .post(isLoggedIn,upload.single('video'), addLectureToCourseById);
+    .post(isLoggedIn,upload.single('lecture'), addLectureToCourseById);
 
 
 export default router;

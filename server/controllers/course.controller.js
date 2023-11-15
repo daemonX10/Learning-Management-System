@@ -142,49 +142,57 @@ export const deleteCourse = async (req, res,next) =>{
 
 export const addLectureToCourseById = async (req, res, next) => {
     try {
-        const { title , description} = req.body;
-        const { courseId } = req.params;
+        const { title , description } = req.body;
+        const { id } = req.params;
 
-        const course = await Course.findById(courseId);
+        let lectureData = {};
+
+        if (!title || !description ) {
+            return next(new AppError("title, description are required to create lecture", 400));
+        }
+
+        const course = await Course.findById(id);
 
         if (!course) {
-            return next(new AppError("No course exist with this id", 400));
+            return next(new AppError("No course exist with this id ", 400));
         }
 
-        const lectureData = {
-            title,
-            description,
-            video: {
-                public_id: 'dummy',
-                secure_url: 'dummy'
-            }
-        }
-
-        if(req.file){
+        if (req.file) {
             try {
                 const result = await cloudinary.v2.uploader.upload(req.file.path, {
-                    folder: 'lms'
+                    resource_type: 'video',
+                    folder: 'lms', // Save files in a folder named lms
+                    chunk_size: 5000000 // 50 mb
                 });
+
                 if (result) {
-                    lectureData.video.public_id = result.public_id,
-                        lectureData.video.secure_url = result.secure_url,
-                        fs.rm('./' + req.file.path);
+                    lectureData.public_id = result.public_id;
+                    lectureData.secure_url = result.secure_url;
                 }
+                fs.rm(`uploads/${req.file.filename}`); // remove file from local storage
             } catch (error) {
-                return next(new AppError(error.message,500));
+                return next(
+                    new AppError(
+                        JSON.stringify(error) || "File not uploaded, please try again", 400
+                    )
+                );
             }
-        };
+        }
 
-        course.lectures.push(lectureData);
+        course.lectures.push({
+            title,
+            description,
+            lecture: lectureData
+        });
+
         course.numberOfLectures = course.lectures.length;
-
         await course.save();
+        
         res.status(200).json({
-            success:true,
+            success: true,
             message: "Lecture added successfully",
             data: course
         });
-
     } catch (error) {
         return next (new AppError(error.message,500));
     }
