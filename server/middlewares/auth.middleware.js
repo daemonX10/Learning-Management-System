@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import logger from '../utils/logger.js';
 
 
-const isLoggedIn = (req,res,next)=>{
+export const isLoggedIn = (req,res,next)=>{
     const {token} = req.cookies;
 
     if(!token){
@@ -20,4 +20,12 @@ const isLoggedIn = (req,res,next)=>{
 
 }
 
-export default isLoggedIn;
+export const authorizedRoles = (...roles) => (req,res,next)=>{
+    const currentRole = req.user;
+
+    if(!roles.includes(currentRole.role)){
+        return next(new AppError('You are not authorized to access this route',403));
+    }
+
+    next();
+};
