@@ -143,7 +143,8 @@ export const deleteCourse = async (req, res,next) =>{
 export const addLectureToCourseById = async (req, res, next) => {
     try {
         const { title , description } = req.body;
-        const { id } = req.params;
+        const { courseId } = req.params;
+        console.log(`given id "6554e7c5424a6198d1f5f34a" \n url id ${courseId}`);
 
         let lectureData = {};
 
@@ -151,7 +152,7 @@ export const addLectureToCourseById = async (req, res, next) => {
             return next(new AppError("title, description are required to create lecture", 400));
         }
 
-        const course = await Course.findById(id);
+        const course = await Course.findById(courseId);
 
         if (!course) {
             return next(new AppError("No course exist with this id ", 400));
