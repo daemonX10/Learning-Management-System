@@ -139,3 +139,49 @@ export const deleteCourse = async (req, res,next) =>{
         return next (new AppError(error.message,500));
     }
 }
+
+export const addLectureToCourseById = async (req, res, next) => {
+    try {
+        const { title , description} = req.body;
+        const { courseId } = req.params;
+
+        const course = await Course.findById(courseId);
+
+        if (!course) {
+            return next(new AppError("No course exist with this id", 400));
+        }
+
+        const lectureData = {
+            title,
+            description,
+            video: {
+                public_id: 'dummy',
+                secure_url: 'dummy'
+            }
+        }
+
+        if(req.file){
+            const result = await cloudinary.v2.uploader.upload(req.file.path,{
+                folder:'lms'
+            });
+            if(result){
+                lectureData.video.public_id = result.public_id,
+                lectureData.video.secure_url = result.secure_url,
+                fs.rm('./' + req.file.path);
+            }
+        };
+
+        course.lectures.push(lectureData);
+        course.numberOfLectures = course.lectures.length;
+
+        await course.save();
+        res.status(200).json({
+            success:true,
+            message: "Lecture added successfully",
+            data: lectures
+        });
+
+    } catch (error) {
+        return next (new AppError(error.message,500));
+    }
+}

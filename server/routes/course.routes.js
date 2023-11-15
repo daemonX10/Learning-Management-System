@@ -1,6 +1,6 @@
 import Router from 'express';
-import { createCourse, deleteCourse, getAllCourses, getLecturesByCourseId, updateCourse } from '../controllers/course.controller.js';
-import isLoggedIn, { authorizedRoles } from '../middlewares/auth.middleware.js';
+import { addLectureToCourseById, createCourse, deleteCourse, getAllCourses, getLecturesByCourseId, updateCourse } from '../controllers/course.controller.js';
+import { authorizedRoles, isLoggedIn } from '../middlewares/auth.middleware.js';
 import upload from '../middlewares/multer.middleware.js';
 
 
@@ -16,7 +16,8 @@ router
     .route("/:courseId")
     .get(isLoggedIn,getLecturesByCourseId)
     .put(isLoggedIn , authorizedRoles('ADMIN'), updateCourse)
-    .delete(isLoggedIn, authorizedRoles('ADMIN'), deleteCourse);
+    .delete(isLoggedIn, authorizedRoles('ADMIN'), deleteCourse)
+    .post(isLoggedIn,upload.single('video'), addLectureToCourseById);
 
 
 export default router;
