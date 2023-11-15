@@ -144,7 +144,6 @@ export const addLectureToCourseById = async (req, res, next) => {
     try {
         const { title , description } = req.body;
         const { courseId } = req.params;
-        console.log(`given id "6554e7c5424a6198d1f5f34a" \n url id ${courseId}`);
 
         let lectureData = {};
 
@@ -192,7 +191,7 @@ export const addLectureToCourseById = async (req, res, next) => {
         res.status(200).json({
             success: true,
             message: "Lecture added successfully",
-            data: course
+            data: course.lectures
         });
     } catch (error) {
         return next (new AppError(error.message,500));
