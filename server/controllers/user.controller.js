@@ -308,6 +308,28 @@ const updateUser = async (req,res,next)=>{
     }
 }
 
+const makeUserAdmin = async (req,res,next)=>{
+    const { userId } = req.params;
+try {
+    const user = await User.findById(userId);
+
+    if (!user) {
+        return next(new AppError("User not found", 400));
+    }
+
+    user.role = 'ADMIN';
+
+    await user.save();
+    res.status(200).json({
+        success: true,
+        message: 'User role updated successfully',
+        data: user
+    });
+} catch (error) {
+    return next (new AppError(error.message || 'error in changing the role ', 400));
+}
+}
+
 export{register,
         login,
         logout,
@@ -315,5 +337,6 @@ export{register,
         forgetPassword,
         resetPassword,
         ChangePassword,
-        updateUser
+        updateUser,
+        makeUserAdmin
     }

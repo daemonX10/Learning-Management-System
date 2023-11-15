@@ -197,3 +197,77 @@ export const addLectureToCourseById = async (req, res, next) => {
         return next (new AppError(error.message,500));
     }
 }
+
+export const deleteLectureById = async (req, res,next) =>{
+    const { courseId, lectureId } = req.params;
+    const course = await Course.findById(courseId);
+
+    if(!course){
+        return next(new AppError("No course exist with this id",404));
+    }
+
+    try {
+        // it give us the lecture object
+        const lecture = course.lectures.find(lecture => lecture._id.toString() === lectureId);
+
+        if (!lecture) {
+            return next(new AppError("No lecture exist with this id", 404));
+        }
+
+        await cloudinary.v2.uploader.destroy(lecture.lecture.public_id);
+
+        course.lectures.pull({ _id: lectureId });
+        // alternative way to delete lecture
+        // course.lectures = course.lectures.filter(lecture => lecture._id.toString() !== lectureId);
+
+        course.numberOfLectures = course.lectures.length;
+        await course.save();
+        res.status(200).json({
+            success: true,
+            message: "Lecture deleted successfully",
+            data: course.lectures
+        });
+
+    } catch (error) {
+        return next (new AppError(error.message,500));
+    }
+    /*
+    Alternative way to delete lecture
+        try {
+        const { courseId, lectureId } = req.params;
+
+        const course = await Course.findById(courseId);
+
+        if (!course) {
+            return next(new AppError("No course exist with this id ", 400));
+        }
+
+        const lecture = course.lectures.find(
+            (lecture) => lecture._id.toString() === lectureId
+        );
+
+        if (!lecture) {
+            return next(new AppError("No lecture exist with this id ", 400));
+        }
+
+        await cloudinary.v2.uploader.destroy(lecture.lecture.public_id);
+
+        course.lectures = course.lectures.filter(
+            (lecture) => lecture._id.toString() !== lectureId
+        );
+
+        course.numberOfLectures = course.lectures.length;
+
+        await course.save();
+
+        res.status(200).json({
+            success: true,
+            message: "Lecture deleted successfully",
+            data: course.lectures
+        });
+    } catch (error) {
+        return next (new AppError(error.message,500));
+    }
+
+    */
+}
