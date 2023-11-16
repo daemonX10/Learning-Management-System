@@ -27,7 +27,7 @@ const register = async (req,res,next)=>{
             password,
             avatar:{
                 public_id:email,
-                secure_url:'this is a sample url'
+                secure_url: 'https://res.cloudinary.com/du9jzqlpt/image/upload/v1674647316/avatar_drzgxv.jpg'
             },
         })
 
