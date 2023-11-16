@@ -1,6 +1,7 @@
 import AppError from "../utils/appError.js";
 import jwt from 'jsonwebtoken';
 import logger from '../utils/logger.js';
+import asyncHandler from "./asyncHandler.middleware.js";
 
 
 export const isLoggedIn = (req,res,next)=>{
@@ -29,3 +30,12 @@ export const authorizedRoles = (...roles) => (req,res,next)=>{
 
     next();
 };
+
+export const authorizedSubscriber = asyncHandler(async(req,res,next)=>{
+    const subscriptionStatus = req.user.subscription.status;
+    const currentRole = req.user.role;
+
+    if( currentRole !== 'ADMIN' && subscriptionStatus !== 'active'){
+        return next(new AppError('You are not authorized to access this route',403));
+    }
+});
