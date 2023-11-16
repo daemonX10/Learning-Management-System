@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { buySubscription, cancelSubscription, getAllPayments, getRazorpayApiKey, verifySubscription } from '../controllers/payment.controller';
+import { buySubscription, cancelSubscription, getAllPayments, getRazorpayApiKey, verifySubscription } from '../controllers/payment.controller.js';
 
 const router = Router();
 
@@ -22,3 +22,5 @@ router
 router
     .route('/')
     .get(getAllPayments);
+
+export default router;
