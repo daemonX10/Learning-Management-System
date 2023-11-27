@@ -1,6 +1,5 @@
 # Learning Management System (LMS) - Full Stack Web Development Project
 
-![Project Logo/Banner (if applicable)](url_to_logo_or_banner)
 
 ## Overview
 
