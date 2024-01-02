@@ -4,14 +4,19 @@ import {Link} from 'react-router-dom'
 
 import Footer from '../components/Footer'
 
+// TODO: CHANGE THE SIDEBAR TO ADVANCE SIDE BAR
 function HomeLayout ({ children }) {
+
     function changeWidth(){
       const drawerSide = document.getElementsByClassName('drawer-side');
       drawerSide[0].style.width = 'auto';
     }
 
     function hideDrawer (){
-      const element = document.getElementById('my-drawer');
+      const element = document.getElementsByClassName('drawer-toggle');
+      element[0].checked = false;
+      const drawerSide = document.getElementsByClassName('drawer-side');
+      drawerSide[0].style.width = '0';
     }
 
 
@@ -26,7 +31,7 @@ function HomeLayout ({ children }) {
           </label>
         </div>
         <div className='drawer-side w-0'>
-          <label htmlFor="my-drawer" className='drawer-overlay'>hhhh</label>
+          <label htmlFor="my-drawer" className='drawer-overlay'></label>
           <ul className='menu p-4 w-0 sm:w-80 bg-base-200 relative'>
             <li className='w-fit absolute right-2 z-50'>
               <button onClick={hideDrawer}>
@@ -48,6 +53,10 @@ function HomeLayout ({ children }) {
           </ul>
         </div>
 
+      </div>
+      <div className=''>
+        {children}
+        <Footer />
       </div>
     </div>
   )
