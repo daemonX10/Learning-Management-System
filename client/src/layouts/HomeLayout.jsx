@@ -1,3 +1,4 @@
+import {AiFillCloseCircle} from 'react-icons/ai'
 import {FiMenu} from 'react-icons/fi'
 import {Link} from 'react-router-dom'
 
@@ -9,8 +10,13 @@ function HomeLayout ({ children }) {
       drawerSide[0].style.width = 'auto';
     }
 
+    function hideDrawer (){
+      const element = document.getElementById('my-drawer');
+    }
+
 
   return (
+
     <div className='min-h-[90vh]'>
       <div className='drawer absolute left-0 z-50 w-full'>
         <input type="checkbox" id='my-drawer' className='drawer-toggle' />
@@ -20,8 +26,13 @@ function HomeLayout ({ children }) {
           </label>
         </div>
         <div className='drawer-side w-0'>
-          <label htmlFor="my-drawer" className='drawer-overlay'></label>
-          <ul className='menu p-4 w-48 sm:w-80 bg-base-200 relative'>
+          <label htmlFor="my-drawer" className='drawer-overlay'>hhhh</label>
+          <ul className='menu p-4 w-0 sm:w-80 bg-base-200 relative'>
+            <li className='w-fit absolute right-2 z-50'>
+              <button onClick={hideDrawer}>
+                <AiFillCloseCircle size={24} />
+              </button>
+            </li>
             <li>
               <Link to='/'>Home</Link>
             </li>
@@ -35,7 +46,6 @@ function HomeLayout ({ children }) {
               <Link to='/courses'>All Courses</Link>
             </li>
           </ul>
-
         </div>
 
       </div>
