@@ -72,10 +72,10 @@ const SignUP = () => {
             return;
         }
 
-        if(!isValidPassword(signUpDetails.password)){
-            toast.error("Password must be atleast 6 characters with one uppercase, one lowercase, one number and one special character");
-            return;
-        }
+        // if(!isValidPassword(signUpDetails.password)){
+        //     toast.error("Password must be atleast 6 characters with one uppercase, one lowercase, one number and one special character");
+        //     return;
+        // }
 
 
     }
