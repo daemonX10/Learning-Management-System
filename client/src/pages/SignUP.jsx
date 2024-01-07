@@ -1,15 +1,18 @@
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { BsPersonCircle } from "react-icons/bs";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom"
 
 import { isEmail, isValidPassword } from "../helper/regexMatcher";
 import HomeLayout from "../layouts/Layout";
+import { createAccount } from "../redux/slices/authSlice";
 
 
 const SignUP = () => {
     
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     
     const [signUpDetails, setSignUpDetails] = useState({
         email:'',
@@ -54,8 +57,9 @@ const SignUP = () => {
 
     }
 
-    function onFormSubmit(e){
+    async function onFormSubmit(e){
         e.preventDefault();
+        console.log(signUpDetails);
         
         if( !signUpDetails.email || !signUpDetails.fullname || !signUpDetails.password ){
             toast.error("Please fill all the fields");
@@ -76,6 +80,15 @@ const SignUP = () => {
         //     toast.error("Password must be atleast 6 characters with one uppercase, one lowercase, one number and one special character");
         //     return;
         // }
+
+        const response = await dispatch(createAccount(signUpDetails));
+        console.log(response);
+        if(response?.payload?.success){
+            toast.success("Account created successfully");
+            navigate("/");
+        }
+
+
 
 
     }
