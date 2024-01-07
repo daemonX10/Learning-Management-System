@@ -11,19 +11,22 @@ const initialState = {
 
 export const createAccount = createAsyncThunk("/auth/signup", async (data)=>{
     try {
-        const response = await axiosInstance.post("user/register",data);
-        toast.promise(response,{
+        const responsePromise =  axiosInstance.post("user/register",data);
+        console.log('response from authSlice , axiosInstance from post',responsePromise);
+        toast.promise(responsePromise,{
             loading:"Creating account...",
-            success:(data)=>{
-                return data?.data?.message;
+            success:(res)=>{
+                console.log('data from authSlice , axiosInstance from post',res);
+                return res.data?.message || "error in handling response from server";
             },
             error:(err)=>{
                 return err?.response?.data?.message || "Something went wrong";
             }
         })
-        console.log(response);
+
+        const response = await responsePromise;
         
-        return  response.data;
+        return  response.data.data;
     } catch (error) {
         toast.error(error?.response?.data?.message || "Something went wrong");
     }

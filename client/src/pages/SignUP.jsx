@@ -87,7 +87,7 @@ const SignUP = () => {
             toast.success("Account created successfully");
             navigate("/");
         }
-
+        return response;
 
 
 
