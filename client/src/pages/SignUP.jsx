@@ -1,19 +1,22 @@
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { BsPersonCircle } from "react-icons/bs";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom"
 
 import { isEmail, isValidPassword } from "../helper/regexMatcher";
 import HomeLayout from "../layouts/Layout";
+import { createAccount } from "../redux/slices/authSlice";
 
 
 const SignUP = () => {
     
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     
     const [signUpDetails, setSignUpDetails] = useState({
         email:'',
-        fullname:'',
+        fullName:'',
         password:'',
         avatar:'',
     });
@@ -54,15 +57,16 @@ const SignUP = () => {
 
     }
 
-    function onFormSubmit(e){
+    async function onFormSubmit(e){
         e.preventDefault();
+        console.log(signUpDetails);
         
-        if( !signUpDetails.email || !signUpDetails.fullname || !signUpDetails.password ){
+        if( !signUpDetails.email || !signUpDetails.fullName || !signUpDetails.password ){
             toast.error("Please fill all the fields");
             return;
         }
 
-        if(signUpDetails.fullname.length < 3){
+        if(signUpDetails.fullName.length < 3){
             toast.error("Name must be atleast 3 characters");
             return;
         }
@@ -72,10 +76,19 @@ const SignUP = () => {
             return;
         }
 
-        if(!isValidPassword(signUpDetails.password)){
-            toast.error("Password must be atleast 6 characters with one uppercase, one lowercase, one number and one special character");
-            return;
+        // if(!isValidPassword(signUpDetails.password)){
+        //     toast.error("Password must be atleast 6 characters with one uppercase, one lowercase, one number and one special character");
+        //     return;
+        // }
+
+        const response = await dispatch(createAccount(signUpDetails));
+        console.log(response);
+        if(response?.payload?.success){
+            toast.success("Account created successfully");
+            navigate("/");
         }
+        return response;
+
 
 
     }
@@ -105,8 +118,8 @@ const SignUP = () => {
                     <label htmlFor="fullName" className="font-semibold">Name</label>
                     <input type="text"
                     onChange={handleUserInput}
-                    value={signUpDetails.fullname}
-                    name="fullname"
+                    value={signUpDetails.fullName}
+                    name="fullName"
                     id="fullName"
                     placeholder="Enter your name"
                     autoComplete="name"
