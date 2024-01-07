@@ -16,7 +16,7 @@ const SignUP = () => {
     
     const [signUpDetails, setSignUpDetails] = useState({
         email:'',
-        fullname:'',
+        fullName:'',
         password:'',
         avatar:'',
     });
@@ -61,12 +61,12 @@ const SignUP = () => {
         e.preventDefault();
         console.log(signUpDetails);
         
-        if( !signUpDetails.email || !signUpDetails.fullname || !signUpDetails.password ){
+        if( !signUpDetails.email || !signUpDetails.fullName || !signUpDetails.password ){
             toast.error("Please fill all the fields");
             return;
         }
 
-        if(signUpDetails.fullname.length < 3){
+        if(signUpDetails.fullName.length < 3){
             toast.error("Name must be atleast 3 characters");
             return;
         }
@@ -118,8 +118,8 @@ const SignUP = () => {
                     <label htmlFor="fullName" className="font-semibold">Name</label>
                     <input type="text"
                     onChange={handleUserInput}
-                    value={signUpDetails.fullname}
-                    name="fullname"
+                    value={signUpDetails.fullName}
+                    name="fullName"
                     id="fullName"
                     placeholder="Enter your name"
                     autoComplete="name"

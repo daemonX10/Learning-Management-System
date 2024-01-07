@@ -14,11 +14,14 @@ const cookieOptions = {
 
 const register = async (req,res,next)=>{ 
     //TODO: add connection between frontend and backend
-    // const {fullName,email,password} = req.body
-    let {fullName} = req.body;
-    fullName = 'damodar';
-    const email = 'damodar21@gmail.com';
-    const password = 'damodar';
+    console.log(req.body);
+    const {fullName,email,password} = req.body;
+
+    // let {fullName} = req.body;
+    // console.log(fullName);
+    // fullName = 'damodar';
+    // const email = 'damodar21@gmail.com';
+    // const password = 'damodar';
 
     if(!fullName || !email || !password){
         return next(new AppError('Please provide all the required fields',400))
