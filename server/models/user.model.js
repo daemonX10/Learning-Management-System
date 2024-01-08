@@ -95,8 +95,8 @@ userSchema.methods = {
             .update(resetToken)
             .digest('hex');
         this.forgotPasswordExpire =new  Date(Date.now() + 30*60* 60 * 1000); // 30 days
-        console.log(`coded token ${this.forgotPasswordToken}`);
-        console.log(`expiry time ${this.forgotPasswordExpire}`)
+        // console.log(`coded token ${this.forgotPasswordToken}`);
+        // console.log(`expiry time ${this.forgotPasswordExpire}`)
         return resetToken;
     }
 };

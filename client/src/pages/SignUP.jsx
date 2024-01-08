@@ -33,24 +33,25 @@ const SignUP = () => {
 
     function handleAvatar(e){
         e.preventDefault();
-        const userAvatar = e.target.files[0];
-        if(userAvatar.size > 1024 * 1024 * 5){
+        const avatar = e.target.files[0];
+        console.log('avatar',avatar);
+        if(avatar.size > 1024 * 1024 * 5){
             toast.error("File size should be less than 5mb");
             return;
         }
 
-        if(userAvatar.type !== "image/jpeg" && userAvatar.type !== "image/png" && userAvatar.type !== "image/jpg"){
+        if(avatar.type !== "image/jpeg" && avatar.type !== "image/png" && avatar.type !== "image/jpg"){
             toast.error("File format is not supported");
             return;
         }
 
         setSignUpDetails({
             ...signUpDetails,
-            avatar:userAvatar,
+            avatar:avatar,
         });
 
         const fileReader = new FileReader();
-        fileReader.readAsDataURL(userAvatar);
+        fileReader.readAsDataURL(avatar);
         fileReader.addEventListener("load",()=>{
             setPrevImage(fileReader.result);
         })
@@ -59,7 +60,6 @@ const SignUP = () => {
 
     async function onFormSubmit(e){
         e.preventDefault();
-        console.log(signUpDetails);
         
         if( !signUpDetails.email || !signUpDetails.fullName || !signUpDetails.password ){
             toast.error("Please fill all the fields");
@@ -81,12 +81,31 @@ const SignUP = () => {
         //     return;
         // }
 
-        const response = await dispatch(createAccount(signUpDetails));
-        console.log(response);
+        // creating form data for avatar 
+        const formData = new FormData();
+        formData.append("fullName", signUpDetails.fullName);
+        formData.append("email", signUpDetails.email);
+        formData.append("password", signUpDetails.password);
+        formData.append("avatar", signUpDetails.avatar);
+        console.log('formdata' ,formData);
+        console.log("signUpDetails", signUpDetails);
+
+
+        const response = await dispatch(createAccount(formData));
         if(response?.payload?.success){
             toast.success("Account created successfully");
             navigate("/");
         }
+        
+        setSignUpDetails({
+            email:'',
+            fullName:'',
+            password:'',
+            avatar:'',
+        });
+        
+        setPrevImage(null);
+
         return response;
 
 
