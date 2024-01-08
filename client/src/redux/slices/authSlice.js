@@ -24,7 +24,7 @@ export const createAccount = createAsyncThunk("/auth/signup", async (data)=>{
 
         const response = await responsePromise;
         
-        return  response.data.data;
+        return  response.data;
     } catch (error) {
         toast.error(error?.response?.data?.message || "Something went wrong");
         throw error;

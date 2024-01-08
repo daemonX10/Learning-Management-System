@@ -92,24 +92,18 @@ const SignUP = () => {
 
 
         const response = await dispatch(createAccount(formData));
-        if(response?.payload?.success){
-            toast.success("Account created successfully");
+        if(response?.payload?.data){
             navigate("/");
         }
         
-        setSignUpDetails({
-            email:'',
-            fullName:'',
-            password:'',
-            avatar:'',
-        });
+        // setSignUpDetails({
+        //     email:'',
+        //     fullName:'',
+        //     password:'',
+        //     avatar:'',
+        // });
         
-        setPrevImage(null);
-
-        return response;
-
-
-
+        // setPrevImage(null);
     }
 
   return (
@@ -173,8 +167,7 @@ const SignUP = () => {
                 {/* button for submit */}
                 <button className="
                 bg-blue-700 hover:bg-blue-500 transition-all ease-in-out duration-300 p-2 rounded-lg mt-2 cursor-pointer font-semibold 
-                transform active:scale-90
-        
+                transform active:scale-90 active:bg-blue-700 active:outline-none focus:outline-none
                 "
                 type="submit" 
                 >
