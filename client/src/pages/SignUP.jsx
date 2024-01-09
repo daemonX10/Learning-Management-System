@@ -76,10 +76,10 @@ const SignUP = () => {
             return;
         }
 
-        // if(!isValidPassword(signUpDetails.password)){
-        //     toast.error("Password must be atleast 6 characters with one uppercase, one lowercase, one number and one special character");
-        //     return;
-        // }
+        if(!isValidPassword(signUpDetails.password)){
+            toast.error("Password must be atleast 6 characters with one uppercase, one lowercase, one number and one special character");
+            return;
+        }
 
         // creating form data for avatar 
         const formData = new FormData();
@@ -95,15 +95,14 @@ const SignUP = () => {
         if(response?.payload?.data){
             navigate("/");
         }
+        setSignUpDetails({
+            email:'',
+            fullName:'',
+            password:'',
+            avatar:'',
+        });
         
-        // setSignUpDetails({
-        //     email:'',
-        //     fullName:'',
-        //     password:'',
-        //     avatar:'',
-        // });
-        
-        // setPrevImage(null);
+        setPrevImage(null);
     }
 
   return (
@@ -148,7 +147,7 @@ const SignUP = () => {
                     name="email"
                     id="email"
                     placeholder="Enter your email"
-                    autoCapitalize="email"
+                    autoComplete="email"
                     className="p-2 rounded-lg outline-none bg-transparent border border-white" />
                 </div>
                 

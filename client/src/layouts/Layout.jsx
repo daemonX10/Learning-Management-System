@@ -1,6 +1,6 @@
 import {AiFillCloseCircle} from 'react-icons/ai'
 import {FiMenu} from 'react-icons/fi'
-import {useDispatch, useSelector} from 'react-redux'
+import { useSelector} from 'react-redux'
 import {Link, useNavigate} from 'react-router-dom'
 
 import Footer from '../components/Footer'
@@ -8,7 +8,6 @@ import Footer from '../components/Footer'
 // TODO: CHANGE THE SIDEBAR TO ADVANCE SIDE BAR
 function HomeLayout ({ children }) {
 
-const dispatch = useDispatch();
 const navigate = useNavigate();
 
 const isLoggedIn = useSelector(state=>state?.auth?.isLoggedIn);
