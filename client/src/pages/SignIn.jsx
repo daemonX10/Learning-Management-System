@@ -1,8 +1,11 @@
 import { useState } from 'react';
+import {toast} from 'react-hot-toast'
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
+import { isEmail } from '../helper/regexMatcher';
 import HomeLayout from '../layouts/Layout'
+import { login } from '../redux/slices/authSlice';
 
 const SignIn = () => {
     
@@ -24,7 +27,25 @@ const SignIn = () => {
 
     async function onFormSubmit(e){
         e.preventDefault();
-    
+        if(!signInDetails.email || !signInDetails.password){
+            toast.error("Please fill Email and Password");
+            return;
+        }
+
+        if(!isEmail(signInDetails.email)){
+            toast.error("Enter a Valid Email");
+            return;
+        }
+
+        const response = await dispatch(login(signInDetails));
+        if(response?.payload?.data){
+            navigate("/");
+        }
+
+        setSignInDetails({
+            email:'',
+            password:''
+        });
     }
 
 
@@ -67,7 +88,7 @@ const SignIn = () => {
                 {/* button for login */}
                 <p className="text-center">
                     Don't have an account ?
-                    <Link to={`/signup`} className="text-blue-500 hover:text-blue-300 transition-all ease-in-out duration-300"> SignUP </Link>
+                    <Link to={`/signup`} className="text-blue-500 hover:text-blue-300 transition-all ease-in-out duration-300"> SignUp </Link>
                 </p>
             </form>
         </div>
