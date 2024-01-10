@@ -1,21 +1,26 @@
 import {AiFillCloseCircle} from 'react-icons/ai'
 import {FiMenu} from 'react-icons/fi'
-import { useSelector} from 'react-redux'
+import { useDispatch, useSelector} from 'react-redux'
 import {Link, useNavigate} from 'react-router-dom'
 
 import Footer from '../components/Footer'
+import { logout } from '../redux/slices/authSlice'
 
 // TODO: CHANGE THE SIDEBAR TO ADVANCE SIDE BAR
 function HomeLayout ({ children }) {
 
 const navigate = useNavigate();
+const dispatch = useDispatch();
 
 const isLoggedIn = useSelector(state=>state?.auth?.isLoggedIn);
 const role = useSelector(state=>state?.auth?.role);
 
-function onLogout(e){
-  // todo:
+async function onLogout(e){
   e.preventDefault();
+  const res = await dispatch(logout());
+  if(res?.payload?.success){
+    navigate('/');
+  }
 
   // todo:
   navigate('/')
