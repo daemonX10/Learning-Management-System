@@ -82,7 +82,7 @@ const SignIn = () => {
                 bg-blue-700 hover:bg-blue-500 transition-all ease-in-out duration-300 p-2 rounded-lg mt-2 cursor-pointer font-semibold 
                 transform active:scale-90 active:bg-blue-700 active:outline-none focus:outline-none"
                 type="submit">
-                    Create Account
+                    Login
                 </button>
 
                 {/* button for login */}

@@ -1,5 +1,7 @@
 import {BsFacebook, BsInstagram, BsTwitter} from 'react-icons/bs'
 
+import WhatsAppContact from './WhatsAppContact';
+
 function Footer(){
 
     const year = new Date().getFullYear()
@@ -21,6 +23,7 @@ function Footer(){
                     <a href="#" className='hover:text-blue-500 transition-all ease-in-out duration-300'>
                         <BsTwitter />
                     </a>
+                    <WhatsAppContact />
 
                 </section>
             </footer>

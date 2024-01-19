@@ -33,8 +33,9 @@ export const getAllcourses = createAsyncThunk("course/getAllcourses",async(data)
 const courseSlice = createSlice({
     name:"course",
     initialState,
-    reducers:{
-
+    reducers: {} ,
+    extraReducers: ()=>{
+        
     }
 })
 
