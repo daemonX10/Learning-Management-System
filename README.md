@@ -7,28 +7,28 @@ This repository contains the source code for a Learning Management System (LMS) 
 
 ## Features
 
-- **User Authentication**: Secure login and authentication system for both students and instructors.
-- **Course Management**: Create, update, and delete courses with ease.
-- **Content Delivery**: Efficiently deliver course content through a user-friendly interface.
-- **Student Progress Tracking**: Monitor and track the progress of students within each course.
-- **Responsive Design**: Ensure a seamless experience across various devices.
+**Client**
+  #### In detailed description of the project
+
+**Server**
+  #### In detailed description of the project
 
 ## Tech Stack
 
 - **Frontend**: React
-- **Backend**: EXPRESS
-- **Database**: MONGO
-- **Authentication**: GOOST
-- **Deployment**: NOT DEP
+- **Backend**: Node.js / Express.js
+- **Database**: MONGO 
+- **Authentication**: JWT AUTH / OAUTH 
+- **Deployment**: NOT DEPLOYED YET
 
 ## Getting Started
 
 To get started with the project, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/MrLEGENDx10/lms-h.git`
+1. Clone the repository: `git clone https://github.com/daemonX10/Learning-Management-System.git`
 2. Install dependencies: `npm install`
 3. Configure the backend : `npm run dev`
-4. Start the development server: `npm start`
+4. Start the development server: `npm run dev`
 
 For detailed instructions on setup and configuration, refer to the [Installation Guide](docs/installation.md).
 
