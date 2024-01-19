@@ -1,3 +1,5 @@
+# Run this to create a new React app with Vite.
+
 param(
     [string]$appName
 )
