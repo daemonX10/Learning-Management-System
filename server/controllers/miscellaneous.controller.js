@@ -1,5 +1,5 @@
 import asyncHandler from '../middlewares/asyncHandler.middleware.js';
-import AppError from '../utils/AppError.js';
+import AppError from '../utils/appError.js';
 import sendEmail from '../utils/sendEmail.js';
 
 export const  contactUs = asyncHandler(async (req, res, next) => {
