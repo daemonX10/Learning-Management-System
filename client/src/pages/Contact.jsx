@@ -1,6 +1,7 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 
+import ProfileCard from "../components/ProfileCard";
 import axiosInstance from "../config/axiosInstance";
 import { isEmail } from "../helper/regexMatcher";
 import HomeLayout from "../layouts/Layout"
@@ -47,11 +48,11 @@ const Contact =  () => {
                 }
             })
 
-            // setContactDetails({
-            //     name: "",
-            //     email: "",
-            //     message: "",
-            // });
+            setContactDetails({
+                name: "",
+                email: "",
+                message: "",
+            });
 
             const response = await responsePromise;
             return response;
@@ -63,9 +64,9 @@ const Contact =  () => {
 
   return (
     <HomeLayout>
-        <div className="flex items-center justify-center h-[100vh]">
-            <form noValidate className="flex flex-col justify-center items-center gap-2 p-5 w-[22rem] rounded-md text-white">
-                <img src="https://avatars.githubusercontent.com/u/115637298?v=4" alt="Creator's Avatar" className="w-24 h-24 rounded-full mb-4" />
+        <div className="flex items-center justify-center h-full gap-8">
+            <ProfileCard />
+            <form noValidate className="flex flex-col flex-wrap justify-center items-center gap-2 p-10 w-[23rem] rounded-lg text-white border  border-gray-200 m-4 ">
                 <h1 className="font-semibold text-3xl mb-4">Contact Us</h1>
 
                 <input type="text" 
