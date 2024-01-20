@@ -9,7 +9,7 @@ const initialState = {
     courseList:[],
 }
 
-export const getAllcourses = createAsyncThunk("course/getAllcourses",async(data)=>{
+export const getAllCourses = createAsyncThunk("course/getAllcourses",async(data)=>{
     try {
         const responsePromise = axiosInstance.get('course/getAllcourses', data);
         toast.promise(responsePromise, {

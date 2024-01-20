@@ -1,3 +1,7 @@
+/**
+ * The above code is a React component for a sign-in page that handles user input, form submission, and
+ * navigation.
+ */
 import { useState } from 'react';
 import {toast} from 'react-hot-toast'
 import { useDispatch } from 'react-redux';
@@ -6,6 +10,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { isEmail } from '../helper/regexMatcher';
 import HomeLayout from '../layouts/Layout'
 import { login } from '../redux/slices/authSlice';
+
 
 const SignIn = () => {
     
