@@ -2,6 +2,7 @@ import { Route,Routes } from "react-router-dom"
 
 import AboutUs from "./pages/AboutUs"
 import Contact from "./pages/Contact"
+import CourseList from "./pages/Course/CourseList"
 import Denied from "./pages/Denied"
 import Home from "./pages/Home"
 import NotFound from "./pages/NotFound"
@@ -20,8 +21,8 @@ const App = () => {
       <Route path="/contact" element={<Contact />} />
       <Route path="/denied" element={< Denied />} />
       
-      {/* <Route path="/courses" element={<AllCourses/>} />
-       */}
+      {/* Courses */}
+      <Route path="/course" element={<CourseList />} />
       
 
       <Route path="*" element={<NotFound/>} />

@@ -9,9 +9,9 @@ const initialState = {
     courseList:[],
 }
 
-export const getAllCourses = createAsyncThunk("course/getAllcourses",async(data)=>{
+export const getAllCourses = createAsyncThunk("/course/getAllCourses",async(data)=>{
     try {
-        const responsePromise = axiosInstance.get('course/getAllcourses', data);
+        const responsePromise = axiosInstance.get('course', data);
         toast.promise(responsePromise, {
             loading: "Loading...",
             success: (res) => {
@@ -23,7 +23,7 @@ export const getAllCourses = createAsyncThunk("course/getAllcourses",async(data)
         })
 
         const response = await responsePromise;
-        return response.data;
+        return response.data.data;
     } catch (err) {
         return console.log(err.response?.data?.message || "Something went wrong while fetching the courses");
     }
@@ -34,8 +34,13 @@ const courseSlice = createSlice({
     name:"course",
     initialState,
     reducers: {} ,
-    extraReducers: ()=>{
-        
+    extraReducers: (builder)=>{
+        builder
+        .addCase(getAllCourses.fulfilled,(state,action)=>{
+            if(action?.payload) {
+                state.courseList = [...action.payload]
+            }
+        })
     }
 })
 
