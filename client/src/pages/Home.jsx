@@ -17,7 +17,7 @@ function Home(){
                      </p>
                     
                     <div className="space-x-6">
-                        <Link to='/courses'>
+                        <Link to='/course'>
                             <button className="bg-blue-500 px-5 py-2 rounded-md font-semibold text-lg cursor-pointer hover:bg-blue-600 transition-all duration-300">
                                 Explore Courses
                             </button>

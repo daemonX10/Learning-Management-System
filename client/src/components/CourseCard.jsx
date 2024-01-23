@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+
 const CourseCard = ({data}) => {
   
   const navigate = useNavigate();
@@ -6,15 +7,15 @@ const CourseCard = ({data}) => {
   return (
     <div 
     onClick={()=>{navigate("/course/description",{state:{...data}})}}
-    className='text-white w-[22rem] h-[430px] shadow-lg rounded-lg cursor-pointer group overflow-hidden bg-zinc-700'>
+    className='bg-zinc-700 text-white w-72 h-[120] shadow-lg rounded-lg cursor-pointer group overflow-hidden transition-all duration-500 hover:scale-105'>
         <div className='overflow-hidden '>
             <img 
                 alt='Course Thumbnail'
                 src={data?.thumbnail?.secure_url}
-                className='w-full h-[200px] object-cover transform group-hover:scale-110 transition-all duration-500'
+                className='w-full h-48 object-cover transform group-hover:scale-110 transition-all duration-500'
             />
-            <div className="p-3 space-y-1 text-white">
-              <h2 className="text-xl font-bold text-white capitalize line-clamp-2">
+            <div className="p-4 space-y-2 text-white">
+              <h2 className="text-2xl font-bold text-white capitalize line-clamp-2">
                 {data?.title}
               </h2>
                 <p className="line-clamp-2 text-gray-400">

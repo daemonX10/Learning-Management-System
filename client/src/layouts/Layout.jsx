@@ -76,7 +76,7 @@ return (
             <Link to='/contact'>Contact us</Link>
           </li>
           <li>
-            <Link to='/courses'>All Courses</Link>
+            <Link to='/course'>All Courses</Link>
           </li>
 
           { isLoggedIn ? (

@@ -64,7 +64,7 @@ const Contact =  () => {
 
   return (
     <HomeLayout>
-        <div className="flex items-center justify-center h-full gap-8">
+        <div className="flex flex-wrap items-center justify-center h-[100vh] gap-8">
             <ProfileCard />
             <form noValidate className="flex flex-col flex-wrap justify-center items-center gap-2 p-10 w-[23rem] rounded-lg text-white border  border-gray-200 m-4 ">
                 <h1 className="font-semibold text-3xl mb-4">Contact Us</h1>
