@@ -8,6 +8,7 @@ import Home from "./pages/Home"
 import NotFound from "./pages/NotFound"
 import SignIn from "./pages/SignIn"
 import SignUP from "./pages/SignUP"
+import CourseDescription from "./pages/Course/CourseDescription"
 
 
 const App = () => {
@@ -23,11 +24,12 @@ const App = () => {
       
       {/* Courses */}
       <Route path="/course" element={<CourseList />} />
+      <Route path="/course/description" element={<CourseDescription />} />
       
 
       <Route path="*" element={<NotFound/>} />
     </Routes>
-  )
+  ) 
 }
 
 export default App

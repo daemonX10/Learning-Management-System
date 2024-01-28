@@ -8,13 +8,12 @@ function Home(){
 
     return (
         <HomeLayout>
-            <div className="pt-10 text-white flex items-center justify-center  gap-10 mx-16 h-[90vh] ">
-                <div className="w-1/2 space-y-6 pl-20 ">
-                    <h1 className="text-4xl
-                     font-semibold align-middle"> Find out best <span className="text-blue-500 font-bold">online courses</span></h1>
-                     <p className="text-xl text-gray-200">
+            <div className="pt-10 text-white flex flex-col md:flex-row items-center justify-center gap-10 mx-4 md:mx-16 h-[90vh]">
+                <div className="w-full md:w-1/2 space-y-6 pl-4 md:pl-20">
+                    <h1 className="text-4xl font-semibold align-middle"> Find out best <span className="text-blue-500 font-bold">online courses</span></h1>
+                    <p className="text-xl text-gray-200">
                         We provide best online courses for you. You can learn from anywhere and anytime.
-                     </p>
+                    </p>
                     
                     <div className="space-x-6">
                         <Link to='/course'>
@@ -28,15 +27,11 @@ function Home(){
                             </button>
                         </Link>
                     </div>
-
-
                 </div>
 
-                <div className="w-1/2 flex items-center justify-center ">
-                    <img src={homePageMainImage} alt="home page" />
-
+                <div className="w-full md:w-1/2 flex items-center justify-center">
+                    <img className="w-full md:w-auto" src={homePageMainImage} alt="home page" />
                 </div>
-
             </div>
         </HomeLayout>
     )
