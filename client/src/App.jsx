@@ -2,13 +2,13 @@ import { Route,Routes } from "react-router-dom"
 
 import AboutUs from "./pages/AboutUs"
 import Contact from "./pages/Contact"
+import CourseDescription from "./pages/Course/CourseDescription"
 import CourseList from "./pages/Course/CourseList"
 import Denied from "./pages/Denied"
 import Home from "./pages/Home"
 import NotFound from "./pages/NotFound"
 import SignIn from "./pages/SignIn"
 import SignUP from "./pages/SignUP"
-import CourseDescription from "./pages/Course/CourseDescription"
 
 
 const App = () => {
