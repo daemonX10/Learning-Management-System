@@ -70,8 +70,9 @@ export const createCourse = async (req, res,next) =>{
         if(req.file){
             const result = await cloudinary.v2.uploader.upload(req.file.path,{
                 folder: 'lms',
-                widht: 250,
-                height: 250,
+                widht: 
+                500,
+                height: 500,
                 gravity:'center',
                 crop: 'fill'
             });
