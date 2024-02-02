@@ -1,12 +1,9 @@
 {
     "version": 2,
-    "name": "my-app",
     "builds": [
-        { "src": "package.json", "use": "@vercel/static-build", "config": { "distDir": "build" } }
+        { "src": "index.js", "use": "@vercel/node" }
     ],
     "routes": [
-        { "src": "/static/(.*)", "headers": { "cache-control": "s-maxage=31536000,immutable" }, "dest": "/static/$1" },
-        { "src": "/service-worker.js", "dest": "/service-worker.js" },
-        { "src": "/(.*)", "dest": "/index.html" }
+        { "src": "/(.*)", "dest": "/index.js" }
     ]
 }
