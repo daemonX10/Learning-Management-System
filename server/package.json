@@ -6,7 +6,10 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "build": "npx babel server.js -d build"
+
   },
   "author": "",
   "license": "ISC",
@@ -27,5 +30,9 @@
     "razorpay": "^2.9.2",
     "validator": "^13.11.0",
     "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.23.9",
+    "@babel/core": "^7.23.9"
   }
 }

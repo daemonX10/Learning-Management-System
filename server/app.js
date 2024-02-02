@@ -23,7 +23,7 @@ app.use(cors({
 }));
 
 
-app.use('/damodar', (req, res) => {
+app.use('/ping', (req, res) => {
     try {
         res.send('Hello from damodar');
     } catch (error) {
