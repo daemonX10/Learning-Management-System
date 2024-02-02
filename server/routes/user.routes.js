@@ -8,7 +8,7 @@ router    // /api/v1/user
     .post('/register',upload.single('avatar'),register)
     .post('/login',login)
     .get('/logout',logout)
-    .get('/me',isLoggedIn,getProfile)
+    .get('/profile',isLoggedIn,getProfile)
     .post('/reset',forgetPassword)
     .post('/reset/:resetToken',resetPassword)
     .post('/changePassword',isLoggedIn,ChangePassword)

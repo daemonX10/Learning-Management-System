@@ -20,10 +20,11 @@ const CreateCourse = () => {
     category: "",
     thumbnail: "",
     prevThumbnail: "",
+    fileName: "",
   });
 
   const { getRootProps, getInputProps } = useDropzone({
-    accept: 'image/*',
+    accept: ["image/jpeg", "image/png", "image/jpg", "image/svg", "image/gif"],
     onDrop: (acceptedFile)=>{
       const uploadImage = acceptedFile[0];
       const fileReader = new FileReader();
@@ -33,24 +34,31 @@ const CreateCourse = () => {
           ...userInput,
           thumbnail: uploadImage,
           prevThumbnail: fileReader.result,
+          fileName: uploadImage.name,
         });
       }
+    },
+    onDropRejected:()=>{
+      toast.error("Please select a valid image file. Please select a file with extension .jpeg, .png, .jpg, .svg, .gif");
     }
   });
 
   const handleImageUpload = (e) => {
     e.preventDefault();
     const uploadImage = e.target.files[0];
-    if(uploadImage){
+    const validMimeType = ["image/jpeg","image/png","image/jpg","image/svg","image/gif"];
+    if(uploadImage && validMimeType.includes(uploadImage.type)){
       const fileReader = new FileReader();
       fileReader.readAsDataURL(uploadImage);
       fileReader.onloadend = () => { // use addEventListener when using multiple events
         setUserInput({
           ...userInput,
           thumbnail: uploadImage,
-          prevThumbnail: fileReader.result,
+          prevThumbnail: fileReader.result
         });
       }
+    } else{
+      toast.error("Please select a valid image file. Please select a file with extension .jpeg, .png, .jpg, .svg, .gif");
     }
   };
 
@@ -131,32 +139,37 @@ const CreateCourse = () => {
               />
             </div>
             <div className="flex flex-col gap-2">
-            <label htmlFor="instructor">Category</label>
+            <label htmlFor="category">Category</label>
               <input 
                 type="text" 
                 name="category" 
                 id="category" 
                 placeholder="Enter course category"
-              value={userInput.category}
+                value={userInput.category}
                 onChange={handleUserInput}
                 className="px-2 py-1 rounded-md bg-[#333333] outline-none"
               />
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="thumbnail">Thumbnail</label>
-              <input 
-                type="file" 
-                name="thumbnail" 
-                id="thumbnail" 
-                placeholder="Enter course thumbnail"
-                onChange={handleImageUpload}
-                className="px-2 py-1 rounded-md bg-[#333333] outline-none"
-              />
+              {userInput.fileName ? (
+                <div className="px-2 py-1 rounded-md bg-[#333333] text-white outline-none border border-white">
+                  Selected file: <span className="font-bold">{userInput.fileName}</span>
+                </div>
+              ) : (
+                <input 
+                  type="file"
+                  name="thumbnail" 
+                  id="thumbnail" 
+                  placeholder="Enter course thumbnail"
+                  onChange={handleImageUpload}
+                  className="px-2 py-1 rounded-md bg-[#333333] outline-none"
+                />
+              )}
             </div>
-
           <div className="flex items-center justify-center">
             <div {...getRootProps()} className="dropzone max-w-[250px] bg-gray-500 rounded-md " >
-              <input type='image' {...getInputProps()} />
+              <input  {...getInputProps()} />
               {userInput.prevThumbnail ? (
                 <div className="flex flex-col gap-2 items-center">
                   <img

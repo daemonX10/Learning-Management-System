@@ -8,10 +8,10 @@ const RequireAuth = ({allowedRoles}) => {
     console.log("isLoggedIn",isLoggedIn,"role",role)
     console.log("allowedRoles",allowedRoles)
 
-  return isLoggedIn && [allowedRoles].find((myrole)=>myrole=== role) ? (
+  return isLoggedIn && allowedRoles.find((myrole)=>myrole=== role) ? (
     <Outlet />
   ) : isLoggedIn ? 
-  (<Navigate to="denied" />) : (<Navigate to="/login" />)
+  (<Navigate to="/denied" />) : (<Navigate to="/login" />)
   
 }
 
