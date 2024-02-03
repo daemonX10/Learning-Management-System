@@ -26,7 +26,7 @@ const App = () => {
       <Route path="/denied" element={< Denied />} />
 
       {/* User */}
-      <Route element={<RequireAuth allowedRoles={['ADMIN']} />} >
+      <Route element={<RequireAuth allowedRoles={['ADMIN','USER']} />} >
         <Route path="/user/profile" element={<Profile/>} />
       </Route>
       

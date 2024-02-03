@@ -6,7 +6,7 @@ import axiosInstance from "../../config/axiosInstance";
 
 const initialState = {
         isLoggedIn: localStorage.getItem("isLoggedIn") || false,
-        data: localStorage.getItem("data") || null,
+        data: JSON.parse(localStorage.getItem("data")) || {},
         role: localStorage.getItem("role") || "",
 } 
 
@@ -45,9 +45,8 @@ export const login = createAsyncThunk('auth/login', async(data)=>{
                 return err.response?.data?.message || "Promise is rejected in Login"
             }
         })
-        
-        const response = await responsePromise;
-        return response.data;
+
+        return ( await responsePromise).data;
 
     } catch (error) {
         toast.error(error?.response?.data?.message || "unable to login");
@@ -88,8 +87,8 @@ const authSlice = createSlice({
             localStorage.setItem("isLoggedIn",true);
             localStorage.setItem("role",action?.payload?.data?.role);
             state.isLoggedIn=true;
-            state.data=action?.payload?.user;
-            state.role=action?.payload?.user?.role;
+            state.data=action?.payload?.data;
+            state.role=action?.payload?.data?.role;
         })
         // for Logout
         .addCase(logout.fulfilled,(state)=>{

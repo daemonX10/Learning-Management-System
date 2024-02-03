@@ -23,7 +23,7 @@ app.use(cors({
 }));
 
 
-app.use('/', (req, res) => {
+app.use('/damodar', (req, res) => {
     try {
         res.send('Hello from damodar');
     } catch (error) {

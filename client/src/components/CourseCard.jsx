@@ -6,7 +6,7 @@ const CourseCard = ({data}) => {
 
   return (
     <div 
-    onClick={()=>{navigate("/course/description",{state:{...data}}) , console.log(data)}}
+    onClick={()=>{navigate("/course/description",{state:{...data}})}}
     className='bg-gray-900 text-white w-72 h-[120] shadow-lg rounded-lg cursor-pointer group overflow-hidden transition-all duration-500 hover:scale-105'>
         <div className='overflow-hidden '>
             <img 

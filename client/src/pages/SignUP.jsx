@@ -34,7 +34,6 @@ const SignUP = () => {
     function handleAvatar(e){
         e.preventDefault();
         const avatar = e.target.files[0];
-        console.log('avatar',avatar);
         if(avatar.size > 1024 * 1024 * 5){
             toast.error("File size should be less than 5mb");
             return;
@@ -87,9 +86,6 @@ const SignUP = () => {
         formData.append("email", signUpDetails.email);
         formData.append("password", signUpDetails.password);
         formData.append("avatar", signUpDetails.avatar);
-        console.log('formdata' ,formData);
-        console.log("signUpDetails", signUpDetails);
-
 
         const response = await dispatch(createAccount(formData));
         if(response?.payload?.data){
