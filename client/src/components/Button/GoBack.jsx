@@ -21,7 +21,7 @@ const GoBack = ({ errorCode = 404, message = "Not Found Page" }) => {
                 </a>
             </button> :
             <button
-                onClick={  navigate(-1)}
+                onClick={ ()=> navigate(-1)}
                 className="mt-5 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-400"
             >
                 <FontAwesomeIcon icon={faArrowLeft} className='pr-2' />

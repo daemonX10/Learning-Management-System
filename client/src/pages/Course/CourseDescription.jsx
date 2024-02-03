@@ -15,12 +15,12 @@ const CourseDescription = () => {
   return (
     <HomeLayout>
       <motion.div 
-        className="pt-12 px-4 md:px-20 flex flex-col items-start justify-start text-white bg-gray-800"
+        className="min-h-[90vh] pt-12 px-4 md:px-20 flex flex-col items-start justify-start text-white bg-gray-800"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 py-10 relative max-w-2xl mx-auto border-2 border-blue-500 rounded-lg shadow-lg p-5">
+        <div className=" grid grid-cols-1 md:grid-cols-2 gap-10 py-10 relative max-w-2xl mx-auto border-2 border-blue-500 rounded-lg shadow-lg p-5">
           {/* Left of the grid */}
           <div className="space-y-5 sm:flex sm:items-center sm:flex-col">
             <motion.img
