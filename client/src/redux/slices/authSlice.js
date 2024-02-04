@@ -72,6 +72,47 @@ export const logout= createAsyncThunk('auth/logout', async ()=>{
 
     } catch (error) {
         toast.error(error?.response?.data?.message || " Unable to LogOut")
+        throw error;
+    }
+})
+
+export const updateProfile = createAsyncThunk('auth/updateProfile' , async(data)=>{
+    try {
+        const responsePromise = axiosInstance.put(`user/update/${data["userId"]}`,data["formData"]);
+        toast.promise(responsePromise,{
+            loading:"Loading...",
+            success:(res)=>{
+                return res.data?.message || "Promise Success , Profile Updated"
+            },
+            error:(err)=>{
+                return err.response?.data?.message || "Promise rejected , Error in Updating Profile"
+            }
+        });
+        
+        return (await responsePromise).data;
+    }
+        catch (error) {
+            toast.error(error?.response?.data?.message || "Unable to Update Profile");
+            throw error; // this is important to throw error to handle it in the component where we are using this thunk or use return 
+        }
+})
+
+export const getUserData = createAsyncThunk('auth/getUserData', async()=>{
+    try {
+        const responsePromise = axiosInstance.get(`user/profile`);
+        toast.promise(responsePromise,{
+            loading:"Loading...",
+            success:(res)=>{
+                return res.data?.message || "Promise Success , User Data"
+            },
+            error:(err)=>{
+                return err.response?.data?.message || "Promise rejected , Error in Getting User Data"
+            }
+        });
+        return (await responsePromise).data;
+    } catch (error) {
+        toast.error(error?.response?.data?.message || "Unable to get User Data");
+        throw error;
     }
 })
 
@@ -96,6 +137,15 @@ const authSlice = createSlice({
             state.isLoggedIn=false;
             state.data={};
             state.role=''
+        })
+        // for update Profile
+        .addCase(updateProfile.fulfilled,(state,action)=>{
+            if(!action?.payload?.data){
+                return ;
+            }
+            localStorage.setItem("data",JSON.stringify(action?.payload?.data));
+            localStorage.setItem("role",action?.payload?.data?.role);
+            localStorage.setItem("isLoggedIn",true);
         })
     }
 });

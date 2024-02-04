@@ -11,6 +11,7 @@ import Home from "./pages/Home"
 import NotFound from "./pages/NotFound"
 import SignIn from "./pages/SignIn"
 import SignUP from "./pages/SignUP"
+import EditProfile from "./pages/user/EditProfile"
 import Profile from "./pages/user/Profile"
 
 
@@ -28,6 +29,7 @@ const App = () => {
       {/* User */}
       <Route element={<RequireAuth allowedRoles={['ADMIN','USER']} />} >
         <Route path="/user/profile" element={<Profile/>} />
+        <Route path="/user/editProfile" element={<EditProfile/>} />
       </Route>
       
       {/* Courses */}

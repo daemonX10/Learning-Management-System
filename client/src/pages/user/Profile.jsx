@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux"
+import {  useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 
 import HomeLayout from "../../layouts/Layout"
@@ -6,15 +6,13 @@ import HomeLayout from "../../layouts/Layout"
 const Profile = () => {
   
   const user = useSelector(state => state?.auth?.data?.data);
-  const dispatch = useDispatch();
-  console.log('user' , user);
 
   return (
     <HomeLayout>
       <div className="min-h-screen flex items-center justify-center bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8 bg-gray-800 p-10 rounded-xl shadow-lg">
           <div>
-            <img className="mx-auto h-[12rem] w-auto rounded-full" src={user?.avatar?.secure_url} alt="Profile"/>
+            <img className="mx-auto h-[12rem] w-auto rounded-full border-4 border-blue-500 shadow-2xl transition-transform duration-500 hover:scale-110 animate-glow" src={user?.avatar?.secure_url} alt="Profile"/>
             <h2 className="mt-6 text-center text-3xl font-extrabold capitalize text-white">
               {user?.fullName}
             </h2>
@@ -30,7 +28,7 @@ const Profile = () => {
               <Link to='/changePassword' className="group relative  flex justify-center py-2 px-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 Change Password
               </Link>
-              <Link to='/editProfile' className="group relative  flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              <Link to='/user/editProfile' className="group relative  flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 Edit Profile
               </Link>
             </div>
