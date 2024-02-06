@@ -8,12 +8,12 @@ import sendEmail from '../utils/sendEmail.js';
 dotenv.config();
 
 const cookieOptions = {
-    expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRY * 24 * 60 * 60 * 1000), // 30 days
+    expires:new Date(Date.now() + process.env.JWT_COOKIE_EXPIRY * 24 * 60 * 60 * 1000), // 30 days
     httpOnly: true
 }
 
 const register = async (req,res,next)=>{ 
-    //TODO: add connection between frontend and backend
+  
     const {fullName,email,password} = req.body;
 
 
@@ -125,6 +125,10 @@ const logout = (req,res,next)=>{
 const getProfile = async (req,res,next)=>{   
     try {
         const user = await User.findById(req.user._id);
+        
+        if(!user){
+            return next(new AppError('User not found', 404))
+        }
         
         res.status(200).json({
             success: true,
