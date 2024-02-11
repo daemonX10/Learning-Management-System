@@ -94,6 +94,7 @@ const login = async (req,res,next)=>{
 
         const token = await user.generateJWTToken();
         user.password = undefined;
+
         res.cookie('token', token, cookieOptions);
         res.status(201).json({
             success: true,
@@ -238,14 +239,14 @@ const resetPassword = async (req,res,next)=>{
 
 const ChangePassword = async (req,res,next)=>{
     const { oldPassword, newPassword } = req.body;
-    const {id} = req.user;
+    const {_id} = req.user;
     // req.user._id is coming from the middleware isLoggedIn which is checking the token and setting the user in req.user object 
 
     if(!oldPassword || !newPassword){
         return next(new AppError('Enter Both password , oldPassword and NewPassword', 400));
     }
 
-    const user = await User.findById(id).select('+password'); 
+    const user = await User.findById(_id).select('+password'); 
     if(!user){
         return next( new AppError("user not found", 400));
     }
@@ -271,9 +272,9 @@ const ChangePassword = async (req,res,next)=>{
 
 const updateUser = async (req,res,next)=>{
     const {fullName} = req.body;
-    const {id} = req.user;
+    const {_id} = req.user;
 
-    const user = await User.findOne(id);
+    const user = await User.findOne(_id);
 
     if(!user){
         return next(new AppError("User not found", 400));

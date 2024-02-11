@@ -6,7 +6,7 @@ import axiosInstance from "../../config/axiosInstance";
 
 const initialState = {
         isLoggedIn: localStorage.getItem("isLoggedIn") || false,
-        data: JSON.parse(localStorage.getItem("data")) || {},
+        user: JSON.parse(localStorage.getItem("data"))?.data || {},
         role: localStorage.getItem("role") || "",
 } 
 
@@ -78,7 +78,7 @@ export const logout= createAsyncThunk('auth/logout', async ()=>{
 
 export const updateProfile = createAsyncThunk('auth/updateProfile' , async(data)=>{
     try {
-        const responsePromise = axiosInstance.put(`user/update/${data["userId"]}`,data["formData"]);
+        const responsePromise = axiosInstance.put(`user/update`,data);
         toast.promise(responsePromise,{
             loading:"Loading...",
             success:(res)=>{
@@ -128,14 +128,14 @@ const authSlice = createSlice({
             localStorage.setItem("isLoggedIn",true);
             localStorage.setItem("role",action?.payload?.data?.role);
             state.isLoggedIn=true;
-            state.data=action?.payload;
+            state.user=action?.payload?.data;
             state.role=action?.payload?.data?.role;
         })
         // for Logout
         .addCase(logout.fulfilled,(state)=>{
             localStorage.clear();
             state.isLoggedIn=false;
-            state.data={};
+            state.user={};
             state.role=''
         })
         // for update Profile

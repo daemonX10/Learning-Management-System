@@ -5,7 +5,7 @@ import HomeLayout from "../../layouts/Layout"
 
 const Profile = () => {
   
-  const user = useSelector(state => state?.auth?.data?.data);
+  const user = useSelector(state => state?.auth?.user);
 
   return (
     <HomeLayout>

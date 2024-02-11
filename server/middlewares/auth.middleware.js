@@ -5,6 +5,7 @@ import asyncHandler from "./asyncHandler.middleware.js";
 
 
 export const isLoggedIn = (req,res,next)=>{
+    console.log("req.cookies",req.cookies)
     const {token} = req.cookies;
 
     if(!token){

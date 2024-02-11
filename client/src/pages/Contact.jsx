@@ -37,7 +37,6 @@ const Contact =  () => {
         // sending email to backend and then to mailtrap
         try {
             const responsePromise = axiosInstance.post("/contact",contactDetails);
-            console.log(responsePromise);
             toast.promise(responsePromise,{
                 loading: "Sending Mail...",
                 success: (res) => {

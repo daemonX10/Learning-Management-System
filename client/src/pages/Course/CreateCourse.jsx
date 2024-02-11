@@ -77,6 +77,11 @@ const CreateCourse = () => {
       return;
   }
 
+  if(userInput.description.length < 20){
+    toast.error("Description should be atleast 20 characters long");
+    return;
+  }
+
   const response = await dispatch(createNewCourse(userInput));
   if(response.payload){
     toast.success(response.payload.message);

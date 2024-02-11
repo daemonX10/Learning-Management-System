@@ -20,9 +20,9 @@ export const getRazorpayApiKey = async(req, res, next)=>{
 
 export const buySubscription = async(req, res, next)=>{
     try {
-        const { id } = req.user;
+        const { _id } = req.user;
 
-        const user = await User.findById(id);
+        const user = await User.findById(_id);
 
         if(!user){
             return next(new AppError("User does not exist", 404))
@@ -62,8 +62,8 @@ export const buySubscription = async(req, res, next)=>{
 
 export const verifySubscription = async(req, res, next)=>{
     try {
-        const { id } = req.user;
-        const user = await User.findById(id);
+        const { _id } = req.user;
+        const user = await User.findById(_id);
 
         if(!user){
             return next(new AppError("User does not exist", 404))
@@ -108,8 +108,8 @@ export const verifySubscription = async(req, res, next)=>{
 
 export const cancelSubscription = async(req, res, next)=>{
     try {
-        const { id } = req.user;
-        const user = await User.findById(id);
+        const { _id } = req.user;
+        const user = await User.findById(_id);
 
         if (!user) {
             return next(new AppError("User does not exist", 404))
