@@ -140,12 +140,13 @@ const authSlice = createSlice({
         })
         // for update Profile
         .addCase(updateProfile.fulfilled,(state,action)=>{
-            if(!action?.payload?.data){
-                return ;
-            }
-            localStorage.setItem("data",JSON.stringify(action?.payload?.data));
+            console.log(action.payload);
+            localStorage.setItem("data",JSON.stringify(action?.payload));
             localStorage.setItem("role",action?.payload?.data?.role);
             localStorage.setItem("isLoggedIn",true);
+            state.isLoggedIn=true;
+            state.user=action?.payload?.data;
+            state.role=action?.payload?.data?.role;
         })
     }
 });

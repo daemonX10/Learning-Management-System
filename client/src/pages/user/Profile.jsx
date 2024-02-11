@@ -21,7 +21,7 @@ const Profile = () => {
             <div className="rounded-md shadow-sm space-y-2 font-extrabold leading-loose ">
               <p className="text-sm text-blue-500">Email : <span className="text-blue-600 ml-1">{user?.email}</span></p>
               <p className="text-sm text-blue-500 capitalize">Role : <span className="text-blue-600 ml-1">{user?.role}</span></p>
-              <p className="text-sm text-blue-500 capitalize">Subscription : <span className="text-blue-600 ml-1">{user?.subscription?.status === "Active"?"Active":"Inactive"}</span></p>
+              <p className="text-sm text-blue-500 capitalize">Subscription : <span className="text-blue-600 ml-1">{user?.role === "ADMIN" ? "Active" : ( user?.subscription?.status === "Active" ? "Active" : "Inactive") }</span></p>
             </div>
 
             <div className="flex items-center justify-between">

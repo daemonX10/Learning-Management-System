@@ -73,7 +73,7 @@ userSchema.methods = {
     },
     generateJWTToken: async function(){
         return await jwt.sign({
-            id:this,
+            id:this.id,
             role:this.role,
             subscription:this.subscription
         },
@@ -82,6 +82,7 @@ userSchema.methods = {
             expiresIn:1000*60*60*24*30
         }
         )},
+        
     generatePasswordResetToken: async function(){
         // creating a random token using node's built-in crypto module
         const resetToken = crypto.randomBytes(20).toString('hex');

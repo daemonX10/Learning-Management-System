@@ -93,7 +93,6 @@ const login = async (req,res,next)=>{
         }
 
         const token = await user.generateJWTToken();
-        user.password = undefined;
 
         res.cookie('token', token, cookieOptions);
         res.status(201).json({
@@ -239,14 +238,14 @@ const resetPassword = async (req,res,next)=>{
 
 const ChangePassword = async (req,res,next)=>{
     const { oldPassword, newPassword } = req.body;
-    const {_id} = req.user;
+    const {id} = req.user;
     // req.user._id is coming from the middleware isLoggedIn which is checking the token and setting the user in req.user object 
 
     if(!oldPassword || !newPassword){
         return next(new AppError('Enter Both password , oldPassword and NewPassword', 400));
     }
 
-    const user = await User.findById(_id).select('+password'); 
+    const user = await User.findById(id).select('+password'); 
     if(!user){
         return next( new AppError("user not found", 400));
     }
@@ -272,9 +271,9 @@ const ChangePassword = async (req,res,next)=>{
 
 const updateUser = async (req,res,next)=>{
     const {fullName} = req.body;
-    const {_id} = req.user;
+    const {id} = req.user;
 
-    const user = await User.findOne(_id);
+    const user = await User.findById(id);
 
     if(!user){
         return next(new AppError("User not found", 400));
@@ -302,17 +301,22 @@ const updateUser = async (req,res,next)=>{
                 // remove the file from the server
                 fs.rm('./uploads/' + req.file.filename);
             }
+
             await user.save();
-            res.status(200).json({
-                success:true,
-                message:'User updated successfully',
-                data:user
-            })
+            
 
         } catch (error) {
-            return next(new AppError(  error.message || 'File not uploaded , please try again',500));
+            return next(new AppError(  error.message || 'unable to update details ',500));
         }
     }
+
+    await user.save();
+
+    res.status(200).json({
+        success: true,
+        message: 'User updated successfully',
+        data: user
+    })
 }
 
 const makeUserAdmin = async (req,res,next)=>{
@@ -347,3 +351,4 @@ export{register,
         updateUser,
         makeUserAdmin
     }
+
