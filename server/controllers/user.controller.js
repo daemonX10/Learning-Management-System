@@ -124,7 +124,7 @@ const logout = (req,res,next)=>{
 
 const getProfile = async (req,res,next)=>{   
     try {
-        const user = await User.findById(req.user._id);
+        const user = await User.findById(req.user.id);
         
         if(!user){
             return next(new AppError('User not found', 404))
