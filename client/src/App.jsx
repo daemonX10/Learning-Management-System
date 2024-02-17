@@ -13,6 +13,7 @@ import SignIn from "./pages/SignIn"
 import SignUP from "./pages/SignUP"
 import EditProfile from "./pages/user/EditProfile"
 import Profile from "./pages/user/Profile"
+import Subscribe from "./pages/Password/Subscribe"
 
 
 const App = () => {
@@ -38,6 +39,12 @@ const App = () => {
       <Route element={<RequireAuth allowedRoles ={["ADMIN"]} />}>
         <Route path="/course/create" element={<CreateCourse/>} />
       </Route>
+
+      {/* Payment */}
+      <Route element={<RequireAuth allowedRoles ={["ADMIN","USER"]} />}>
+        <Route path="/payment/subscribe" element={<Subscribe />} />
+      </Route>
+      
       
 
       <Route path="*" element={<NotFound/>} />
