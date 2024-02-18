@@ -1,11 +1,27 @@
 import {  useSelector } from "react-redux"
 import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
+import { useDispatch } from "react-redux"
 
 import HomeLayout from "../../layouts/Layout"
+import { toast } from "react-hot-toast"
+import { getUserData } from "../../redux/slices/authSlice"
+import { cancelCourseBundle } from "../../redux/slices/razorPaySlice"
+
+
 
 const Profile = () => {
   
   const user = useSelector(state => state?.auth?.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleCancellation = async () =>{
+    toast("Initiating Cancellation");
+    await dispatch(cancelCourseBundle());
+    await dispatch(getUserData());
+    navigate('/');
+  }
 
   return (
     <HomeLayout>
@@ -32,7 +48,11 @@ const Profile = () => {
                 Edit Profile
               </Link>
             </div>
-            <div className="flex items-center justify-center">
+            <div className="flex-col items-center justify-center space-y-3 ">
+              <Link to='/course' className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                Courses
+              </Link>
+
               {
                 user?.role === "ADMIN" ? 
                   <>
@@ -41,14 +61,14 @@ const Profile = () => {
                     </Link>
                   </>
                 : 
-                  user?.subscription?.status === "active" ? 
-                    <Link to='/cancelSubscription' className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                  user?.subscription?.status === "Active" ? 
+                    <Link to='/cancelSubscription'
+                          onClick={handleCancellation}
+                          className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
                       Cancel Subscription
                     </Link>
                   :
-                    <Link to='/course' className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
-                      Courses
-                    </Link>
+                    null
               }
               
             </div>

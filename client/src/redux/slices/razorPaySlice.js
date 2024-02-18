@@ -20,9 +20,9 @@ export const getRazorPayId = createAsyncThunk('/razorpay/getId',async ()=>{
     }
 });
 
-export const verifyUserPayment = createAsyncThunk('/payments/verify', async (data) => {
+export const verifyUserPayment = createAsyncThunk('/payment/verify', async (data) => {
     try {
-        const response = await axiosInstance.post('/payments/verify', {
+        const response = await axiosInstance.post('/payment/verify', {
             razorpay_payment_id: data.razorpay_payment_id,
             razorpay_subscription_id: data.razorpay_subscription_id,
             razorpay_signature: data.razorpay_signature,
@@ -44,7 +44,7 @@ export const purchaseCourseBundle  = createAsyncThunk('/purchaseCourse',async()=
 
 export const getPaymentRecord = createAsyncThunk('/payment/record', async () => {
     try {
-        const response = axiosInstance.post('/payments?count=100');
+        const response = axiosInstance.post('/payment?count=100');
         toast.promise(response,{
             loading:"loading data",
             success:(res)=>{
@@ -60,21 +60,22 @@ export const getPaymentRecord = createAsyncThunk('/payment/record', async () => 
     }
 })
 
-export const cancelCoureseBundle = createAsyncThunk('/cancelCourse',async()=>{
+export const cancelCourseBundle = createAsyncThunk('/cancelCourse',async()=>{
     try {
-        const response =  axiosInstance.post('/payments/cancel');
+        const response =  axiosInstance.post('/payment/unsubscribe');
         toast.promise(response,{
             loading:"loading data",
             success:(res)=>{
-                return res.data?.message || "Promise Success , Accout Created";
+                return res.data?.message || "Promise Success , Subscription Cancelled";
             },
             error:(err)=>{
-                return err?.response?.data?.message || "Promise is rejected , Unable to  Create Account";
+                console.log(err)
+                return err?.response?.data?.message || "Promise is rejected , Unable to  cancel subscription";
             }
         })
         return ( await response).data;
     } catch (error) {
-        toast.error(error?.response?.data?.message || 'payment failed')
+        toast.error(error?.response?.data?.message || 'payment cancellation failed')
     }
 })
 

@@ -8,7 +8,7 @@ const CourseDescription = () => {
     const {state } = useLocation();
     const navigate = useNavigate();
 
-    const  { role, data } = useSelector((state)=>state.auth)
+    const  { role, user } = useSelector((state)=>state.auth)
 
   // ...
 
@@ -39,8 +39,9 @@ const CourseDescription = () => {
                 <span className="font-bold text-blue-500"> Instructor: {" "}  </span> {state?.createdBy}
               </p>
             </div>
+            {console.log('user',user)}
               {
-              role ==="ADMIN" || data?.subscription?.status === "active" ? (
+              role ==="ADMIN" || user?.subscription?.status === "Active" ? (
                 <button className="bg-green-500 hover:bg-green-400 text-white font-semibold rounded-md py-1 px-2"
                 onClick={()=>navigate("/course/displayLecture", {state:{...state}})}
                 >Watch Lectures</button>

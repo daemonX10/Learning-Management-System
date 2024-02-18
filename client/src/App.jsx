@@ -14,6 +14,8 @@ import SignUP from "./pages/SignUP"
 import EditProfile from "./pages/user/EditProfile"
 import Profile from "./pages/user/Profile"
 import Subscribe from "./pages/Password/Subscribe"
+import SubscribeSuccess from "./pages/Password/SubscibeSuccess"
+import SubscribeFail from "./pages/Password/SubscribeFail"
 
 
 const App = () => {
@@ -43,6 +45,8 @@ const App = () => {
       {/* Payment */}
       <Route element={<RequireAuth allowedRoles ={["ADMIN","USER"]} />}>
         <Route path="/payment/subscribe" element={<Subscribe />} />
+        <Route path="/payment/subscribe/success" element={<SubscribeSuccess />} />
+        <Route path="/payment/subscribe/fail" element={<SubscribeFail />} />
       </Route>
       
       

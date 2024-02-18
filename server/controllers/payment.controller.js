@@ -56,6 +56,7 @@ export const buySubscription = async(req, res, next)=>{
         })
 
     } catch (error) {
+        console.log(error); 
         return next(new AppError(error.message, 500))
     }
 }
@@ -121,10 +122,37 @@ export const cancelSubscription = async(req, res, next)=>{
         
         const subscriptionId = user.subscription.id;
         
-        const subscription = await razorpay.subscriptions.cancel(subscriptionId);
+        try {
+            const subscription = await razorpay.subscriptions.cancel(subscriptionId);
 
-        user.subscription.status = "inactive";
+            user.subscription.status = subscription.status;
+            await user.save();
+
+        } catch (error) {
+            return next ( new AppError(error.message,500))
+        }
+
+        const payment = await Payment.findOne({
+            razorpay_subscription_id : subscriptionId
+        });
+
+        const timeSinceSubscribed = Date.now() - payment.createdAt;
+
+        const refundPeriod = 14 * 24 * 60 * 60 * 1000; // 14 days in milliseconds
+
+        if(timeSinceSubscribed >= refundPeriod){
+            return next(new AppError("Refund period has expired", 400))
+        }
+
+        await razorpay.payments.refund(payment.razorpay_payment_id,{
+            speed: "optimum" // "optimum" or "instant" 
+        });
+
+        user.subscription.id = undefined;
+        user.subscription.status = undefined;
+
         await user.save();
+        await payment.remove();
 
         res.status(200).json({
             success:true,

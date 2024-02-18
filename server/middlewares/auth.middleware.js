@@ -36,7 +36,7 @@ export const authorizedSubscriber = asyncHandler(async(req,res,next)=>{
     const subscriptionStatus = req.user.subscription.status;
     const currentRole = req.user.role;
 
-    if( currentRole !== 'ADMIN' && subscriptionStatus !== 'active'){
+    if( currentRole !== 'ADMIN' && subscriptionStatus !== 'Active'){
         return next(new AppError('You are not authorized to access this route',403));
     }
 });
