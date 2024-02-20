@@ -16,6 +16,7 @@ import Profile from "./pages/user/Profile"
 import Subscribe from "./pages/Password/Subscribe"
 import SubscribeSuccess from "./pages/Password/SubscibeSuccess"
 import SubscribeFail from "./pages/Password/SubscribeFail"
+import DisplayLecture from "./pages/Dashboard/DisplayLecture"
 
 
 const App = () => {
@@ -38,6 +39,7 @@ const App = () => {
       {/* Courses */}
       <Route path="/course" element={<CourseList />} />
       <Route path="/course/description" element={<CourseDescription />} />
+      <Route path="/course/displayLecture" element={<DisplayLecture /> } />
       <Route element={<RequireAuth allowedRoles ={["ADMIN"]} />}>
         <Route path="/course/create" element={<CreateCourse/>} />
       </Route>

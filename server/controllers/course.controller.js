@@ -201,6 +201,8 @@ export const addLectureToCourseById = async (req, res, next) => {
 
 export const deleteLectureById = async (req, res,next) =>{
     const { courseId, lectureId } = req.params;
+    console.log('courseId',courseId)    
+    console.log('lectureId',lectureId)
     const course = await Course.findById(courseId);
 
     if(!course){

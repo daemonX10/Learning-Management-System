@@ -1,4 +1,85 @@
-2024-02-12T12:16:19.682Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: User not found
+
+2024-02-18T17:59:52.995Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error
     at new AppError (file:///D:/full%20stack%20developer/Express/lms-h/server/utils/appError.js:7:15)
-    at getProfile (file:///D:/full%20stack%20developer/Express/lms-h/server/controllers/user.controller.js:130:25)
+    at cancelSubscription (file:///D:/full%20stack%20developer/Express/lms-h/server/controllers/payment.controller.js:132:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-02-18T18:00:59.153Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error
+    at new AppError (file:///D:/full%20stack%20developer/Express/lms-h/server/utils/appError.js:7:15)
+    at cancelSubscription (file:///D:/full%20stack%20developer/Express/lms-h/server/controllers/payment.controller.js:132:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-02-18T18:07:24.133Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error
+    at new AppError (file:///D:/full%20stack%20developer/Express/lms-h/server/utils/appError.js:7:15)
+    at cancelSubscription (file:///D:/full%20stack%20developer/Express/lms-h/server/controllers/payment.controller.js:132:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-02-18T18:21:09.408Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error
+    at new AppError (file:///D:/full%20stack%20developer/Express/lms-h/server/utils/appError.js:7:15)
+    at cancelSubscription (file:///D:/full%20stack%20developer/Express/lms-h/server/controllers/payment.controller.js:132:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-02-18T18:22:54.420Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error
+    at new AppError (file:///D:/full%20stack%20developer/Express/lms-h/server/utils/appError.js:7:15)
+    at cancelSubscription (file:///D:/full%20stack%20developer/Express/lms-h/server/controllers/payment.controller.js:132:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-02-18T18:23:03.819Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error
+    at new AppError (file:///D:/full%20stack%20developer/Express/lms-h/server/utils/appError.js:7:15)
+    at cancelSubscription (file:///D:/full%20stack%20developer/Express/lms-h/server/controllers/payment.controller.js:132:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-02-18T18:23:19.662Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error
+    at new AppError (file:///D:/full%20stack%20developer/Express/lms-h/server/utils/appError.js:7:15)
+    at cancelSubscription (file:///D:/full%20stack%20developer/Express/lms-h/server/controllers/payment.controller.js:132:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-02-18T18:25:49.965Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error
+    at new AppError (file:///D:/full%20stack%20developer/Express/lms-h/server/utils/appError.js:7:15)
+    at cancelSubscription (file:///D:/full%20stack%20developer/Express/lms-h/server/controllers/payment.controller.js:133:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-02-18T18:29:23.580Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error
+    at new AppError (file:///D:/full%20stack%20developer/Express/lms-h/server/utils/appError.js:7:15)
+    at cancelSubscription (file:///D:/full%20stack%20developer/Express/lms-h/server/controllers/payment.controller.js:133:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-02-18T18:33:20.459Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error
+    at new AppError (file:///D:/full%20stack%20developer/Express/lms-h/server/utils/appError.js:7:15)
+    at cancelSubscription (file:///D:/full%20stack%20developer/Express/lms-h/server/controllers/payment.controller.js:133:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-02-18T18:35:38.817Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error
+    at new AppError (file:///D:/full%20stack%20developer/Express/lms-h/server/utils/appError.js:7:15)
+    at cancelSubscription (file:///D:/full%20stack%20developer/Express/lms-h/server/controllers/payment.controller.js:134:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-02-18T18:38:31.970Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error
+    at new AppError (file:///D:/full%20stack%20developer/Express/lms-h/server/utils/appError.js:7:15)
+    at cancelSubscription (file:///D:/full%20stack%20developer/Express/lms-h/server/controllers/payment.controller.js:134:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-02-18T18:39:39.476Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error
+    at new AppError (file:///D:/full%20stack%20developer/Express/lms-h/server/utils/appError.js:7:15)
+    at cancelSubscription (file:///D:/full%20stack%20developer/Express/lms-h/server/controllers/payment.controller.js:134:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-02-18T18:39:50.419Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error
+    at new AppError (file:///D:/full%20stack%20developer/Express/lms-h/server/utils/appError.js:7:15)
+    at cancelSubscription (file:///D:/full%20stack%20developer/Express/lms-h/server/controllers/payment.controller.js:134:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-02-18T18:43:19.232Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error
+    at new AppError (file:///D:/full%20stack%20developer/Express/lms-h/server/utils/appError.js:7:15)
+    at cancelSubscription (file:///D:/full%20stack%20developer/Express/lms-h/server/controllers/payment.controller.js:135:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-02-18T18:43:47.058Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error
+    at new AppError (file:///D:/full%20stack%20developer/Express/lms-h/server/utils/appError.js:7:15)
+    at cancelSubscription (file:///D:/full%20stack%20developer/Express/lms-h/server/controllers/payment.controller.js:135:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-02-18T18:56:09.307Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error
+    at new AppError (file:///D:/full%20stack%20developer/Express/lms-h/server/utils/appError.js:7:15)
+    at cancelSubscription (file:///D:/full%20stack%20developer/Express/lms-h/server/controllers/payment.controller.js:132:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-02-18T19:10:13.889Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error
+    at new AppError (file:///D:/full%20stack%20developer/Express/lms-h/server/utils/appError.js:7:15)
+    at buySubscription (file:///D:/full%20stack%20developer/Express/lms-h/server/controllers/payment.controller.js:60:21)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-02-19T08:51:42.386Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: No course found with that ID
+    at new AppError (file:///D:/full%20stack%20developer/Express/lms-h/server/utils/appError.js:7:15)
+    at getLecturesByCourseId (file:///D:/full%20stack%20developer/Express/lms-h/server/controllers/course.controller.js:37:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-02-19T12:03:53.793Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: getaddrinfo ENOTFOUND ac-dsdosb0-shard-00-02.cfemuts.mongodb.net
+    at new AppError (file:///D:/full%20stack%20developer/Express/lms-h/server/utils/appError.js:7:15)
+    at getLecturesByCourseId (file:///D:/full%20stack%20developer/Express/lms-h/server/controllers/course.controller.js:45:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-02-19T12:04:06.439Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: getaddrinfo ENOTFOUND ac-dsdosb0-shard-00-02.cfemuts.mongodb.net
+    at new AppError (file:///D:/full%20stack%20developer/Express/lms-h/server/utils/appError.js:7:15)
+    at getLecturesByCourseId (file:///D:/full%20stack%20developer/Express/lms-h/server/controllers/course.controller.js:45:22)
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
