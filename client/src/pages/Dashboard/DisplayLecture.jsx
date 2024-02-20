@@ -1,10 +1,12 @@
+import { useEffect } from 'react';
+import ReactPlayer from 'react-player'
 import { useDispatch, useSelector } from 'react-redux'
-import HomeLayout from '../../layouts/Layout'
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+
+import HomeLayout from '../../layouts/Layout'
 import { deletecourseLecture, getCourseLecture } from '../../redux/slices/lectureSlice';
-import ReactPlayer from 'react-player'
+import { setCurrentLecture } from '../../redux/slices/lectureSlice';
 
 const DisplayLecture = () => {
     const dispatch = useDispatch();
@@ -15,18 +17,7 @@ const DisplayLecture = () => {
     console.log('lectures',lectures)
     const { role } = useSelector((state)=>state.auth)
 
-    // Initialize currentLecture from localStorage or default to 0
-    const [currentLecture, setCurrentLecture] = useState(() => {
-      return localStorage.getItem('lastLecture') ? Number(localStorage.getItem('lastLecture')) : 0;
-    });
-
-    // ...
-
-    // Add this useEffect hook
-    useEffect(() => {
-      // Store currentLecture in localStorage whenever it changes
-      localStorage.setItem('lastLecture', currentLecture);
-    }, [currentLecture]);
+    const currentLecture = useSelector((state)=>state.lecture.currentLecture);
 
     async function onLectureDelete ( courseId, lectureId){
       console.log('deleteThunk')
@@ -85,27 +76,29 @@ const DisplayLecture = () => {
                 )
               }
             </li>
-            {
-              lectures.map((lecture,idx)=>{
-                return (
-                  <li className={`flex justify-between items-center p-4 rounded-lg shadow-sm ${currentLecture === idx ? 'bg-gray-700' : 'bg-gray-600'}`} key={lecture._id}>
-                    <p className='cursor-pointer' onClick={()=>{setCurrentLecture(idx)}}>
-                      <span className='font-bold text-gray-300'>Lecture {idx+1} : </span> {lecture.title}
-                    </p>
-                    {
-                      role === 'ADMIN' && (
-                        <button 
-                          onClick={()=>onLectureDelete(state._id,lecture._id)}
-                          className='px-4 py-2 bg-red-500 hover:bg-red-600 rounded text-white'
-                        >
-                          Delete
-                        </button>
-                      )
-                    }
-                  </li>
-                )
-              })
-            }
+            <div className='max-h-[500px] overflow-auto'>
+                {
+                  lectures.map((lecture, idx) => {
+                    return (
+                      <li className={`flex justify-between items-center p-4 rounded-lg shadow-sm ${currentLecture === idx ? 'bg-gray-700' : 'bg-gray-600'}`} key={lecture._id}>
+                        <p className='cursor-pointer' onClick={() => { dispatch(setCurrentLecture(idx)) }} >
+                          <span className='font-bold text-gray-300'>Lecture {idx + 1} : </span> {lecture.title}
+                        </p>
+                        {
+                          role === 'ADMIN' && (
+                            <button
+                              onClick={() => onLectureDelete(state._id, lecture._id)}
+                              className='px-4 py-2 bg-red-500 hover:bg-red-600 rounded text-white'
+                            >
+                              Delete
+                            </button>
+                          )
+                        }
+                      </li>
+                    )
+                  })
+                }
+            </div>
           </ul>
         </div>
         : 

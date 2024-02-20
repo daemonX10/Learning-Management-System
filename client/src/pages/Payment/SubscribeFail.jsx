@@ -1,7 +1,8 @@
-import React from 'react'
-import HomeLayout from '../../layouts/Layout'
+
 import { FaRegTimesCircle } from "react-icons/fa";
 import { Link } from 'react-router-dom'
+
+import HomeLayout from '../../layouts/Layout'
 
 const SubscribeFail = () => {
 

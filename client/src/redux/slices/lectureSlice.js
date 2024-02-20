@@ -4,7 +4,8 @@ import { toast } from 'react-hot-toast';
 
 
 const initialState = {
-    lectures:[]
+    lectures:[],
+    currentLecture: localStorage.getItem('lastLecture') ? Number(localStorage.getItem('lastLecture')) : 0
 }
 
 export const getCourseLecture = createAsyncThunk( 'course/lecture/get' , async(courseId)=>{
@@ -50,7 +51,6 @@ export const deletecourseLecture  = createAsyncThunk('/course/lecture/delete', a
             success: 'Lecture deleted',
             error: 'Error deleting lecture'
         })
-        console.log('response',( await response).data )
         return (await response).data;
     } catch (error) {
         toast.error( error.response.data.message || 'Error deleting lecture')
@@ -61,7 +61,12 @@ export const deletecourseLecture  = createAsyncThunk('/course/lecture/delete', a
 const lectureSlice = createSlice({
     name: 'lecture',
     initialState,
-    reducers:{},
+    reducers:{
+        setCurrentLecture: (state,action) =>{
+            state.currentLecture = action.payload;
+            localStorage.setItem('lastLecture', action.payload);
+        }
+    },
     extraReducers:(builder) => {
         builder
             .addCase(getCourseLecture.fulfilled, (state, action) => {
@@ -75,5 +80,7 @@ const lectureSlice = createSlice({
             })
     }
 })
+
+export const { setCurrentLecture } = lectureSlice.actions;
 
 export default lectureSlice.reducer;
