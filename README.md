@@ -7,11 +7,13 @@ This repository contains the source code for a Learning Management System (LMS) 
 
 ## Features
 
+![WorkFlow](https://github.com/daemonX10/Learning-Management-System/blob/master/client/src/assets/image.png)
+
 **Client**
-  #### In detailed description of the project
+  #### In detailed readme file in client folder
 
 **Server**
-  #### In detailed description of the project
+  #### In detailed readme file in server folder
 
 ## Tech Stack
 
@@ -19,15 +21,23 @@ This repository contains the source code for a Learning Management System (LMS) 
 - **Backend**: Node.js / Express.js
 - **Database**: MONGO 
 - **Authentication**: JWT AUTH / OAUTH 
-- **Deployment**: NOT DEPLOYED YET
+- **Styling**: Tailwind CSS
+- **Payment Gateway**: razorpay
+- **Deployment**: vercel + render
+
 
 ## Getting Started
 
 To get started with the project, follow these steps:
 
 1. Clone the repository: `git clone https://github.com/daemonX10/Learning-Management-System.git`
-2. Install dependencies: `npm install`
-3. Configure the backend : `npm run dev`
+
+2. Navigate to the project directory:
+- `cd path/to/client`
+- `cd path/to/server`
+3. Install dependencies: `npm install`
+
+- `cd path/to/client`
 4. Start the development server: `npm run dev`
 
 For detailed instructions on setup and configuration, refer to the [Installation Guide](docs/installation.md).
