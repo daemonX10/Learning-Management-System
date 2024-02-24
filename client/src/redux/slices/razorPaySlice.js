@@ -74,6 +74,7 @@ export const cancelCourseBundle = createAsyncThunk('/cancelCourse',async()=>{
                 return err?.response?.data?.message || "Promise is rejected , Unable to  cancel subscription";
             }
         })
+        console.log("cancel",(await response).data);
         return ( await response).data;
     } catch (error) {
         toast.error(error?.response?.data?.message || 'payment cancellation failed')

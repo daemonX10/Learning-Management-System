@@ -133,6 +133,7 @@ export const cancelSubscription = async(req, res, next)=>{
         const payment = await Payment.findOne({
             razorpay_subscription_id : subscriptionId
         });
+        console.log('payment',payment);
 
         const timeSinceSubscribed = Date.now() - payment.createdAt;
 
@@ -150,7 +151,7 @@ export const cancelSubscription = async(req, res, next)=>{
         user.subscription.status = undefined;
 
         await user.save();
-        await payment.remove();
+        await Payment.deleteOne(payment._id) ;
 
         res.status(200).json({
             success:true,
