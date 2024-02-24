@@ -109,6 +109,7 @@ export const getUserData = createAsyncThunk('auth/getUserData', async()=>{
                 return err.response?.data?.message || "Promise rejected , Error in Getting User Data"
             }
         });
+        console.log("responsePromise",(await responsePromise));
         return (await responsePromise).data;
     } catch (error) {
         toast.error(error?.response?.data?.message || "Unable to get User Data");
@@ -140,7 +141,14 @@ const authSlice = createSlice({
         })
         // for update Profile
         .addCase(updateProfile.fulfilled,(state,action)=>{
-            console.log(action.payload);
+            localStorage.setItem("data",JSON.stringify(action?.payload));
+            localStorage.setItem("role",action?.payload?.data?.role);
+            localStorage.setItem("isLoggedIn",true);
+            state.isLoggedIn=true;
+            state.user=action?.payload?.data;
+            state.role=action?.payload?.data?.role;
+        })
+        .addCase(getUserData.fulfilled,(state,action)=>{
             localStorage.setItem("data",JSON.stringify(action?.payload));
             localStorage.setItem("role",action?.payload?.data?.role);
             localStorage.setItem("isLoggedIn",true);

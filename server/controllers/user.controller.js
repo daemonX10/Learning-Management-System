@@ -132,7 +132,8 @@ const getProfile = async (req,res,next)=>{
         
         res.status(200).json({
             success: true,
-            message: 'User profile fetched successfully'
+            message: 'User profile fetched successfully',
+            data: user
         })
     } catch (error) {
         return next(new AppError(error,500));

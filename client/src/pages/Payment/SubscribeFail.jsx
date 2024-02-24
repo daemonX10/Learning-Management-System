@@ -20,7 +20,7 @@ const SubscribeFail = () => {
                         Your payment has failed. Please try again.
                     </p>
                     <button className='mt-6 px-4 py-2 rounded text-white bg-green-500 hover:bg-green-600 focus:outline-none'>
-                        <Link to='/'>
+                        <Link to='/course'>
                             Continue
                         </Link>
                     </button>

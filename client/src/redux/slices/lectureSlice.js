@@ -43,8 +43,6 @@ export const addCourseLecture = createAsyncThunk('/course/lecture/add',async (da
 
 export const deletecourseLecture  = createAsyncThunk('/course/lecture/delete', async (data)=>{
     try {
-        console.log('courseId',data.courseId)
-        console.log('lectureId',data.lectureId)
         const response = axiosInstance.delete(`/course/${data.courseId}/lectures/${data.lectureId}`);
         toast.promise(response,{
             loading: 'Loading...',

@@ -1,10 +1,11 @@
-import { useDispatch, useSelector } from 'react-redux';
-import HomeLayout from '../../layouts/Layout';
-import { useNavigate } from 'react-router-dom';
-import { purchaseCourseBundle, verifyUserPayment } from '..//../redux/slices/razorPaySlice';
+import { useEffect } from 'react';
 import toast from 'react-hot-toast';
 import { BiRupee } from 'react-icons/bi';
-import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
+import HomeLayout from '../../layouts/Layout';
+import { purchaseCourseBundle, verifyUserPayment } from '../../redux/slices/razorPaySlice';
 import { getRazorPayId } from '../../redux/slices/razorPaySlice';
 
 const Subscribe = () => {
@@ -16,7 +17,8 @@ const Subscribe = () => {
   const razorpayKey = useSelector((state) =>( state?.razorpay?.key))
 
   const subscription_id = useSelector((state )=> (state?.razorpay?.subscription_id));
-  console.log('subscription_id',subscription_id)
+
+
   const isPaymantSuccess = useSelector((state) => (state?.razorpay?.isPaymantSuccess))
   const userData = useSelector((state) => (state?.auth?.user))
 
@@ -27,8 +29,7 @@ const Subscribe = () => {
   }
 
   async function load() {
-    await dispatch(getRazorPayId()),
-    await dispatch(purchaseCourseBundle());
+    await dispatch(getRazorPayId())
   }
 
   useEffect(() => {
@@ -39,35 +40,48 @@ const Subscribe = () => {
 
   async function handleSubscription(e){
     e.preventDefault()
-    if(!razorpayKey || !subscription_id){
+    if(!razorpayKey){
       toast.error('Invalid Payment Gateway')
       return
     }
 
-    const option = {
-      key: razorpayKey,
-      subscription_id: subscription_id,
-      name : "Course Private Limited",
-      description : "Course Subscription",
-      theme :{
-        color: '#f37254'
-      },
-      handler : async function (response ){
-        paymentDetails.razorpay_payment_id = response.razorpay_payment_id
-        paymentDetails.razorpay_subscription_id = response.razorpay_subscription_id
-        paymentDetails.razorpay_signature = response.razorpay_signature
-
-        toast.success('Payment Success');
-
-        const res = await dispatch(verifyUserPayment(paymentDetails));
-        res?.payload?.success ? navigate('/subscribe/success') : navigate('/subscribe/fail')
+    // Wait for the purchaseCourseBundle action to complete
+    await dispatch(purchaseCourseBundle()).then(() => {
+      if(!subscription_id){
+        toast.error('Failed to create subscription')
+        return
       }
+    }).catch((error) => {
+      // Handle any errors that occurred during the dispatch action
+      console.error(error);
+      toast.error('An error occurred while processing your subscription');
+    });
+
+      const option = {
+        key: razorpayKey,
+        subscription_id: subscription_id,
+        name: "GitHub-id : daemonX10 ",
+        description: "Course Subscription",
+        theme: {
+          color: '#3B82F6'
+        },
+        handler : async function (response ){
+          paymentDetails.razorpay_payment_id = response.razorpay_payment_id
+          paymentDetails.razorpay_subscription_id = response.razorpay_subscription_id
+          paymentDetails.razorpay_signature = response.razorpay_signature
+
+          toast.success('Payment Success');
+
+          // Verifing the payment
+          const res = await dispatch(verifyUserPayment(paymentDetails));
+          res?.payload?.success ? navigate('/payment/subscribe/success') : navigate('/payment/subscribe/fail')
+        }
+      }
+      
+      const paymentOption = new window.Razorpay(option);
+      paymentOption.open()
+
     }
-
-    const paymentOption = new window.Razorpay(option);
-    paymentOption.open()
-
-  }
 
   return (
     <HomeLayout>

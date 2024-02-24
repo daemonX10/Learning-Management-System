@@ -1,5 +1,6 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk,createSlice } from '@reduxjs/toolkit';
 import { toast } from 'react-hot-toast';
+
 import axiosInstance from '../../config/axiosInstance'
 
 const initailState = {
@@ -27,9 +28,10 @@ export const verifyUserPayment = createAsyncThunk('/payment/verify', async (data
             razorpay_subscription_id: data.razorpay_subscription_id,
             razorpay_signature: data.razorpay_signature,
         });
+        console.log(response.data);
         return response.data;
     } catch (error) {
-        toast.error("failed to load data")
+        toast.error("failed to verify payment")
     }
 });
 
@@ -69,7 +71,6 @@ export const cancelCourseBundle = createAsyncThunk('/cancelCourse',async()=>{
                 return res.data?.message || "Promise Success , Subscription Cancelled";
             },
             error:(err)=>{
-                console.log(err)
                 return err?.response?.data?.message || "Promise is rejected , Unable to  cancel subscription";
             }
         })
@@ -78,8 +79,6 @@ export const cancelCourseBundle = createAsyncThunk('/cancelCourse',async()=>{
         toast.error(error?.response?.data?.message || 'payment cancellation failed')
     }
 })
-
-
 
 const razorPaySlice = createSlice({
     name: 'razorPay',

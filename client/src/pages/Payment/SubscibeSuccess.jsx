@@ -1,9 +1,19 @@
-import React from 'react'
-import HomeLayout from '../../layouts/Layout'
+
+import { useEffect } from 'react';
 import { AiFillCheckCircle } from 'react-icons/ai'
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom'
 
+import HomeLayout from '../../layouts/Layout'
+import { getUserData } from '../../redux/slices/authSlice';
+
 const SubscibeSuccess = () => {
+
+    const dispatch = useDispatch();
+    
+    useEffect(()=>{
+        dispatch(getUserData());
+    })
 
   return (
     <HomeLayout>

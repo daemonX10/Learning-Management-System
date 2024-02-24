@@ -39,7 +39,7 @@ const CourseDescription = () => {
                 <span className="font-bold text-blue-500"> Instructor: {" "}  </span> {state?.createdBy}
               </p>
             </div>
-            {console.log('user',user)}
+
               {
               role ==="ADMIN" || user?.subscription?.status === "Active" ? (
                 <button className="bg-green-500 hover:bg-green-400 text-white font-semibold rounded-md py-1 px-2"

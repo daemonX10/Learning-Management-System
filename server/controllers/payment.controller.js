@@ -53,10 +53,8 @@ export const buySubscription = async(req, res, next)=>{
             success:true,
             message:"Subscription Successfully",
             subscription_id: subscription.id
-        })
-
+        });
     } catch (error) {
-        console.log(error); 
         return next(new AppError(error.message, 500))
     }
 }
@@ -94,7 +92,7 @@ export const verifySubscription = async(req, res, next)=>{
             razorpay_subscription_id,
         });
 
-        user.subscription.status = "active";
+        user.subscription.status = "Active";
         await user.save();
 
         res.status(200).json({

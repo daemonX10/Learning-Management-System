@@ -14,7 +14,7 @@ const DisplayLecture = () => {
 
     const  { state } = useLocation();
     const { lectures } = useSelector((state)=>state.lecture)
-    console.log('lectures',lectures)
+
     const { role } = useSelector((state)=>state.auth)
 
     const currentLecture = useSelector((state)=>state.lecture.currentLecture);
