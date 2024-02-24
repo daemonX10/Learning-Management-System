@@ -37,7 +37,6 @@ const Subscribe = () => {
   }, []);
 
 
-
   async function handleSubscription(e){
     e.preventDefault()
     if(!razorpayKey){
@@ -46,42 +45,43 @@ const Subscribe = () => {
     }
 
     // Wait for the purchaseCourseBundle action to complete
-    await dispatch(purchaseCourseBundle()).then(() => {
-      if(!subscription_id){
-        toast.error('Failed to create subscription')
+    try {
+      const response = await dispatch (purchaseCourseBundle());
+      
+      if(!response.payload || !response.payload.subscription_id){
+        toast.error("Failed to Create Subscription Id")
         return
       }
-    }).catch((error) => {
-      // Handle any errors that occurred during the dispatch action
-      console.error(error);
-      toast.error('An error occurred while processing your subscription');
-    });
 
-      const option = {
-        key: razorpayKey,
-        subscription_id: subscription_id,
-        name: "GitHub-id : daemonX10 ",
-        description: "Course Subscription",
-        theme: {
-          color: '#3B82F6'
-        },
-        handler : async function (response ){
-          paymentDetails.razorpay_payment_id = response.razorpay_payment_id
-          paymentDetails.razorpay_subscription_id = response.razorpay_subscription_id
-          paymentDetails.razorpay_signature = response.razorpay_signature
+    const option = {
+      key: razorpayKey,
+      subscription_id: response.payload.subscription_id,
+      name: "Git daemonX10",
+      description: "Course Subscription",
+      theme: {
+        color: '#3B82F6'
+      },
+      handler : async function (response ){
+        paymentDetails.razorpay_payment_id = response.razorpay_payment_id
+        paymentDetails.razorpay_subscription_id = response.razorpay_subscription_id
+        paymentDetails.razorpay_signature = response.razorpay_signature
 
-          toast.success('Payment Success');
+        toast.success('Payment Success');
 
-          // Verifing the payment
-          const res = await dispatch(verifyUserPayment(paymentDetails));
-          res?.payload?.success ? navigate('/payment/subscribe/success') : navigate('/payment/subscribe/fail')
-        }
+        // Verifing the payment
+        const res = await dispatch(verifyUserPayment(paymentDetails));
+        res?.payload?.success ? navigate('/payment/subscribe/success') : navigate('/payment/subscribe/fail')
       }
-      
-      const paymentOption = new window.Razorpay(option);
-      paymentOption.open()
-
     }
+    
+    const paymentOption = new window.Razorpay(option);
+    paymentOption.open()
+  
+      } catch (error) {
+    console.log(error);
+    toast.error('An error occurred while processing your subscription' + error.message)
+  }
+}
 
   return (
     <HomeLayout>

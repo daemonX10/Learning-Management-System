@@ -46,6 +46,8 @@ export const login = createAsyncThunk('auth/login', async(data)=>{
             }
         })
 
+        console.log("login",(await responsePromise).data);
+
         return ( await responsePromise).data;
 
     } catch (error) {
@@ -109,7 +111,7 @@ export const getUserData = createAsyncThunk('auth/getUserData', async()=>{
                 return err.response?.data?.message || "Promise rejected , Error in Getting User Data"
             }
         });
-        console.log("responsePromise",(await responsePromise));
+        console.log("getProfile",(await responsePromise));
         return (await responsePromise).data;
     } catch (error) {
         toast.error(error?.response?.data?.message || "Unable to get User Data");

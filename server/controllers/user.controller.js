@@ -129,7 +129,12 @@ const getProfile = async (req,res,next)=>{
         if(!user){
             return next(new AppError('User not found', 404))
         }
-        
+
+        user.password = undefined;
+
+        const token = await user.generateJWTToken();
+
+        res.cookie('token', token, cookieOptions);
         res.status(200).json({
             success: true,
             message: 'User profile fetched successfully',
