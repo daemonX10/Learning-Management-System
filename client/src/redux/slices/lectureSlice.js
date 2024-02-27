@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axiosInstance from '../../config/axiosInstance';
 import { toast } from 'react-hot-toast';
+
+import axiosInstance from '../../config/axiosInstance';
 
 
 const initialState = {
@@ -24,17 +25,21 @@ export const getCourseLecture = createAsyncThunk( 'course/lecture/get' , async(c
 
 export const addCourseLecture = createAsyncThunk('/course/lecture/add',async (data)=>{
     try {
+        console.log('data',data);
         const formData = new FormData();
         formData.append('lecture', data.lecture);
         formData.append('title', data.title);
         formData.append('description', data.description);
 
-        const response = axiosInstance.post(`/course/lecture/${data.courseId}`, formData);
+        console.log('formData',formData);
+
+        const response = axiosInstance.post(`/course/${data.courseId}`, formData);
         toast.promise(response,{
             loading: 'Loading...',
             success: 'Lecture added',
             error: 'Error adding lecture'
         })
+        console.log((await response).data);
         return (await response).data;
     } catch (error) {
         toast.error( error.response.data.message || 'Error adding lecture')

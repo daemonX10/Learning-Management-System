@@ -143,6 +143,7 @@ export const deleteCourse = async (req, res,next) =>{
 
 export const addLectureToCourseById = async (req, res, next) => {
     try {
+        console.log('req',req);
         const { title , description } = req.body;
         const { courseId } = req.params;
 

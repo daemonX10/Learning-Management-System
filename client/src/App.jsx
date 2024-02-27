@@ -17,6 +17,7 @@ import SignIn from "./pages/SignIn"
 import SignUP from "./pages/SignUP"
 import EditProfile from "./pages/user/EditProfile"
 import Profile from "./pages/user/Profile"
+import AddLecture from "./pages/Dashboard/AddLecture"
 
 
 const App = () => {
@@ -40,8 +41,10 @@ const App = () => {
       <Route path="/course" element={<CourseList />} />
       <Route path="/course/description" element={<CourseDescription />} />
       <Route path="/course/displayLecture" element={<DisplayLecture /> } />
+      
       <Route element={<RequireAuth allowedRoles ={["ADMIN"]} />}>
         <Route path="/course/create" element={<CreateCourse/>} />
+        <Route path="/course/addLecture" element={<AddLecture />} />
       </Route>
 
       {/* Payment */}

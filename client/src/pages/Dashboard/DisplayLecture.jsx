@@ -8,6 +8,22 @@ import HomeLayout from '../../layouts/Layout'
 import { deletecourseLecture, getCourseLecture } from '../../redux/slices/lectureSlice';
 import { setCurrentLecture } from '../../redux/slices/lectureSlice';
 
+
+export const AddLectureButton = ({ state, role }) => {
+  const navigate = useNavigate();
+
+  return (
+    role === 'ADMIN' && (
+      <button
+        onClick={() => navigate('/course/addLecture', { state })} // state is the course details is passed to the AddLecture component
+        className='px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded text-white'
+      >
+        Add Lecture
+      </button>
+    )
+  );
+};
+
 const DisplayLecture = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -65,16 +81,7 @@ const DisplayLecture = () => {
           <ul className='flex flex-col space-y-5 p-5 rounded-lg shadow-lg bg-gray-800 text-white'>
             <li className='flex justify-between items-center text-2xl font-semibold'>
               Lecture List
-              {
-                role === 'ADMIN' && (
-                  <button 
-                    onClick={()=>navigate('/add-lecture',{state})}
-                    className='px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded text-white'
-                  >
-                    Add Lecture
-                  </button>
-                )
-              }
+              <AddLectureButton state={state} role={role} />
             </li>
             <div className='max-h-[500px] overflow-auto'>
                 {
@@ -102,10 +109,14 @@ const DisplayLecture = () => {
           </ul>
         </div>
         : 
-        <div>
+        <div className='flex-col justify-center items-center space-y-4'>
           <h1 className='text-4xl font-bold'>
             No Lectures
           </h1>
+            <li className='space-x-2 w-[22rem] flex justify-between items-center text-2xl font-semibold bg-gray-700 p-4 rounded-md shadow'>
+              Lecture List
+              <AddLectureButton state={state} role={role} />
+            </li>
         </div> }
     </div>
   </HomeLayout>
