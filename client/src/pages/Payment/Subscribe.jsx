@@ -57,7 +57,7 @@ const Subscribe = () => {
       key: razorpayKey,
       subscription_id: response.payload.subscription_id,
       name: "Git daemonX10",
-      description: "Course Subscription",
+      description: " No money will be deducted from your account",
       theme: {
         color: '#3B82F6'
       },
