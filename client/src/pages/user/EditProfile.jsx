@@ -1,11 +1,12 @@
 import { useState } from 'react';
+import toast from 'react-hot-toast';
+import { BsPersonCircle } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+
 import HomeLayout from '../../layouts/Layout'
-import toast from 'react-hot-toast';
 import {  updateProfile } from '../../redux/slices/authSlice';
-import { BsPersonCircle } from 'react-icons/bs';
 
 const EditProfile = () => {
 

@@ -3,3 +3,4 @@ lms-main
 .gitignore
 error.log
 combined.log
+.env
