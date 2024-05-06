@@ -18,8 +18,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(morgan('dev'));
 app.use(cors({
-    origin:[ "*"],
-    credentials:true
+    origin: (origin, callback) => {
+        callback(null, true);
+    },
+    credentials: true
 }));
 
 
