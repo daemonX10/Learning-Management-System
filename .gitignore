@@ -1,4 +1,6 @@
 node_modules
 lms-main
+.gitignore
 error.log
 combined.log
+server/.env
