@@ -8,8 +8,11 @@ import sendEmail from '../utils/sendEmail.js';
 dotenv.config();
 
 const cookieOptions = {
-    expires:new Date(Date.now() + process.env.JWT_COOKIE_EXPIRY * 24 * 60 * 60 * 1000), // 30 days
-    httpOnly: true
+    expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRY * 24 * 60 * 60 * 1000), // 30 days
+    httpOnly: true,
+    secure: true,
+    sameSite: 'none',
+    domain: 'learning-management-system-server.onrender.com'
 }
 
 const register = async (req,res,next)=>{ 

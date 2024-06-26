@@ -17,6 +17,7 @@ export const getCourseLecture = createAsyncThunk( 'course/lecture/get' , async(c
             success: 'Lecture loaded',
             error: 'Error loading lecture'
         })  
+        console.log('response',(await response).data);
         return (await response).data;
     } catch (error) {
         toast.error( error.response.data.message || 'Error loading lecture')
