@@ -21,6 +21,7 @@ app.use(cors({
     origin: [
         'https://learning-management-system-damodars-projects.vercel.app',
         'https://learning-management-system-git-master-damodars-projects.vercel.app',
+        'https://learning-management-system-self-mu.vercel.app',
         'http://localhost:5173', // For local development
         'http://localhost:3000'  // For local development
     ],
