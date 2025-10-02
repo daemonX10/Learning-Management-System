@@ -18,10 +18,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(morgan('dev'));
 app.use(cors({
-    origin: (origin, callback) => {
-        callback(null, true);
-    },
-    credentials: true
+    origin: [
+        'https://learning-management-system-damodars-projects.vercel.app',
+        'http://localhost:5173', // For local development
+        'http://localhost:3000'  // For local development
+    ],
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
 }));
 
 
