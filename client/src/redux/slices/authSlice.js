@@ -119,10 +119,119 @@ export const getUserData = createAsyncThunk('auth/getUserData', async()=>{
     }
 })
 
+export const forgotPassword = createAsyncThunk('auth/forgotPassword', async (email) => {
+    try {
+        const responsePromise = axiosInstance.post('user/reset', { email });
+        toast.promise(responsePromise, {
+            loading: "Sending reset email...",
+            success: (res) => {
+                return res.data?.message || "Password reset email sent successfully";
+            },
+            error: (err) => {
+                return err.response?.data?.message || "Failed to send reset email";
+            }
+        });
+        return (await responsePromise).data;
+    } catch (error) {
+        toast.error(error?.response?.data?.message || "Unable to send password reset email");
+        throw error;
+    }
+});
+
+export const resetPassword = createAsyncThunk('auth/resetPassword', async (data) => {
+    try {
+        const responsePromise = axiosInstance.post(`user/reset/${data.resetToken}`, {
+            password: data.password
+        });
+        toast.promise(responsePromise, {
+            loading: "Resetting password...",
+            success: (res) => {
+                return res.data?.message || "Password reset successfully";
+            },
+            error: (err) => {
+                return err.response?.data?.message || "Failed to reset password";
+            }
+        });
+        return (await responsePromise).data;
+    } catch (error) {
+        toast.error(error?.response?.data?.message || "Unable to reset password");
+        throw error;
+    }
+});
+
+export const requestAdminAccess = createAsyncThunk('auth/requestAdminAccess', async (data) => {
+    try {
+        const responsePromise = axiosInstance.post('user/request-admin', data);
+        toast.promise(responsePromise, {
+            loading: "Submitting admin request...",
+            success: (res) => {
+                return res.data?.message || "Admin request submitted successfully";
+            },
+            error: (err) => {
+                return err.response?.data?.message || "Failed to submit admin request";
+            }
+        });
+        return (await responsePromise).data;
+    } catch (error) {
+        toast.error(error?.response?.data?.message || "Unable to submit admin request");
+        throw error;
+    }
+});
+
+export const getAdminRequests = createAsyncThunk('auth/getAdminRequests', async (status) => {
+    try {
+        const url = status ? `user/admin-requests?status=${status}` : 'user/admin-requests';
+        const response = await axiosInstance.get(url);
+        return response.data;
+    } catch (error) {
+        toast.error(error?.response?.data?.message || "Unable to get admin requests");
+        throw error;
+    }
+});
+
+export const reviewAdminRequest = createAsyncThunk('auth/reviewAdminRequest', async (data) => {
+    try {
+        const responsePromise = axiosInstance.put(`user/admin-requests/${data.requestId}/review`, {
+            status: data.status,
+            reviewNotes: data.reviewNotes
+        });
+        toast.promise(responsePromise, {
+            loading: "Reviewing admin request...",
+            success: (res) => {
+                return res.data?.message || "Admin request reviewed successfully";
+            },
+            error: (err) => {
+                return err.response?.data?.message || "Failed to review admin request";
+            }
+        });
+        return (await responsePromise).data;
+    } catch (error) {
+        toast.error(error?.response?.data?.message || "Unable to review admin request");
+        throw error;
+    }
+});
+
+export const getUserAdminRequest = createAsyncThunk('auth/getUserAdminRequest', async () => {
+    try {
+        const response = await axiosInstance.get('user/my-admin-request');
+        return response.data;
+    } catch (error) {
+        // Don't show toast for this as it's expected to fail if no request exists
+        throw error;
+    }
+});
+
 const authSlice = createSlice({
     name:"auth",
     initialState,
-    reducers:{},
+    reducers:{
+        clearAuth: (state) => {
+            localStorage.clear();
+            state.isLoggedIn = false;
+            state.user = {};
+            state.role = '';
+        }
+    },
     extraReducers:(builder)=>{
         builder
         // for user login
@@ -133,6 +242,12 @@ const authSlice = createSlice({
             state.isLoggedIn=true;
             state.user=action?.payload?.data;
             state.role=action?.payload?.data?.role;
+        })
+        .addCase(login.rejected,(state)=>{
+            localStorage.clear();
+            state.isLoggedIn=false;
+            state.user={};
+            state.role='';
         })
         // for Logout
         .addCase(logout.fulfilled,(state)=>{
@@ -158,8 +273,17 @@ const authSlice = createSlice({
             state.user=action?.payload?.data;
             state.role=action?.payload?.data?.role;
         })
+        .addCase(getUserData.rejected,(state)=>{
+            // Clear auth state if getUserData fails (token expired, etc.)
+            localStorage.clear();
+            state.isLoggedIn=false;
+            state.user={};
+            state.role='';
+        })
     }
 });
+
+export const { clearAuth } = authSlice.actions;
 
 export default authSlice.reducer; 
 // {

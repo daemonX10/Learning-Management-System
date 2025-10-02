@@ -1,4 +1,5 @@
 import User from '../models/user.model.js'
+import AdminRequest from '../models/adminRequest.model.js'
 import AppError from '../utils/appError.js';
 import dotenv from 'dotenv';
 import fs from 'fs/promises';
@@ -8,11 +9,14 @@ import sendEmail from '../utils/sendEmail.js';
 dotenv.config();
 
 const cookieOptions = {
-    expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRY * 24 * 60 * 60 * 1000), // 30 days
+    expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRY * 24 * 60 * 60 * 1000), // 7 days
     httpOnly: true,
-    secure: true,
-    sameSite: 'none',
-    domain: 'learning-management-system-server.onrender.com'
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+    // Remove domain restriction for local development
+    ...(process.env.NODE_ENV === 'production' && { 
+        domain: 'learning-management-system-server.onrender.com' 
+    })
 }
 
 const register = async (req,res,next)=>{ 
@@ -112,9 +116,10 @@ const login = async (req,res,next)=>{
 const logout = (req,res,next)=>{
         try {
             res.cookie('token', null, {
-                secure: true,
+                secure: process.env.NODE_ENV === 'production',
                 expires: new Date(Date.now()),
-                httpOnly: true
+                httpOnly: true,
+                sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
             });
             res.status(200).json({
                 success: true,
@@ -350,6 +355,136 @@ try {
 }
 }
 
+const requestAdminAccess = async (req, res, next) => {
+    try {
+        const { reason, experience } = req.body;
+        const userId = req.user.id;
+
+        if (!reason || !experience) {
+            return next(new AppError('Reason and experience are required', 400));
+        }
+
+        // Check if user already has an admin role
+        const user = await User.findById(userId);
+        if (user.role === 'ADMIN') {
+            return next(new AppError('You already have admin privileges', 400));
+        }
+
+        // Check if user already has a pending request
+        const existingRequest = await AdminRequest.findOne({
+            user: userId,
+            status: 'pending'
+        });
+
+        if (existingRequest) {
+            return next(new AppError('You already have a pending admin request', 400));
+        }
+
+        // Create new admin request
+        const adminRequest = await AdminRequest.create({
+            user: userId,
+            reason,
+            experience
+        });
+
+        await adminRequest.populate('user', 'fullName email');
+
+        res.status(201).json({
+            success: true,
+            message: 'Admin access request submitted successfully',
+            data: adminRequest
+        });
+    } catch (error) {
+        return next(new AppError(error.message || 'Failed to submit admin request', 500));
+    }
+};
+
+const getAdminRequests = async (req, res, next) => {
+    try {
+        const { status } = req.query;
+        const filter = status ? { status } : {};
+
+        const requests = await AdminRequest.find(filter)
+            .populate('user', 'fullName email avatar')
+            .populate('reviewedBy', 'fullName email')
+            .sort({ createdAt: -1 });
+
+        res.status(200).json({
+            success: true,
+            message: 'Admin requests retrieved successfully',
+            data: requests
+        });
+    } catch (error) {
+        return next(new AppError(error.message || 'Failed to get admin requests', 500));
+    }
+};
+
+const reviewAdminRequest = async (req, res, next) => {
+    try {
+        const { requestId } = req.params;
+        const { status, reviewNotes } = req.body;
+        const adminId = req.user.id;
+
+        if (!['approved', 'rejected'].includes(status)) {
+            return next(new AppError('Status must be either approved or rejected', 400));
+        }
+
+        const request = await AdminRequest.findById(requestId).populate('user');
+
+        if (!request) {
+            return next(new AppError('Admin request not found', 404));
+        }
+
+        if (request.status !== 'pending') {
+            return next(new AppError('This request has already been reviewed', 400));
+        }
+
+        // Update request status
+        request.status = status;
+        request.reviewedBy = adminId;
+        request.reviewedAt = new Date();
+        request.reviewNotes = reviewNotes || '';
+
+        await request.save();
+
+        // If approved, update user role
+        if (status === 'approved') {
+            const user = await User.findById(request.user._id);
+            user.role = 'ADMIN';
+            await user.save();
+        }
+
+        await request.populate('reviewedBy', 'fullName email');
+
+        res.status(200).json({
+            success: true,
+            message: `Admin request ${status} successfully`,
+            data: request
+        });
+    } catch (error) {
+        return next(new AppError(error.message || 'Failed to review admin request', 500));
+    }
+};
+
+const getUserAdminRequest = async (req, res, next) => {
+    try {
+        const userId = req.user.id;
+
+        const request = await AdminRequest.findOne({
+            user: userId,
+            status: 'pending'
+        }).populate('reviewedBy', 'fullName email');
+
+        res.status(200).json({
+            success: true,
+            message: 'User admin request retrieved successfully',
+            data: request
+        });
+    } catch (error) {
+        return next(new AppError(error.message || 'Failed to get user admin request', 500));
+    }
+};
+
 export{register,
         login,
         logout,
@@ -358,6 +493,10 @@ export{register,
         resetPassword,
         ChangePassword,
         updateUser,
-        makeUserAdmin
+        makeUserAdmin,
+        requestAdminAccess,
+        getAdminRequests,
+        reviewAdminRequest,
+        getUserAdminRequest
     }
 

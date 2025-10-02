@@ -5,21 +5,28 @@ import asyncHandler from "./asyncHandler.middleware.js";
 
 
 export const isLoggedIn = (req,res,next)=>{
-
+    
     const {token} = req.cookies;
 
     if(!token){
         return next(new AppError('Please login to continue',401));
     }
+    
     try {
         const decode = jwt.verify(token, process.env.JWT_SECRET);
         req.user = decode;
         next();
     } catch (error) {
-        logger.error("Error in isLoggedIn middleware : invalid token");
-        return next(new AppError(error,500));
+        logger.error("Error in isLoggedIn middleware: ", error.message);
+        
+        if (error.name === 'TokenExpiredError') {
+            return next(new AppError('Token expired, please login again', 401));
+        } else if (error.name === 'JsonWebTokenError') {
+            return next(new AppError('Invalid token, please login again', 401));
+        } else {
+            return next(new AppError('Authentication failed', 401));
+        }
     }
-
 }
 
 export const authorizedRoles = (...roles) => (req,res,next)=>{

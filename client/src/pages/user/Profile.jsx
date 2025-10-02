@@ -25,52 +25,106 @@ const Profile = () => {
 
   return (
     <HomeLayout>
-      <div className="min-h-screen flex items-center justify-center bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-md w-full space-y-8 bg-gray-800 p-10 rounded-xl shadow-lg">
-          <div>
-            <img className="mx-auto h-[12rem] w-auto rounded-full border-4 border-blue-500 shadow-2xl transition-transform duration-500 hover:scale-110 animate-glow" src={user?.avatar?.secure_url} alt="Profile"/>
-            <h2 className="mt-6 text-center text-3xl font-extrabold capitalize text-white">
-              {user?.fullName}
-            </h2>
-          </div>
-          <div className="mt-8 space-y-6 bg-gray-900 p-4 rounded-lg shadow-lg">
-            <div className="rounded-md shadow-sm space-y-2 font-extrabold leading-loose ">
-              <p className="text-sm text-blue-500">Email : <span className="text-blue-600 ml-1">{user?.email}</span></p>
-              <p className="text-sm text-blue-500 capitalize">Role : <span className="text-blue-600 ml-1">{user?.role}</span></p>
-              <p className="text-sm text-blue-500 capitalize">Subscription : <span className="text-blue-600 ml-1">{user?.role === "ADMIN" ? "Active" : ( user?.subscription?.status === "Active" ? "Active" : "Inactive") }</span></p>
+      <div className="min-h-[90vh] pt-16 pb-8 px-4 lg:px-8 bg-gradient-to-br from-gray-900 to-gray-800">
+        <div className="max-w-2xl mx-auto">
+          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl shadow-2xl overflow-hidden">
+            {/* Profile Header */}
+            <div className="bg-gradient-to-r from-blue-600 to-blue-800 p-8 text-center">
+              <div className="relative inline-block">
+                <img 
+                  className="w-32 h-32 rounded-full border-4 border-white shadow-lg object-cover" 
+                  src={user?.avatar?.secure_url} 
+                  alt="Profile"
+                />
+                <div className="absolute inset-0 rounded-full bg-gradient-to-t from-black/20 to-transparent"></div>
+              </div>
+              <h1 className="mt-4 text-3xl font-bold text-white capitalize">
+                {user?.fullName}
+              </h1>
+              <p className="text-blue-100 text-lg mt-2">
+                {user?.role === "ADMIN" ? "Administrator" : "Student"}
+              </p>
             </div>
 
-            <div className="flex items-center justify-between">
-              <Link to='/changePassword' className="group relative  flex justify-center py-2 px-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                Change Password
-              </Link>
-              <Link to='/user/editProfile' className="group relative  flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                Edit Profile
-              </Link>
-            </div>
-            <div className="flex-col items-center justify-center space-y-3 ">
-              <Link to='/course' className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
-                Courses
-              </Link>
+            {/* Profile Details */}
+            <div className="p-8 space-y-6">
+              <div className="bg-white/5 rounded-xl p-6 space-y-4">
+                <h2 className="text-xl font-semibold text-white mb-4">Account Information</h2>
+                
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between py-2 border-b border-white/10">
+                    <span className="text-gray-300 font-medium">Email:</span>
+                    <span className="text-blue-400 font-semibold">{user?.email}</span>
+                  </div>
+                  
+                  <div className="flex items-center justify-between py-2 border-b border-white/10">
+                    <span className="text-gray-300 font-medium">Role:</span>
+                    <span className="text-blue-400 font-semibold capitalize">{user?.role}</span>
+                  </div>
+                  
+                  <div className="flex items-center justify-between py-2">
+                    <span className="text-gray-300 font-medium">Subscription:</span>
+                    <span className={`font-semibold px-3 py-1 rounded-full text-sm ${
+                      user?.role === "ADMIN" || user?.subscription?.status === "Active" 
+                        ? "bg-green-500/20 text-green-400" 
+                        : "bg-red-500/20 text-red-400"
+                    }`}>
+                      {user?.role === "ADMIN" ? "Active" : (user?.subscription?.status === "Active" ? "Active" : "Inactive")}
+                    </span>
+                  </div>
+                </div>
+              </div>
 
-              {
-                user?.role === "ADMIN" ? 
-                  <>
-                    <Link to='/admin/dashboard' className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                      Dashboard
-                    </Link>
-                  </>
-                : 
-                  user?.subscription?.status === "Active" ? 
-                    <Link to='/cancelSubscription'
-                          onClick={handleCancellation}
-                          className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
-                      Cancel Subscription
-                    </Link>
-                  :
-                    null
-              }
-              
+              {/* Action Buttons */}
+              <div className="space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <Link 
+                    to='/changePassword' 
+                    className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 text-center shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  >
+                    Change Password
+                  </Link>
+                  <Link 
+                    to='/user/editProfile' 
+                    className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 text-center shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  >
+                    Edit Profile
+                  </Link>
+                </div>
+                
+                <Link 
+                  to='/course' 
+                  className="block w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 text-center shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                >
+                  View Courses
+                </Link>
+
+                {/* Admin Request Button - Only show for regular users */}
+                {user?.role === 'USER' && (
+                  <Link 
+                    to='/request-admin' 
+                    className="block w-full bg-yellow-600 hover:bg-yellow-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 text-center shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  >
+                    Request Admin Access
+                  </Link>
+                )}
+
+                {user?.role === "ADMIN" ? (
+                  <Link 
+                    to='/admin/dashboard' 
+                    className="block w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 text-center shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  >
+                    Admin Dashboard
+                  </Link>
+                ) : user?.subscription?.status === "Active" ? (
+                  <button
+                    onClick={handleCancellation}
+                    className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  >
+                    Cancel Subscription
+                  </button>
+                ) : null}
+              </div>
             </div>
           </div>
         </div>

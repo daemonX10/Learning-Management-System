@@ -1,169 +1,568 @@
-2024-02-24T22:07:54.787Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: You are not authorized to access this route
-    at new AppError (file:///D:/full%20stack%20developer/Express/lms-h/server/utils/appError.js:7:15)
-    at file:///D:/full%20stack%20developer/Express/lms-h/server/middlewares/auth.middleware.js:40:21
-    at file:///D:/full%20stack%20developer/Express/lms-h/server/middlewares/asyncHandler.middleware.js:3:9
-    at Layer.handle [as handle_request] (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\layer.js:95:5)
-    at next (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\route.js:144:13)
-    at isLoggedIn (file:///D:/full%20stack%20developer/Express/lms-h/server/middlewares/auth.middleware.js:17:9)
-    at Layer.handle [as handle_request] (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\layer.js:95:5)
-    at next (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\route.js:114:3)
-    at Layer.handle [as handle_request] (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\layer.js:95:5)
-    at D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:284:15
-    at param (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:365:14)
-    at param (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:376:14)
-    at Function.process_params (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:421:3)
-    at next (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:280:10)
-    at expressInit (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\middleware\init.js:40:5)
-    at Layer.handle [as handle_request] (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\layer.js:95:5)
-    at trim_prefix (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:328:13)
-    at D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:286:9
-    at Function.process_params (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:346:12)
-    at next (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:280:10)
-    at query (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\middleware\query.js:45:5)
-2024-02-24T22:35:32.353Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: payment.remove is not a function
-    at new AppError (file:///D:/full%20stack%20developer/Express/lms-h/server/utils/appError.js:7:15)
-    at cancelSubscription (file:///D:/full%20stack%20developer/Express/lms-h/server/controllers/payment.controller.js:160:21)
-    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
-2024-02-24T22:46:11.668Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: payment.remove is not a function
-    at new AppError (file:///D:/full%20stack%20developer/Express/lms-h/server/utils/appError.js:7:15)
-    at cancelSubscription (file:///D:/full%20stack%20developer/Express/lms-h/server/controllers/payment.controller.js:161:21)
-    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
-2024-06-26T05:01:15.349Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: Please login to continue
-    at new AppError (file:///D:/full%20stack%20developer/Express/lms-h/server/utils/appError.js:7:15)
-    at isLoggedIn (file:///D:/full%20stack%20developer/Express/lms-h/server/middlewares/auth.middleware.js:12:21)
-    at Layer.handle [as handle_request] (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\layer.js:95:5)
-    at next (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\route.js:114:3)
-    at Layer.handle [as handle_request] (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\layer.js:95:5)
-    at D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:284:15
-    at param (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:365:14)
-    at param (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:376:14)
-    at Function.process_params (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:421:3)
-    at next (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:280:10)
-    at expressInit (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\middleware\init.js:40:5)
-    at Layer.handle [as handle_request] (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\layer.js:95:5)
-    at trim_prefix (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:328:13)
-    at D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:286:9
-    at Function.process_params (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:346:12)
-    at next (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:280:10)
-    at query (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\middleware\query.js:45:5)
-    at Layer.handle [as handle_request] (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\layer.js:95:5)
-    at trim_prefix (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:328:13)
-    at D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:286:9
-    at Function.process_params (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:346:12)
-2024-06-26T05:01:22.419Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: Please login to continue
-    at new AppError (file:///D:/full%20stack%20developer/Express/lms-h/server/utils/appError.js:7:15)
-    at isLoggedIn (file:///D:/full%20stack%20developer/Express/lms-h/server/middlewares/auth.middleware.js:12:21)
-    at Layer.handle [as handle_request] (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\layer.js:95:5)
-    at next (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\route.js:114:3)
-    at Layer.handle [as handle_request] (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\layer.js:95:5)
-    at D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:284:15
-    at param (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:365:14)
-    at param (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:376:14)
-    at Function.process_params (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:421:3)
-    at next (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:280:10)
-    at expressInit (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\middleware\init.js:40:5)
-    at Layer.handle [as handle_request] (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\layer.js:95:5)
-    at trim_prefix (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:328:13)
-    at D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:286:9
-    at Function.process_params (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:346:12)
-    at next (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:280:10)
-    at query (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\middleware\query.js:45:5)
-    at Layer.handle [as handle_request] (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\layer.js:95:5)
-    at trim_prefix (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:328:13)
-    at D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:286:9
-    at Function.process_params (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:346:12)
-2024-06-26T05:01:45.943Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: Please login to continue
-    at new AppError (file:///D:/full%20stack%20developer/Express/lms-h/server/utils/appError.js:7:15)
-    at isLoggedIn (file:///D:/full%20stack%20developer/Express/lms-h/server/middlewares/auth.middleware.js:12:21)
-    at Layer.handle [as handle_request] (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\layer.js:95:5)
-    at next (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\route.js:114:3)
-    at Layer.handle [as handle_request] (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\layer.js:95:5)
-    at D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:284:15
-    at param (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:365:14)
-    at param (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:376:14)
-    at Function.process_params (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:421:3)
-    at next (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:280:10)
-    at expressInit (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\middleware\init.js:40:5)
-    at Layer.handle [as handle_request] (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\layer.js:95:5)
-    at trim_prefix (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:328:13)
-    at D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:286:9
-    at Function.process_params (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:346:12)
-    at next (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:280:10)
-    at query (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\middleware\query.js:45:5)
-    at Layer.handle [as handle_request] (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\layer.js:95:5)
-    at trim_prefix (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:328:13)
-    at D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:286:9
-    at Function.process_params (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:346:12)
-2024-06-26T05:01:53.448Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: Please login to continue
-    at new AppError (file:///D:/full%20stack%20developer/Express/lms-h/server/utils/appError.js:7:15)
-    at isLoggedIn (file:///D:/full%20stack%20developer/Express/lms-h/server/middlewares/auth.middleware.js:12:21)
-    at Layer.handle [as handle_request] (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\layer.js:95:5)
-    at next (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\route.js:114:3)
-    at Layer.handle [as handle_request] (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\layer.js:95:5)
-    at D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:284:15
-    at param (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:365:14)
-    at param (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:376:14)
-    at Function.process_params (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:421:3)
-    at next (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:280:10)
-    at expressInit (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\middleware\init.js:40:5)
-    at Layer.handle [as handle_request] (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\layer.js:95:5)
-    at trim_prefix (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:328:13)
-    at D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:286:9
-    at Function.process_params (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:346:12)
-    at next (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:280:10)
-    at query (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\middleware\query.js:45:5)
-    at Layer.handle [as handle_request] (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\layer.js:95:5)
-    at trim_prefix (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:328:13)
-    at D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:286:9
-    at Function.process_params (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:346:12)
-2024-06-26T05:03:50.831Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: Please login to continue
-    at new AppError (file:///D:/full%20stack%20developer/Express/lms-h/server/utils/appError.js:7:15)
-    at isLoggedIn (file:///D:/full%20stack%20developer/Express/lms-h/server/middlewares/auth.middleware.js:12:21)
-    at Layer.handle [as handle_request] (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\layer.js:95:5)
-    at next (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\route.js:114:3)
-    at Layer.handle [as handle_request] (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\layer.js:95:5)
-    at D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:284:15
-    at param (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:365:14)
-    at param (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:376:14)
-    at Function.process_params (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:421:3)
-    at next (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:280:10)
-    at expressInit (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\middleware\init.js:40:5)
-    at Layer.handle [as handle_request] (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\layer.js:95:5)
-    at trim_prefix (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:328:13)
-    at D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:286:9
-    at Function.process_params (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:346:12)
-    at next (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:280:10)
-    at query (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\middleware\query.js:45:5)
-    at Layer.handle [as handle_request] (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\layer.js:95:5)
-    at trim_prefix (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:328:13)
-    at D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:286:9
-    at Function.process_params (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:346:12)
-2024-06-26T05:04:08.409Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: Please login to continue
-    at new AppError (file:///D:/full%20stack%20developer/Express/lms-h/server/utils/appError.js:7:15)
-    at isLoggedIn (file:///D:/full%20stack%20developer/Express/lms-h/server/middlewares/auth.middleware.js:12:21)
-    at Layer.handle [as handle_request] (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\layer.js:95:5)
-    at next (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\route.js:114:3)
-    at Layer.handle [as handle_request] (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\layer.js:95:5)
-    at D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:284:15
-    at param (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:365:14)
-    at param (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:376:14)
-    at Function.process_params (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:421:3)
-    at next (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:280:10)
-    at expressInit (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\middleware\init.js:40:5)
-    at Layer.handle [as handle_request] (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\layer.js:95:5)
-    at trim_prefix (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:328:13)
-    at D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:286:9
-    at Function.process_params (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:346:12)
-    at next (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:280:10)
-    at query (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\middleware\query.js:45:5)
-    at Layer.handle [as handle_request] (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\layer.js:95:5)
-    at trim_prefix (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:328:13)
-    at D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:286:9
-    at Function.process_params (D:\full stack developer\Express\lms-h\server\node_modules\express\lib\router\index.js:346:12)
+2025-10-02T13:57:54.199Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: Please login to continue
+    at new AppError (file:///D:/project/Learning-Management-System/server/utils/appError.js:7:15)
+    at isLoggedIn (file:///D:/project/Learning-Management-System/server/middlewares/auth.middleware.js:12:21)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:328:13)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at cors (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:188:7)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:224:17
+    at origin (file:///D:/project/Learning-Management-System/server/app.js:22:9)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:204:7)
+2025-10-02T13:58:37.281Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: Please login to continue
+    at new AppError (file:///D:/project/Learning-Management-System/server/utils/appError.js:7:15)
+    at isLoggedIn (file:///D:/project/Learning-Management-System/server/middlewares/auth.middleware.js:12:21)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:328:13)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at cors (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:188:7)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:224:17
+    at origin (file:///D:/project/Learning-Management-System/server/app.js:22:9)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:204:7)
+2025-10-02T13:59:07.645Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: Please login to continue
+    at new AppError (file:///D:/project/Learning-Management-System/server/utils/appError.js:7:15)
+    at isLoggedIn (file:///D:/project/Learning-Management-System/server/middlewares/auth.middleware.js:12:21)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:328:13)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at cors (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:188:7)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:224:17
+    at origin (file:///D:/project/Learning-Management-System/server/app.js:22:9)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:204:7)
+2025-10-02T14:00:26.497Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: Please login to continue
+    at new AppError (file:///D:/project/Learning-Management-System/server/utils/appError.js:7:15)
+    at isLoggedIn (file:///D:/project/Learning-Management-System/server/middlewares/auth.middleware.js:12:21)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:328:13)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at cors (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:188:7)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:224:17
+    at origin (file:///D:/project/Learning-Management-System/server/app.js:22:9)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:204:7)
+2025-10-02T14:02:07.651Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: Please login to continue
+    at new AppError (file:///D:/project/Learning-Management-System/server/utils/appError.js:7:15)
+    at isLoggedIn (file:///D:/project/Learning-Management-System/server/middlewares/auth.middleware.js:12:21)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:328:13)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at cors (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:188:7)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:224:17
+    at origin (file:///D:/project/Learning-Management-System/server/app.js:22:9)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:204:7)
+2025-10-02T14:03:05.583Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: Please login to continue
+    at new AppError (file:///D:/project/Learning-Management-System/server/utils/appError.js:7:15)
+    at isLoggedIn (file:///D:/project/Learning-Management-System/server/middlewares/auth.middleware.js:12:21)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:328:13)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at cors (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:188:7)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:224:17
+    at origin (file:///D:/project/Learning-Management-System/server/app.js:22:9)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:204:7)
+2025-10-02T14:03:16.192Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: Please login to continue
+    at new AppError (file:///D:/project/Learning-Management-System/server/utils/appError.js:7:15)
+    at isLoggedIn (file:///D:/project/Learning-Management-System/server/middlewares/auth.middleware.js:12:21)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:328:13)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at cors (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:188:7)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:224:17
+    at origin (file:///D:/project/Learning-Management-System/server/app.js:22:9)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:204:7)
+2025-10-02T14:03:31.297Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: Please login to continue
+    at new AppError (file:///D:/project/Learning-Management-System/server/utils/appError.js:7:15)
+    at isLoggedIn (file:///D:/project/Learning-Management-System/server/middlewares/auth.middleware.js:12:21)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:328:13)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at cors (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:188:7)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:224:17
+    at origin (file:///D:/project/Learning-Management-System/server/app.js:22:9)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:204:7)
+2025-10-02T14:05:12.915Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: Please login to continue
+    at new AppError (file:///D:/project/Learning-Management-System/server/utils/appError.js:7:15)
+    at isLoggedIn (file:///D:/project/Learning-Management-System/server/middlewares/auth.middleware.js:12:21)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:328:13)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at cors (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:188:7)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:224:17
+    at origin (file:///D:/project/Learning-Management-System/server/app.js:22:9)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:204:7)
+2025-10-02T14:05:31.044Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: Please login to continue
+    at new AppError (file:///D:/project/Learning-Management-System/server/utils/appError.js:7:15)
+    at isLoggedIn (file:///D:/project/Learning-Management-System/server/middlewares/auth.middleware.js:12:21)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:328:13)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at cors (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:188:7)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:224:17
+    at origin (file:///D:/project/Learning-Management-System/server/app.js:22:9)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:204:7)
+2025-10-02T14:06:00.921Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: Please login to continue
+    at new AppError (file:///D:/project/Learning-Management-System/server/utils/appError.js:7:15)
+    at isLoggedIn (file:///D:/project/Learning-Management-System/server/middlewares/auth.middleware.js:12:21)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:328:13)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at cors (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:188:7)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:224:17
+    at origin (file:///D:/project/Learning-Management-System/server/app.js:22:9)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:204:7)
+2025-10-02T14:06:35.540Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: Please login to continue
+    at new AppError (file:///D:/project/Learning-Management-System/server/utils/appError.js:7:15)
+    at isLoggedIn (file:///D:/project/Learning-Management-System/server/middlewares/auth.middleware.js:12:21)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:328:13)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at cors (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:188:7)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:224:17
+    at origin (file:///D:/project/Learning-Management-System/server/app.js:22:9)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:204:7)
+2025-10-02T14:09:43.515Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: Please login to continue
+    at new AppError (file:///D:/project/Learning-Management-System/server/utils/appError.js:7:15)
+    at isLoggedIn (file:///D:/project/Learning-Management-System/server/middlewares/auth.middleware.js:12:21)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:328:13)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at cors (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:188:7)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:224:17
+    at origin (file:///D:/project/Learning-Management-System/server/app.js:36:13)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:204:7)
+2025-10-02T14:10:09.449Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: Please login to continue
+    at new AppError (file:///D:/project/Learning-Management-System/server/utils/appError.js:7:15)
+    at isLoggedIn (file:///D:/project/Learning-Management-System/server/middlewares/auth.middleware.js:12:21)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:328:13)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at cors (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:188:7)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:224:17
+    at origin (file:///D:/project/Learning-Management-System/server/app.js:36:13)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:204:7)
+2025-10-02T14:10:20.715Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: Please login to continue
+    at new AppError (file:///D:/project/Learning-Management-System/server/utils/appError.js:7:15)
+    at isLoggedIn (file:///D:/project/Learning-Management-System/server/middlewares/auth.middleware.js:12:21)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:328:13)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at cors (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:188:7)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:224:17
+    at origin (file:///D:/project/Learning-Management-System/server/app.js:36:13)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:204:7)
+2025-10-02T14:10:22.768Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: Please login to continue
+    at new AppError (file:///D:/project/Learning-Management-System/server/utils/appError.js:7:15)
+    at isLoggedIn (file:///D:/project/Learning-Management-System/server/middlewares/auth.middleware.js:12:21)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:328:13)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at cors (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:188:7)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:224:17
+    at origin (file:///D:/project/Learning-Management-System/server/app.js:36:13)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:204:7)
+2025-10-02T14:11:02.842Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: Please login to continue
+    at new AppError (file:///D:/project/Learning-Management-System/server/utils/appError.js:7:15)
+    at isLoggedIn (file:///D:/project/Learning-Management-System/server/middlewares/auth.middleware.js:12:21)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:328:13)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at cors (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:188:7)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:224:17
+    at origin (file:///D:/project/Learning-Management-System/server/app.js:36:13)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:204:7)
+2025-10-02T14:11:44.399Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: Please login to continue
+    at new AppError (file:///D:/project/Learning-Management-System/server/utils/appError.js:7:15)
+    at isLoggedIn (file:///D:/project/Learning-Management-System/server/middlewares/auth.middleware.js:12:21)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:328:13)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at cors (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:188:7)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:224:17
+    at origin (file:///D:/project/Learning-Management-System/server/app.js:36:13)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:204:7)
+2025-10-02T14:12:02.502Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: Please login to continue
+    at new AppError (file:///D:/project/Learning-Management-System/server/utils/appError.js:7:15)
+    at isLoggedIn (file:///D:/project/Learning-Management-System/server/middlewares/auth.middleware.js:12:21)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:328:13)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at cors (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:188:7)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:224:17
+    at origin (file:///D:/project/Learning-Management-System/server/app.js:36:13)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:204:7)
+2025-10-02T14:13:18.707Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: Please login to continue
+    at new AppError (file:///D:/project/Learning-Management-System/server/utils/appError.js:7:15)
+    at isLoggedIn (file:///D:/project/Learning-Management-System/server/middlewares/auth.middleware.js:12:21)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:328:13)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at cors (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:188:7)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:224:17
+    at origin (file:///D:/project/Learning-Management-System/server/app.js:36:13)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:204:7)
+2025-10-02T14:13:32.979Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: Please login to continue
+    at new AppError (file:///D:/project/Learning-Management-System/server/utils/appError.js:7:15)
+    at isLoggedIn (file:///D:/project/Learning-Management-System/server/middlewares/auth.middleware.js:12:21)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:328:13)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at cors (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:188:7)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:224:17
+    at origin (file:///D:/project/Learning-Management-System/server/app.js:36:13)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:204:7)
+2025-10-02T14:14:11.514Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: Please login to continue
+    at new AppError (file:///D:/project/Learning-Management-System/server/utils/appError.js:7:15)
+    at isLoggedIn (file:///D:/project/Learning-Management-System/server/middlewares/auth.middleware.js:12:21)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:328:13)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at cors (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:188:7)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:224:17
+    at origin (file:///D:/project/Learning-Management-System/server/app.js:36:13)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:204:7)
+2025-10-02T14:15:11.436Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: Please login to continue
+    at new AppError (file:///D:/project/Learning-Management-System/server/utils/appError.js:7:15)
+    at isLoggedIn (file:///D:/project/Learning-Management-System/server/middlewares/auth.middleware.js:12:21)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:328:13)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at cors (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:188:7)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:224:17
+    at origin (file:///D:/project/Learning-Management-System/server/app.js:36:13)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:204:7)
+2025-10-02T14:23:37.642Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: Please login to continue
+    at new AppError (file:///D:/project/Learning-Management-System/server/utils/appError.js:7:15)
+    at isLoggedIn (file:///D:/project/Learning-Management-System/server/middlewares/auth.middleware.js:12:21)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\project\Learning-Management-System\server\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (D:\project\Learning-Management-System\server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:328:13)
+    at D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\project\Learning-Management-System\server\node_modules\express\lib\router\index.js:280:10)
+    at cors (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:188:7)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:224:17
+    at origin (file:///D:/project/Learning-Management-System/server/app.js:36:13)
+    at D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (D:\project\Learning-Management-System\server\node_modules\cors\lib\index.js:204:7)
+2025-10-02T14:29:48.925Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: MongooseError: Operation `users.findOne()` buffering timed out after 10000ms
+    at new AppError (file:///D:/project/Learning-Management-System/server/utils/appError.js:7:15)
+    at login (file:///D:/project/Learning-Management-System/server/controllers/user.controller.js:110:21)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-10-02T15:01:50.050Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: Course validation failed: title: Title must be atleast 8 characters
+    at new AppError (file:///D:/project/Learning-Management-System/server/utils/appError.js:7:15)
+    at addLectureToCourseById (file:///D:/project/Learning-Management-System/server/controllers/course.controller.js:250:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-10-02T15:02:20.718Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: Course validation failed: title: Title must be atleast 8 characters
+    at new AppError (file:///D:/project/Learning-Management-System/server/utils/appError.js:7:15)
+    at addLectureToCourseById (file:///D:/project/Learning-Management-System/server/controllers/course.controller.js:250:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-10-02T15:02:21.846Z [user-service] error:  Internal Server Error catched by errorMiddleware : Error : undefined : Error: Course validation failed: title: Title must be atleast 8 characters
+    at new AppError (file:///D:/project/Learning-Management-System/server/utils/appError.js:7:15)
+    at addLectureToCourseById (file:///D:/project/Learning-Management-System/server/controllers/course.controller.js:250:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)

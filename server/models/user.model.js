@@ -79,7 +79,7 @@ userSchema.methods = {
         },
         process.env.JWT_SECRET,
         {
-            expiresIn:1000*60*60*24*30
+            expiresIn: process.env.JWT_EXPIRY || '7d'
         }
         )},
         

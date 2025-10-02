@@ -100,102 +100,151 @@ const CreateCourse = () => {
 
   return (
     <HomeLayout>
-        <div className="min-h-[100vh] flex items-center justify-center">
-          <form 
-            onSubmit={handleSubmit}
-            className="flex flex-col justify-center gap-5 rounded-lg p-4 text-white w-[700px] my-10 shadow-[0_0_10px_black]"
-          >
-            <h1 className="text-2xl text-center font-semibold">Create New Course</h1>
-            <div className="flex flex-col gap-2">
-              <label htmlFor="title">Title</label>
-              <input 
-                type="text" 
-                name="title" 
-                id="title" 
-                placeholder="Enter course title"
-                value={userInput.title}
-                onChange={handleUserInput}
-                className="px-2 py-1 rounded-md bg-[#333333] outline-none"
-              />
-            </div>
-            <div className="flex flex-col gap-2">
-              <label htmlFor="description">Description</label>
-              <textarea 
-                name="description" 
-                id="description" 
-                cols="30" 
-                rows="5"
-                placeholder="Enter course description"
-                value={userInput.description}
-                onChange={handleUserInput}
-                className="px-2 py-1 rounded-md bg-[#333333] outline-none"
-              ></textarea>
-            </div>
-            <div className="flex flex-col gap-2">
-              <label htmlFor="createdBy">Created By</label>
-              <input 
-                type="text" 
-                name="createdBy" 
-                id="createdBy" 
-                placeholder="Enter course created by"
-                value={userInput.createdBy}
-                onChange={handleUserInput}
-                className="px-2 py-1 rounded-md bg-[#333333] outline-none"
-              />
-            </div>
-            <div className="flex flex-col gap-2">
-            <label htmlFor="category">Category</label>
-              <input 
-                type="text" 
-                name="category" 
-                id="category" 
-                placeholder="Enter course category"
-                value={userInput.category}
-                onChange={handleUserInput}
-                className="px-2 py-1 rounded-md bg-[#333333] outline-none"
-              />
-            </div>
-            <div className="flex flex-col gap-2">
-              <label htmlFor="thumbnail">Thumbnail</label>
-              {userInput.fileName ? (
-                <div className="px-2 py-1 rounded-md bg-[#333333] text-white outline-none border border-white">
-                  Selected file: <span className="font-bold">{userInput.fileName}</span>
+        <div className="min-h-[90vh] pt-16 pb-8 px-4 lg:px-8 bg-gradient-to-br from-gray-900 to-gray-800">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl shadow-2xl p-8">
+              <h1 className="text-3xl font-bold text-white text-center mb-8">
+                Create New Course
+              </h1>
+              
+              <form 
+                onSubmit={handleSubmit}
+                className="space-y-6"
+              >
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  {/* Left Column */}
+                  <div className="space-y-6">
+                    <div className="space-y-2">
+                      <label htmlFor="title" className="block text-sm font-semibold text-gray-200">
+                        Course Title
+                      </label>
+                      <input 
+                        type="text" 
+                        name="title" 
+                        id="title" 
+                        placeholder="Enter course title"
+                        value={userInput.title}
+                        onChange={handleUserInput}
+                        className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/30 text-white placeholder-gray-400 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 transition-all duration-300 outline-none"
+                      />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <label htmlFor="createdBy" className="block text-sm font-semibold text-gray-200">
+                        Instructor Name
+                      </label>
+                      <input 
+                        type="text" 
+                        name="createdBy" 
+                        id="createdBy" 
+                        placeholder="Enter instructor name"
+                        value={userInput.createdBy}
+                        onChange={handleUserInput}
+                        className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/30 text-white placeholder-gray-400 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 transition-all duration-300 outline-none"
+                      />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <label htmlFor="category" className="block text-sm font-semibold text-gray-200">
+                        Category
+                      </label>
+                      <input 
+                        type="text" 
+                        name="category" 
+                        id="category" 
+                        placeholder="Enter course category"
+                        value={userInput.category}
+                        onChange={handleUserInput}
+                        className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/30 text-white placeholder-gray-400 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 transition-all duration-300 outline-none"
+                      />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <label htmlFor="description" className="block text-sm font-semibold text-gray-200">
+                        Course Description
+                      </label>
+                      <textarea 
+                        name="description" 
+                        id="description" 
+                        rows="6"
+                        placeholder="Enter detailed course description (minimum 20 characters)"
+                        value={userInput.description}
+                        onChange={handleUserInput}
+                        className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/30 text-white placeholder-gray-400 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 transition-all duration-300 outline-none resize-none"
+                      ></textarea>
+                    </div>
+                  </div>
+                  
+                  {/* Right Column - Image Upload */}
+                  <div className="space-y-6">
+                    <div className="space-y-2">
+                      <label className="block text-sm font-semibold text-gray-200">
+                        Course Thumbnail
+                      </label>
+                      
+                      {/* Traditional File Input */}
+                      <div className="space-y-4">
+                        {userInput.fileName ? (
+                          <div className="px-4 py-3 rounded-lg bg-white/10 border border-white/30 text-white">
+                            <span className="text-gray-300">Selected file: </span>
+                            <span className="font-semibold text-blue-400">{userInput.fileName}</span>
+                          </div>
+                        ) : (
+                          <input 
+                            type="file"
+                            name="thumbnail" 
+                            id="thumbnail" 
+                            onChange={handleImageUpload}
+                            className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/30 text-white file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700 file:cursor-pointer"
+                          />
+                        )}
+                      </div>
+                      
+                      {/* Drag & Drop Zone */}
+                      <div className="mt-4">
+                        <div 
+                          {...getRootProps()} 
+                          className="border-2 border-dashed border-white/30 rounded-lg p-8 text-center cursor-pointer hover:border-blue-400 transition-colors duration-300 bg-white/5"
+                        >
+                          <input {...getInputProps()} />
+                          {userInput.prevThumbnail ? (
+                            <div className="space-y-4">
+                              <img
+                                src={userInput.prevThumbnail}
+                                alt="Course thumbnail preview"
+                                className="max-h-64 max-w-full mx-auto rounded-lg object-cover shadow-lg"
+                              />
+                              <p className="text-gray-300 text-sm">Click or drag to change image</p>
+                            </div>
+                          ) : (
+                            <div className="space-y-4">
+                              <div className="w-16 h-16 mx-auto bg-white/10 rounded-full flex items-center justify-center">
+                                <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                                </svg>
+                              </div>
+                              <p className="text-white font-semibold">Drag & drop an image here</p>
+                              <p className="text-gray-400 text-sm">or click to select a file</p>
+                              <p className="text-gray-500 text-xs">Supported formats: JPEG, PNG, JPG, SVG, GIF</p>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              ) : (
-                <input 
-                  type="file"
-                  name="thumbnail" 
-                  id="thumbnail" 
-                  placeholder="Enter course thumbnail"
-                  onChange={handleImageUpload}
-                  className="px-2 py-1 rounded-md bg-[#333333] outline-none"
-                />
-              )}
-            </div>
-          <div className="flex items-center justify-center">
-            <div {...getRootProps()} className="dropzone max-w-[250px] bg-gray-500 rounded-md " >
-              <input  {...getInputProps()} />
-              {userInput.prevThumbnail ? (
-                <div className="flex flex-col gap-2 items-center">
-                  <img
-                    src={userInput.prevThumbnail}
-                    alt="thumbnail"
-                    className="max-h-[250px] max-w-[250px] rounded-md object-cover"
-                  />
-                </div>) : (
-                <p className="text-center text-white text-xl font-semibold
-                ">Drag 'n' drop or click to select file</p>
-              )}
+
+                <div className="pt-6">
+                  <button 
+                    type="submit"
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                  >
+                    Create Course
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
-
-            <div className="flex justify-center">
-              <button 
-                type="submit"
-                className="px-4 py-2 bg-[#333333] rounded-md"
-              >Create Course</button>
-            </div>
-          </form>
         </div>
     </HomeLayout>
   )

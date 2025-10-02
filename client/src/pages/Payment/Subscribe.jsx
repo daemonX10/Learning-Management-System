@@ -85,40 +85,73 @@ const Subscribe = () => {
 
   return (
     <HomeLayout>
-    <form className='min-h-screen flex items-center justify-center bg-gray-900' onSubmit={handleSubscription}>
-      <div className='w-full max-w-md mx-3 flex-col justify-center items-center bg-white rounded-lg shadow-md '>
-        <h1 className='text-2xl font-bold text-center top-0  w-full mb-4 px-4 py-2 bg-blue-500 rounded-t-md text-blue-100'>Subscription</h1>
-        
+      <div className='min-h-[90vh] pt-16 pb-8 px-4 lg:px-8 bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center'>
+        <div className='w-full max-w-lg'>
+          <form onSubmit={handleSubscription} className='bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl shadow-2xl overflow-hidden'>
+            {/* Header */}
+            <div className='bg-gradient-to-r from-blue-600 to-blue-800 p-6 text-center'>
+              <h1 className='text-3xl font-bold text-white'>Premium Subscription</h1>
+              <p className='text-blue-100 mt-2'>Unlock unlimited access to all courses</p>
+            </div>
 
-         {/* opinion opener */}
-        {/* <div className='mb-4'>
-          <label className='block text-sm text-gray-600 mb-2' htmlFor='subscriptionType'>Subscription Type</label>
-          <select className='w-full px-3 py-2 text-sm text-gray-700 bg-gray-200 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent' id='subscriptionType' required>
-            <option value=''>Select a subscription type</option>
-            <option value='monthly'>Monthly</option>
-            <option value='yearly'>Yearly</option>
-          </select>
-        </div> */}
+            {/* Content */}
+            <div className='p-8 space-y-6'>
+              {/* Features */}
+              <div className='space-y-4'>
+                <h2 className='text-xl font-semibold text-white text-center'>What's Included</h2>
+                <div className='space-y-3'>
+                  <div className='flex items-center gap-3 text-gray-300'>
+                    <div className='w-2 h-2 bg-green-400 rounded-full'></div>
+                    <span>Access to all current and future courses</span>
+                  </div>
+                  <div className='flex items-center gap-3 text-gray-300'>
+                    <div className='w-2 h-2 bg-green-400 rounded-full'></div>
+                    <span>Learn at your own pace, anytime, anywhere</span>
+                  </div>
+                  <div className='flex items-center gap-3 text-gray-300'>
+                    <div className='w-2 h-2 bg-green-400 rounded-full'></div>
+                    <span>Expert instructors and industry professionals</span>
+                  </div>
+                  <div className='flex items-center gap-3 text-gray-300'>
+                    <div className='w-2 h-2 bg-green-400 rounded-full'></div>
+                    <span className='text-emerald-400 font-medium'>1 full year of unlimited access</span>
+                  </div>
+                </div>
+              </div>
 
-        <div className='px-4 space-y-5 text-center p-6'>
-          <p className='text-[17px] text-slate-950 font-medium'>
-              This purchase will allow you to access all the courses on our platform for a  <span className='text-emerald-600'>period of 1 year</span> . All the exitsing courses and the new courses that will be added in the next 1 year will be accessible to you.
-          </p>
+              {/* Pricing */}
+              <div className='bg-white/5 rounded-xl p-6 text-center'>
+                <div className='flex items-center justify-center text-4xl font-bold text-white mb-2'>
+                  <BiRupee className='text-green-400' />
+                  <span className='text-green-400'>1</span>
+                </div>
+                <p className='text-gray-300 text-lg'>One-time payment</p>
+                <p className='text-gray-400 text-sm mt-1'>No hidden fees or recurring charges</p>
+              </div>
 
-          <p className=' w-full flex items-center justify-center font-bold tracking-wide text-2xl text-red-500'>
-            Price : <BiRupee />
-            <span className='text-red-500'> 1 </span>
-          </p>
+              {/* Guarantee */}
+              <div className='bg-green-500/10 border border-green-500/20 rounded-xl p-4 text-center'>
+                <p className='text-green-400 font-semibold text-lg'>💯 100% Money-Back Guarantee</p>
+                <p className='text-gray-400 text-sm mt-1'>Terms and conditions apply *</p>
+              </div>
 
-          <div className='text-gray-600 accent-current'>
-            <p className='text-lg font-bold text-green-500'>100% refund on cancellation</p>
-            <p className='text-sm text-slate-500'>Terms and Conditions apply *</p>
-          </div>
+              {/* CTA Button */}
+              <button 
+                type='submit' 
+                className='w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-lg'
+              >
+                Subscribe Now →
+              </button>
+
+              {/* Additional Info */}
+              <div className='text-center text-gray-400 text-sm'>
+                <p>Secure payment powered by Razorpay</p>
+                <p className='mt-1'>No payment will be deducted during testing</p>
+              </div>
+            </div>
+          </form>
         </div>
-
-        <button type='submit' className='w-fit py-2 px-4 m-4 text-sm text-center text-white bg-green-500 rounded hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent block mx-auto'> Buy Now {'>>'} </button>
       </div>
-    </form>
     </HomeLayout>
   )
 }

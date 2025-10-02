@@ -56,48 +56,73 @@ const SignIn = () => {
 
   return (
     <HomeLayout>
-        <div className='flex overflow-x-auto items-center justify-center h-[100vh]'>
-            <form onSubmit={onFormSubmit} className='flex flex-col justify-center gap-3 rounded-lg p-4 text-white' >
-                <h1 className='text-2xl text-center font-bold'>Login Page</h1>
-                <div className='flex flex-col gap-1'>
-                    <label htmlFor="email"
-                    className='font-semibold'>Email</label>
-                    <input type="email" name='email'
-                    onChange={handleUserInput}
-                    value={signInDetails.email}
-                    id='email'
-                    placeholder='Enter the Registered Email'
-                    autoComplete='email'
-                    className='p-2 rounded-lg outline-none bg-transparent border border-white' />
-                </div>
-                <div className='flex flex-col gap1'>
-                    <label htmlFor="password"
-                    className='font-semibold'>Password</label>
-                    <input type="password" name='password'
-                    onChange={handleUserInput}
-                    value={signInDetails.password}
-                    id='password'
-                    placeholder='Enter the Password'
-                    autoComplete='current-password'
-                    className='p-2 rounded-lg outline-none bg-transparent border border-white' />
-                </div>
+        <div className='flex items-center justify-center min-h-[90vh] px-4 py-8'>
+            <div className='w-full max-w-md'>
+                <form onSubmit={onFormSubmit} className='bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-8 shadow-2xl' >
+                    <h1 className='text-3xl text-center font-bold text-white mb-8'>Welcome Back</h1>
+                    
+                    <div className='space-y-6'>
+                        <div className='flex flex-col gap-2'>
+                            <label htmlFor="email" className='font-semibold text-gray-200 text-sm'>
+                                Email Address
+                            </label>
+                            <input 
+                                type="email" 
+                                name='email'
+                                onChange={handleUserInput}
+                                value={signInDetails.email}
+                                id='email'
+                                placeholder='Enter your registered email'
+                                autoComplete='email'
+                                className='p-3 rounded-lg outline-none bg-white/10 border border-white/30 text-white placeholder-gray-400 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 transition-all duration-300' 
+                            />
+                        </div>
+                        
+                        <div className='flex flex-col gap-2'>
+                            <label htmlFor="password" className='font-semibold text-gray-200 text-sm'>
+                                Password
+                            </label>
+                            <input 
+                                type="password" 
+                                name='password'
+                                onChange={handleUserInput}
+                                value={signInDetails.password}
+                                id='password'
+                                placeholder='Enter your password'
+                                autoComplete='current-password'
+                                className='p-3 rounded-lg outline-none bg-white/10 border border-white/30 text-white placeholder-gray-400 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 transition-all duration-300' 
+                            />
+                        </div>
+                    </div>
 
-                  {/* button for submit */}
-                <button className="
-                bg-blue-700 hover:bg-blue-500 transition-all ease-in-out duration-300 p-2 rounded-lg mt-2 cursor-pointer font-semibold 
-                transform active:scale-90 active:bg-blue-700 active:outline-none focus:outline-none"
-                type="submit">
-                    Login
-                </button>
+                    {/* Submit button */}
+                    <button 
+                        className="w-full bg-blue-600 hover:bg-blue-700 active:bg-blue-800 transition-all ease-in-out duration-300 p-3 rounded-lg mt-8 cursor-pointer font-semibold text-white shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-blue-400/50"
+                        type="submit"
+                    >
+                        Sign In
+                    </button>
 
-                {/* button for login */}
-                <p className="text-center">
-                    Don't have an account ?
-                    <Link to={`/signup`} className="text-blue-500 hover:text-blue-300 transition-all ease-in-out duration-300"> SignUp </Link>
-                </p>
-            </form>
+                    {/* Forgot password link */}
+                    <div className="text-center mt-4">
+                        <Link 
+                            to="/forgot-password" 
+                            className="text-blue-400 hover:text-blue-300 transition-all ease-in-out duration-300 text-sm"
+                        >
+                            Forgot your password?
+                        </Link>
+                    </div>
+
+                    {/* Sign up link */}
+                    <p className="text-center text-gray-300 mt-6">
+                        Don't have an account? {' '}
+                        <Link to={`/signup`} className="text-blue-400 hover:text-blue-300 transition-all ease-in-out duration-300 font-semibold">
+                            Sign Up
+                        </Link>
+                    </p>
+                </form>
+            </div>
         </div>
-
     </HomeLayout>
   )
 }

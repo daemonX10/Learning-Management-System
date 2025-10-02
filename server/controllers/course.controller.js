@@ -100,23 +100,58 @@ export const createCourse = async (req, res,next) =>{
 export const updateCourse = async (req, res,next) =>{
     try {
         const { courseId } = req.params;
+        const { title, description, category, createdBy } = req.body;
 
-        const course = await Course.findByIdAndUpdate(
-            courseId,
-            req.body,
-            { runValidators: true }
-        );
+        const course = await Course.findById(courseId);
 
         if (!course) {
-            return next(new AppError("Unable to update the course", 400))
+            return next(new AppError("No course found with this ID", 404));
         }
+
+        // Update course fields
+        if (title) course.title = title;
+        if (description) course.description = description;
+        if (category) course.category = category;
+        if (createdBy) course.createdBy = createdBy;
+
+        // Handle thumbnail update
+        if (req.file) {
+            try {
+                // Delete old thumbnail from cloudinary
+                if (course.thumbnail && course.thumbnail.public_id) {
+                    await cloudinary.v2.uploader.destroy(course.thumbnail.public_id);
+                }
+
+                // Upload new thumbnail
+                const result = await cloudinary.v2.uploader.upload(req.file.path, {
+                    folder: 'lms',
+                    width: 250,
+                    height: 300,
+                    gravity: 'faces',
+                    crop: 'fill'
+                });
+
+                if (result) {
+                    course.thumbnail.public_id = result.public_id;
+                    course.thumbnail.secure_url = result.secure_url;
+                }
+
+                // Remove file from local storage
+                await fs.rm(req.file.path);
+            } catch (error) {
+                return next(new AppError("Failed to upload thumbnail", 400));
+            }
+        }
+
+        await course.save();
 
         res.status(200).json({
             success: true,
-            message: "Course updated successfully"
+            message: "Course updated successfully",
+            data: course
         });
     } catch (error) {
-        return next(new AppError(error.message,500));
+        return next(new AppError(error.message || "Unable to update course", 500));
     }
 }
 
@@ -127,17 +162,33 @@ export const deleteCourse = async (req, res,next) =>{
         const course = await Course.findById(courseId);
 
         if (!course) {
-            return next(new AppError("No course exist with this id ", 400));
+            return next(new AppError("No course found with this ID", 404));
+        }
+
+        // Delete course thumbnail from cloudinary
+        if (course.thumbnail && course.thumbnail.public_id) {
+            await cloudinary.v2.uploader.destroy(course.thumbnail.public_id);
+        }
+
+        // Delete all lecture videos from cloudinary
+        if (course.lectures && course.lectures.length > 0) {
+            for (const lecture of course.lectures) {
+                if (lecture.lecture && lecture.lecture.public_id) {
+                    await cloudinary.v2.uploader.destroy(lecture.lecture.public_id, {
+                        resource_type: 'video'
+                    });
+                }
+            }
         }
 
         await Course.findByIdAndDelete(courseId);
 
         res.status(200).json({
             success: true,
-            message: "Course Deleted successfully"
+            message: "Course deleted successfully"
         });
     } catch (error) {
-        return next (new AppError(error.message,500));
+        return next (new AppError(error.message || "Unable to delete course", 500));
     }
 }
 
@@ -273,4 +324,71 @@ export const deleteLectureById = async (req, res,next) =>{
     }
 
     */
+}
+
+export const updateLecture = async (req, res, next) => {
+    try {
+        const { courseId, lectureId } = req.params;
+        const { title, description } = req.body;
+
+        if (!title || !description) {
+            return next(new AppError("Title and description are required", 400));
+        }
+
+        const course = await Course.findById(courseId);
+
+        if (!course) {
+            return next(new AppError("No course found with this ID", 404));
+        }
+
+        const lecture = course.lectures.find(lecture => lecture._id.toString() === lectureId);
+
+        if (!lecture) {
+            return next(new AppError("No lecture found with this ID", 404));
+        }
+
+        // Update lecture fields
+        lecture.title = title;
+        lecture.description = description;
+
+        // Handle video update if a new file is uploaded
+        if (req.file) {
+            try {
+                // Delete old video from cloudinary
+                if (lecture.lecture && lecture.lecture.public_id) {
+                    await cloudinary.v2.uploader.destroy(lecture.lecture.public_id, {
+                        resource_type: 'video'
+                    });
+                }
+
+                // Upload new video
+                const result = await cloudinary.v2.uploader.upload(req.file.path, {
+                    resource_type: 'video',
+                    folder: 'lms',
+                    chunk_size: 5000000 // 50 mb
+                });
+
+                if (result) {
+                    lecture.lecture.public_id = result.public_id;
+                    lecture.lecture.secure_url = result.secure_url;
+                }
+
+                // Remove file from local storage
+                await fs.rm(req.file.path);
+            } catch (error) {
+                return next(new AppError("Failed to upload video", 400));
+            }
+        }
+
+        await course.save();
+
+        res.status(200).json({
+            success: true,
+            message: "Lecture updated successfully",
+            data: course.lectures
+        });
+
+    } catch (error) {
+        return next(new AppError(error.message || "Unable to update lecture", 500));
+    }
 }

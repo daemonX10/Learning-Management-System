@@ -103,81 +103,105 @@ const SignUP = () => {
 
   return (
     <HomeLayout>
-        <div className="flex overflow-x-auto items-center justify-center h-[100vh]">
-            <form onSubmit={onFormSubmit} className="flex flex-col justify-center gap-3 rounded-lg p-4 text-white">
-                <h1 className="text-2xl text-center font-bold">Registration Page</h1>
-                <label htmlFor="image_upload" className="cursor-pointer">
-                    {
-                        prevImage ? (
-                            <img className="w-24 h-24 rounded-full m-auto" src={prevImage} alt="user Image" />
-                        ):(
-                            <BsPersonCircle className="w-24 h-24 m-auto" />
-                        )
-                    }
-                </label>
-                <input type="file"
-                className="hidden"
-                onChange={handleAvatar}
-                id="image_upload"
-                name="image_upload"
-                accept=" .jpg , .jpeg , .png , .svg" />
-
-                <div className="flex flex-col gap-1">
-                    <label htmlFor="fullName" className="font-semibold">Name</label>
-                    <input type="text"
-                    onChange={handleUserInput}
-                    value={signUpDetails.fullName}
-                    name="fullName"
-                    id="fullName"
-                    placeholder="Enter your name"
-                    autoComplete="name"
-                    className="p-2 rounded-lg outline-none bg-transparent border border-white" />
-                </div>
-                
-                {/* Take an email from user */}
-                <div className="flex flex-col gap-1">
-                    <label htmlFor="email" className="font-semibold">Email</label>
-                    <input type="email"
-                    onChange={handleUserInput}
-                    value={signUpDetails.email}
-                    name="email"
-                    id="email"
-                    placeholder="Enter your email"
-                    autoComplete="email"
-                    className="p-2 rounded-lg outline-none bg-transparent border border-white" />
-                </div>
-                
-                <div className="flex flex-col gap-1">
-                    <label htmlFor="Password" className="font-semibold">Password</label>
-                    <input type="password"
-                        onChange={handleUserInput}
-                        value={signUpDetails.password}
-                        name="password"
-                        id="Password"
-                        autoComplete="current-password"
-                        placeholder="Enter your Password"
-                        className="p-2 rounded-lg outline-none bg-transparent border border-white" />
-                </div>
-
-                {/* button for submit */}
-                <button className="
-                bg-blue-700 hover:bg-blue-500 transition-all ease-in-out duration-300 p-2 rounded-lg mt-2 cursor-pointer font-semibold 
-                transform active:scale-90 active:bg-blue-700 active:outline-none focus:outline-none
-                "
-                type="submit" 
-                >
-                    Create Account
-                </button>
-                
-                {/* button for login */}
-                <p className="text-center">
-                    Already have an account ? 
-                    <Link to={`/login`} className="text-blue-500 hover:text-blue-300 transition-all ease-in-out duration-300"> Login </Link>
+        <div className="flex items-center justify-center min-h-[90vh] px-4 py-8">
+            <div className="w-full max-w-md">
+                <form onSubmit={onFormSubmit} className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-8 shadow-2xl">
+                    <h1 className="text-3xl text-center font-bold text-white mb-8">Create Account</h1>
                     
-                </p>
+                    {/* Avatar Upload */}
+                    <div className="flex justify-center mb-6">
+                        <label htmlFor="image_upload" className="cursor-pointer group">
+                            <div className="relative">
+                                {prevImage ? (
+                                    <img className="w-24 h-24 rounded-full object-cover border-4 border-blue-400 shadow-lg" src={prevImage} alt="Profile Preview" />
+                                ) : (
+                                    <BsPersonCircle className="w-24 h-24 text-gray-400 group-hover:text-blue-400 transition-colors duration-300" />
+                                )}
+                                <div className="absolute inset-0 bg-black/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <span className="text-white text-xs font-semibold">Change</span>
+                                </div>
+                            </div>
+                        </label>
+                        <input 
+                            type="file"
+                            className="hidden"
+                            onChange={handleAvatar}
+                            id="image_upload"
+                            name="image_upload"
+                            accept=".jpg,.jpeg,.png,.svg" 
+                        />
+                    </div>
 
-            </form>
+                    <div className="space-y-6">
+                        <div className="flex flex-col gap-2">
+                            <label htmlFor="fullName" className="font-semibold text-gray-200 text-sm">
+                                Full Name
+                            </label>
+                            <input 
+                                type="text"
+                                onChange={handleUserInput}
+                                value={signUpDetails.fullName}
+                                name="fullName"
+                                id="fullName"
+                                placeholder="Enter your full name"
+                                autoComplete="name"
+                                className="p-3 rounded-lg outline-none bg-white/10 border border-white/30 text-white placeholder-gray-400 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 transition-all duration-300" 
+                            />
+                        </div>
+                        
+                        <div className="flex flex-col gap-2">
+                            <label htmlFor="email" className="font-semibold text-gray-200 text-sm">
+                                Email Address
+                            </label>
+                            <input 
+                                type="email"
+                                onChange={handleUserInput}
+                                value={signUpDetails.email}
+                                name="email"
+                                id="email"
+                                placeholder="Enter your email address"
+                                autoComplete="email"
+                                className="p-3 rounded-lg outline-none bg-white/10 border border-white/30 text-white placeholder-gray-400 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 transition-all duration-300" 
+                            />
+                        </div>
+                        
+                        <div className="flex flex-col gap-2">
+                            <label htmlFor="Password" className="font-semibold text-gray-200 text-sm">
+                                Password
+                            </label>
+                            <input 
+                                type="password"
+                                onChange={handleUserInput}
+                                value={signUpDetails.password}
+                                name="password"
+                                id="Password"
+                                autoComplete="new-password"
+                                placeholder="Create a strong password"
+                                className="p-3 rounded-lg outline-none bg-white/10 border border-white/30 text-white placeholder-gray-400 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 transition-all duration-300" 
+                            />
+                            <p className="text-xs text-gray-400 mt-1">
+                                Password must be at least 6 characters with uppercase, lowercase, number and special character
+                            </p>
+                        </div>
+                    </div>
 
+                    {/* Submit button */}
+                    <button 
+                        className="w-full bg-blue-600 hover:bg-blue-700 active:bg-blue-800 transition-all ease-in-out duration-300 p-3 rounded-lg mt-8 cursor-pointer font-semibold text-white shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-blue-400/50"
+                        type="submit" 
+                    >
+                        Create Account
+                    </button>
+                    
+                    {/* Login link */}
+                    <p className="text-center text-gray-300 mt-6">
+                        Already have an account? {' '}
+                        <Link to={`/login`} className="text-blue-400 hover:text-blue-300 transition-all ease-in-out duration-300 font-semibold">
+                            Sign In
+                        </Link>
+                    </p>
+                </form>
+            </div>
         </div>
     </HomeLayout>
   )

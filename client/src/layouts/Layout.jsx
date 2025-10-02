@@ -59,62 +59,140 @@ return (
         </label>
       </div>
 
-      {/* Carousel */}
-      <div className='drawer-side w-[50vw] bg-transparent sm:w-full' >
+      {/* Sidebar */}
+      <div className='drawer-side w-[280px] sm:w-80' >
         <label htmlFor="my-drawer" className='drawer-overlay'></label>
-        <ul className='menu p-4 w-fit h-[100%] sm:w-80 bg-base-200 relative'>
-          <li className='w-fit absolute right-2 z-50'>
-            <button onClick={hideDrawer}>
-              <AiFillCloseCircle size={24} />
-            </button>
-          </li>
-          <li>
-            <Link to='/'>Home</Link>
-          </li>
-
-          {isLoggedIn && role === 'ADMIN' && (
-            <li>
-              <Link to='/course/create'>Create Course</Link>
+        <div className='bg-gray-900/95 backdrop-blur-sm h-full border-r border-gray-700'>
+          <ul className='menu p-6 w-full h-full text-white relative'>
+            {/* Close button */}
+            <li className='absolute right-4 top-4 z-50'>
+              <button 
+                onClick={hideDrawer}
+                className='text-gray-400 hover:text-white transition-colors duration-300'
+              >
+                <AiFillCloseCircle size={28} />
+              </button>
             </li>
-          )}
 
-          {isLoggedIn && role === 'ADMIN' && (
-            <li>
-              <Link to='/admin/dashboard'>Admin DashBoard</Link>
+            {/* Logo/Title */}
+            <li className='mb-8 mt-4'>
+              <div className='text-center'>
+                <h2 className='text-2xl font-bold text-blue-400'>LMS</h2>
+                <p className='text-gray-400 text-sm'>Learning Management System</p>
+              </div>
             </li>
-          )}
 
-          <li>
-            <Link to='/about'> About Us</Link>
-          </li>
-          <li>
-            <Link to='/contact'>Contact us</Link>
-          </li>
-          <li>
-            <Link to='/course'>All Courses</Link>
-          </li>
-
-          { isLoggedIn ? (
-              <li className='absolute bottom-4 w-[90%]'>
-                <div className="w-full flex flex-col sm:flex-row items-center justify-center">
-                  <button className='bg-pink-600 btn-primary px-4 py-1 font-semibold rounded-md w-full '><Link to={'/user/profile'}>Profile</Link></button>
-                  <button className='bg-blue-600 btn-primary px-4 py-1 font-semibold rounded-md w-full '><Link onClick={onLogout}>Logout</Link></button>
-                </div>
-              </li>)
-              : (
-              <li className='absolute bottom-4 w-[90%]'>
-                <div className=" w-full flex flex-col sm:flex-row items-center justify-center ">
-                  <button className=' bg-pink-600 btn-primary px-4 py-1 font-semibold rounded-md w-full ' ><Link to={'/login'}>Login</Link></button>
-                  <button className='btn-primary bg-blue-600 px-4 py-1 font-semibold rounded-md w-full '><Link to={'/signup'}>SignUP</Link></button>
-                </div>
+            {/* Navigation Links */}
+            <div className='space-y-2 flex-1'>
+              <li>
+                <Link 
+                  to='/'
+                  className='flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/10 transition-colors duration-300'
+                >
+                  <span>🏠</span>
+                  <span>Home</span>
+                </Link>
               </li>
-              )
-          }
-        </ul>
-      </div>
-    
 
+              {isLoggedIn && role === 'ADMIN' && (
+                <>
+                  <li>
+                    <Link 
+                      to='/course/create'
+                      className='flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/10 transition-colors duration-300'
+                    >
+                      <span>➕</span>
+                      <span>Create Course</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link 
+                      to='/admin/dashboard'
+                      className='flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/10 transition-colors duration-300'
+                    >
+                      <span>📊</span>
+                      <span>Admin Dashboard</span>
+                    </Link>
+                  </li>
+                </>
+              )}
+
+              <li>
+                <Link 
+                  to='/about'
+                  className='flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/10 transition-colors duration-300'
+                >
+                  <span>ℹ️</span>
+                  <span>About Us</span>
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to='/contact'
+                  className='flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/10 transition-colors duration-300'
+                >
+                  <span>📞</span>
+                  <span>Contact Us</span>
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to='/course'
+                  className='flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/10 transition-colors duration-300'
+                >
+                  <span>📚</span>
+                  <span>All Courses</span>
+                </Link>
+              </li>
+            </div>
+
+            {/* User Actions */}
+            <div className='mt-auto space-y-3'>
+              {isLoggedIn ? (
+                <>
+                  <li>
+                    <Link 
+                      to='/user/profile'
+                      className='block w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-300 text-center'
+                    >
+                      👤 Profile
+                    </Link>
+                  </li>
+                  <li>
+                    <button 
+                      onClick={onLogout}
+                      className='w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-300'
+                    >
+                      🚪 Logout
+                    </button>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <Link 
+                      to='/login'
+                      className='block w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-300 text-center'
+                    >
+                      🔑 Login
+                    </Link>
+                  </li>
+                  <li>
+                    <Link 
+                      to='/signup'
+                      className='block w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-300 text-center'
+                    >
+                      ✨ Sign Up
+                    </Link>
+                  </li>
+                </>
+              )}
+            </div>
+          </ul>
+        </div>
+      </div>
     </div>
+    
     <div className=''>
       {children}
       <Footer />
