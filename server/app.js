@@ -42,6 +42,36 @@ app.use('/damodar', (req, res) => {
     }
 });
 
+// Debug endpoint to check cookies and authentication
+app.get('/api/v1/debug/auth', (req, res) => {
+    res.json({
+        success: true,
+        cookies: req.cookies,
+        headers: {
+            cookie: req.headers.cookie,
+            origin: req.headers.origin,
+            userAgent: req.headers['user-agent']
+        },
+        hasToken: !!req.cookies.token,
+        message: 'Debug information'
+    });
+});
+
+// Test endpoint specifically for payment cookie verification
+app.get('/api/v1/debug/payment-auth', (req, res) => {
+    const { token } = req.cookies;
+    res.json({
+        success: true,
+        hasToken: !!token,
+        tokenLength: token ? token.length : 0,
+        cookies: req.cookies,
+        cookieHeader: req.headers.cookie,
+        origin: req.headers.origin,
+        message: token ? 'Token found - ready for payments' : 'No token - please login first',
+        timestamp: new Date().toISOString()
+    });
+});
+
 app.use('/api/v1/user',userRoutes);
 app.use('/api/v1/course',courseRoutes);
 app.use('/api/v1/payment',paymentRoutes);

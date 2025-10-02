@@ -7,17 +7,43 @@ import asyncHandler from "./asyncHandler.middleware.js";
 export const isLoggedIn = (req,res,next)=>{
     
     const {token} = req.cookies;
+    
+    // Enhanced debug logging for production
+    logger.info("Authentication Debug:", {
+        route: req.originalUrl,
+        method: req.method,
+        cookies: req.cookies,
+        cookieHeader: req.headers.cookie,
+        origin: req.headers.origin,
+        hasToken: !!token,
+        tokenLength: token ? token.length : 0,
+        timestamp: new Date().toISOString()
+    });
 
     if(!token){
-        return next(new AppError('Please login to continue',401));
+        logger.warn("Authentication failed: No token found", {
+            route: req.originalUrl,
+            origin: req.headers.origin,
+            cookieHeader: req.headers.cookie
+        });
+        return next(new AppError('Please login to continue. No authentication token found.',401));
     }
     
     try {
         const decode = jwt.verify(token, process.env.JWT_SECRET);
         req.user = decode;
+        logger.info("Authentication successful", {
+            userId: decode.id,
+            userEmail: decode.email,
+            route: req.originalUrl
+        });
         next();
     } catch (error) {
-        logger.error("Error in isLoggedIn middleware: ", error.message);
+        logger.error("Error in isLoggedIn middleware: ", {
+            error: error.message,
+            route: req.originalUrl,
+            tokenLength: token ? token.length : 0
+        });
         
         if (error.name === 'TokenExpiredError') {
             return next(new AppError('Token expired, please login again', 401));

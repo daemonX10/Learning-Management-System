@@ -12,8 +12,10 @@ const cookieOptions = {
     expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRY * 24 * 60 * 60 * 1000), // 7 days
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
-    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
     // Domain restriction removed to allow cross-domain cookies between Vercel frontend and Render backend
+    // Path set to root to ensure cookies are sent for all API routes including payments
+    path: '/'
 }
 
 const register = async (req,res,next)=>{ 
